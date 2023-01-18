@@ -21,28 +21,27 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
             password: string;
           };
           try {
-            const result = await prisma.user.findFirst({
+            const user = await prisma.user.findFirst({
               where: {
-                AND: [{ email: email }],
+                email: email,
               },
             });
 
-            console.log(result);
             // User not found
-            // if (!result) {
-            //   await prisma.$disconnect();
-            //   throw new Error("No user found with this email !");
-            // }
+            if (!user) {
+              await prisma.$disconnect();
+              throw new Error("No user found with this email !");
+            }
 
             //Check hashed password with database password
-            // const checkPassword = await compareSync(password, result.password);
+            const checkPassword = await compareSync(password, user.password);
 
-            // Password Not Matched
-            // if (!checkPassword) {
-            //   throw new Error("Password is wrong !");
-            // }
+            // // Password Not Matched
+            if (!checkPassword) {
+              throw new Error("Password is wrong !");
+            }
             // Login Success
-            return result;
+            return user;
           } catch (error: any) {
             throw new Error(error.message);
           } finally {
@@ -72,7 +71,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
     ],
 
     adapter: PrismaAdapter(prisma),
-    secret: process.env.SECRET,
+    secret: getEnv("SECRET"),
     session: {
       strategy: "jwt",
       // strategy: 'database',
@@ -81,7 +80,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
     },
 
     jwt: {
-      secret: process.env.SECRET,
+      secret: getEnv("SECRET"),
       // Set to true to use encryption (default: false)
       // encryption: true,
 
@@ -124,12 +123,12 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
       //   return baseUrl;
       // },
       async session({ session, user, token }) {
-        const encodedToken = jwt.sign(token, process.env.SECRET, {
+        const encodedToken = jwt.sign(token, getEnv("SECRET"), {
           algorithm: "HS256",
         });
         session.id = token.id;
         session.user.image = token.image;
-        session.token = encodedToken;
+        session.user.name = token.name;
         return Promise.resolve(session);
       },
       async jwt({ token, user, account, profile, isNewUser }) {
@@ -139,11 +138,12 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
         if (isUserSignedIn) {
           token.id = user.id.toString();
           token.image = user.image ? user.image.toString() : null;
+          token.name = user.firstName ? user.firstName.toString() : "testing";
         }
         return Promise.resolve(token);
       },
     },
 
     events: {},
-    debug: process.env.NODE_ENV === "development",
+    debug: getEnv("NODE_ENV") === "development",
   });

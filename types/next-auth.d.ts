@@ -8,7 +8,15 @@ declare module "next-auth" {
     user: {
       address: string;
       image: string;
+      name: string;
     } & DefaultSession["user"];
+  }
+}
+
+declare module "next-auth" {
+  interface User {
+    id: number;
+    firstName?: string;
   }
 }
 

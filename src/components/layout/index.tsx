@@ -1,12 +1,9 @@
 import Header from "@components/layout/header";
 import Footer from "@components/layout/footer";
 import { useTranslation } from "next-i18next";
-import MobileNavigation from "@components/layout/mobile-navigation/mobile-navigation";
 import { useSessionStorage } from "react-use";
-import Image from "@components/ui/image";
 import { IoChevronForwardCircleOutline } from "react-icons/io5";
 import HighlightedBar from "@components/common/highlighted-bar";
-import Countdown from "@components/common/countdown";
 import Link from "@components/ui/link";
 
 type Props = {
@@ -16,7 +13,7 @@ type Props = {
 const Layout: React.FC<Props> = ({ children }) => {
   const { t } = useTranslation("common");
   const [highlightedBar, setHighlightedBar] = useSessionStorage(
-    "borobazar-highlightedBar",
+    "highlightedBar",
     "false"
   );
   return (
@@ -55,7 +52,6 @@ const Layout: React.FC<Props> = ({ children }) => {
         {children}
       </main>
       <Footer />
-      {/* <MobileNavigation /> */}
     </div>
   );
 };

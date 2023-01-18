@@ -16,7 +16,7 @@ export const siteSettings = {
     address: "",
   },
   logo: {
-    url: "/assets/images/logo.svg",
+    url: "/images/logo.svg",
     alt: "logo-1",
     href: "/",
     width: 128,

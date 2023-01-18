@@ -159,7 +159,7 @@ function StudentRegistrationForm() {
               label="Password"
               variant="outline"
               placeholder="Set Password"
-              helperText="Min password length 8 characters"
+              // helperText="Min password length 8 characters"
               {...register("password", {
                 required: "You must set password !",
                 pattern: {

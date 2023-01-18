@@ -110,7 +110,7 @@ const CollectionGrid: React.FC<Props> = ({
 
                 <div className="text-center mt-5">
                   <img
-                    src="assets/images/client/01.jpg"
+                    src="/images/about/ab02.jpg"
                     className="h-14 w-14 rounded-full shadow-md mx-auto"
                     alt="photo-1"
                   />
@@ -148,7 +148,7 @@ const CollectionGrid: React.FC<Props> = ({
 
                 <div className="text-center mt-5">
                   <img
-                    src="assets/images/client/02.jpg"
+                    src="/images/about/ab03.jpg"
                     className="h-14 w-14 rounded-full shadow-md mx-auto"
                     alt="photo-2"
                   />
@@ -186,7 +186,7 @@ const CollectionGrid: React.FC<Props> = ({
 
                 <div className="text-center mt-5">
                   <img
-                    src="assets/images/client/04.jpg"
+                    src="/images/about/ab01.jpg"
                     className="h-14 w-14 rounded-full shadow-md mx-auto"
                     alt="photo-3"
                   />
@@ -224,7 +224,7 @@ const CollectionGrid: React.FC<Props> = ({
 
                 <div className="text-center mt-5">
                   <img
-                    src="assets/images/client/06.jpg"
+                    src="/images/about/ab01.jpg"
                     className="h-14 w-14 rounded-full shadow-md mx-auto"
                     alt="photo-4"
                   />

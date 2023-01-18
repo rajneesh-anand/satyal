@@ -1,17 +1,10 @@
-import BundleGrid from "@components/bundle/bundle-grid";
-import AllProductFeed from "@components/product/feeds/all-products-feed";
 import Layout from "@components/layout";
 import Container from "@components/ui/container";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import DownloadApps from "@components/common/download-apps";
 import { homeTwoHeroBanner as heroBanner } from "@framework/static/banner";
-import { homeTwoBanner as banner } from "@framework/static/banner";
-import BannerCard from "@components/cards/banner-card";
 import HeroSliderBlock from "@components/hero/hero-slider-block";
-import { Element } from "react-scroll";
 import { GetStaticProps } from "next";
-import CategoryDropdownSidebar from "@components/category/category-dropdown-sidebar";
-import { bundleDataTwo as bundle } from "@framework/static/bundle";
 import Seo from "@components/seo/seo";
 import { QueryClient } from "react-query";
 import { dehydrate } from "react-query/hydration";
@@ -165,12 +158,12 @@ export default function Home() {
                   <div className="col-span-6">
                     <div className="grid grid-cols-1 gap-6">
                       <img
-                        src="assets/images/about/ab03.jpg"
+                        src="/images/about/ab03.jpg"
                         className="shadow rounded-md"
                         alt=""
                       />
                       <img
-                        src="assets/images/about/ab02.jpg"
+                        src="/images/about/ab02.jpg"
                         className="shadow rounded-md"
                         alt=""
                       />
@@ -180,7 +173,7 @@ export default function Home() {
                   <div className="col-span-6">
                     <div className="grid grid-cols-1 gap-6">
                       <img
-                        src="assets/images/about/ab01.jpg"
+                        src="/images/about/ab01.jpg"
                         className="shadow rounded-md"
                         alt=""
                       />

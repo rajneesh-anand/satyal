@@ -1,42 +1,31 @@
 import { useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { useTranslation } from "next-i18next";
 import cn from "classnames";
-import { ROUTES } from "@utils/routes";
 import { useUI } from "@contexts/ui.context";
 import { siteSettings } from "@settings/site-settings";
 import { addActiveScroll } from "@utils/add-active-scroll";
 import Container from "@components/ui/container";
 import Logo from "@components/ui/logo";
-import HeaderMenu from "@components/layout/header/header-menu";
-import Search from "@components/common/search";
-import LanguageSwitcher from "@components/ui/language-switcher";
-import UserIcon from "@components/icons/user-icon";
-import SearchIcon from "@components/icons/search-icon";
+import { useSession } from "next-auth/react";
 import { useModalAction } from "@components/common/modal/modal.context";
 import useOnClickOutside from "@utils/use-click-outside";
 import MenuIcon from "@components/icons/menu-icon";
-import { FiMenu } from "react-icons/fi";
-import Delivery from "@components/layout/header/delivery";
-import CategoryDropdownMenu from "@components/category/category-dropdown-menu";
-const AuthMenu = dynamic(() => import("./auth-menu"), { ssr: false });
 import { Drawer } from "@components/common/drawer/drawer";
 import { getDirection } from "@utils/get-direction";
 import { useRouter } from "next/router";
+import AuthMenu from "@components/layout/header/auth-menu";
+import Link from "@components/ui/link";
 
 const MobileMenu = dynamic(
   () => import("@components/layout/header/mobile-menu")
 );
-const CartButton = dynamic(() => import("@components/cart/cart-button"), {
-  ssr: false,
-});
 
 type DivElementRef = React.MutableRefObject<HTMLDivElement>;
 const { site_header } = siteSettings;
 
 const Header: React.FC = () => {
+  const { data: session, status } = useSession();
   const { locale } = useRouter();
-  const { t } = useTranslation("common");
   const dir = getDirection(locale);
   const {
     displaySearch,
@@ -45,7 +34,6 @@ const Header: React.FC = () => {
     closeSearch,
     isAuthorized,
     openSidebar,
-
     closeSidebar,
     displaySidebar,
   } = useUI();
@@ -53,16 +41,8 @@ const Header: React.FC = () => {
   const siteHeaderRef = useRef() as DivElementRef;
   const siteSearchRef = useRef() as DivElementRef;
   const contentWrapperCSS = dir === "ltr" ? { left: 0 } : { right: 0 };
-  const [categoryMenu, setCategoryMenu] = useState(Boolean(false));
   addActiveScroll(siteHeaderRef, 40);
   useOnClickOutside(siteSearchRef, () => closeSearch());
-  function handleLogin() {
-    openModal("LOGIN_VIEW");
-  }
-
-  function handleCategoryMenu() {
-    setCategoryMenu(!categoryMenu);
-  }
 
   function handleMobileMenu() {
     return openSidebar();
@@ -88,16 +68,18 @@ const Header: React.FC = () => {
           </div>
           <div className="flex flex-shrink-0 space-l-5 xl:space-l-7">
             <div className="hidden lg:flex items-center flex-shrink-0 ">
-              <AuthMenu
-                isAuthorized={isAuthorized}
-                href={ROUTES.ACCOUNT}
-                btnProps={{
-                  children: t("text-sign-in"),
-                  onClick: handleLogin,
-                }}
-              >
-                {t("text-account")}
-              </AuthMenu>
+              {session ? (
+                <AuthMenu />
+              ) : (
+                <div className="inline-flex items-center">
+                  <Link
+                    href="/auth/signin"
+                    className="font-body inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  >
+                    Sign In
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
           <div className="items-center flex lg:hidden shrink-0 xl:mx-3.5 mx-2.5">
