@@ -77,13 +77,13 @@ function AuthMenu() {
           <div className="text-center mb-3">
             <Link
               href="/user/account"
-              className="text-white hover:text-yellow-400  text-sm"
+              className="text-white hover:text-yellow-400 font-semibold uppercase text-xs"
             >
               My Account
             </Link>
 
             <button
-              className="font-body inline-block mt-3 px-4 py-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+              className="font-body inline-block mt-3 px-4 py-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded  hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
               onClick={() => signOut()}
             >
               Sign Out
