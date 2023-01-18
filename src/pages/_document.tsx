@@ -23,7 +23,8 @@ export default class CustomDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <link href="favicon.ico" rel="icon" type="image/ico" />
+          {/* <link href="favicon.ico" rel="icon" type="image/ico" /> */}
+          <link rel="icon" type="image/x-icon" href="/favicon.ico"></link>
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}

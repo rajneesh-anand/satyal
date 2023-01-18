@@ -68,7 +68,7 @@ const Header: React.FC = () => {
           </div>
           <div className="flex flex-shrink-0 space-l-5 xl:space-l-7">
             <div className="hidden lg:flex items-center flex-shrink-0 ">
-              {session ? (
+              {status === "loading" ? null : session ? (
                 <AuthMenu />
               ) : (
                 <div className="inline-flex items-center">
