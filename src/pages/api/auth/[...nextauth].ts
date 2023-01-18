@@ -120,7 +120,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
       //   return true;
       // },
       // async redirect({ url, baseUrl }) {
-      //   return baseUrl;
+      //        return baseUrl;
       // },
       async session({ session, user, token }) {
         const encodedToken = jwt.sign(token, getEnv("SECRET"), {

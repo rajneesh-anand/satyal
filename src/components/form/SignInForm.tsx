@@ -12,7 +12,7 @@ interface FormValues {
   password: string;
 }
 
-function SignInForm({ csrfToken }) {
+function SignInForm({ csrfToken, redirectPath }) {
   const router = useRouter();
   const [errorMsg, setErrorMsg] = useState<string | undefined>();
 
@@ -30,11 +30,10 @@ function SignInForm({ csrfToken }) {
       redirect: false,
       email: data.email,
       password: data.password,
-      callbackUrl: "http://localhost:3000/auth/signin",
+      callbackUrl: `http://localhost:3000/${redirectPath}`,
     });
 
     if (result?.error) {
-      console.log(result?.error);
       setErrorMsg(result?.error);
     }
     if (result?.url) router.push(result.url);
@@ -44,7 +43,7 @@ function SignInForm({ csrfToken }) {
     <div className="max-w-screen-xl px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg mt-6">
       <div className="text-center pt-4">
         <div>
-          <h2 className="text-xl lg:text-3xl font-bold leading-tight">
+          <h2 className="text-xl lg:text-2xl font-semibold leading-tight">
             Sign In to Satyal Digital Learning
           </h2>
           <div className="text-gray-700 mt-4">
