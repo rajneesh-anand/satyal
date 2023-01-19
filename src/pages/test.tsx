@@ -1,9 +1,10 @@
 import Layout from "@components/layout";
 import Container from "@components/ui/container";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Seo from "@components/seo/seo";
 import TestForm from "@components/form/TestForm";
+import { getSession } from "next-auth/react";
 
 export default function TestPage() {
   return (
@@ -23,10 +24,19 @@ export default function TestPage() {
 
 TestPage.Layout = Layout;
 
-export const getStaticProps: GetStaticProps = async ({ locale }: any) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/signin",
+        permanent: false,
+      },
+    };
+  }
   return {
     props: {
-      ...(await serverSideTranslations(locale!, [
+      ...(await serverSideTranslations(context.locale!, [
         "common",
         "forms",
         "menu",
