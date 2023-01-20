@@ -30,7 +30,7 @@ function SignInForm({ csrfToken, redirectPath }) {
       redirect: false,
       email: data.email,
       password: data.password,
-      callbackUrl: `http://localhost:3000/${redirectPath}`,
+      callbackUrl: `${process.env.NEXT_PUBLIC_SITE_URL}/${redirectPath}`,
     });
 
     if (result?.error) {

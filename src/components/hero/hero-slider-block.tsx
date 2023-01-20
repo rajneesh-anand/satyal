@@ -172,7 +172,7 @@ const HeroSliderBlock: React.FC<Props> = ({
                   <div className="col-span-5">
                     <div className="grid grid-cols-1 gap-4">
                       <img
-                        src="assets/images/02.jpg"
+                        src="/images/hero/02.jpg"
                         className="shadow rounded-lg"
                         alt=""
                       />
@@ -186,7 +186,7 @@ const HeroSliderBlock: React.FC<Props> = ({
                   <div className="col-span-7">
                     <div className="grid grid-cols-1 gap-4">
                       <img
-                        src="assets/images/01.jpg"
+                        src="/images/hero/01.jpg"
                         className="shadow rounded-lg"
                         alt="photo-2"
                         height={200}
