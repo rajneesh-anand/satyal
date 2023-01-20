@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       csrfToken: csrfToken,
-      redirectPath: redirectPath,
+      redirectPath: redirectPath ? redirectPath : "",
       ...(await serverSideTranslations(context.locale!, [
         "common",
         "forms",

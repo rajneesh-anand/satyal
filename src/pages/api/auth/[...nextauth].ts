@@ -8,6 +8,7 @@ import prisma from "@utils/prisma";
 import jwt from "jsonwebtoken";
 import { getEnv } from "@utils/get-env";
 import { NextApiRequest, NextApiResponse } from "next";
+import { setCookie } from "cookies-next";
 
 export default (req: NextApiRequest, res: NextApiResponse) =>
   NextAuth(req, res, {
@@ -20,10 +21,11 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
             email: string;
             password: string;
           };
+
           try {
             const user = await prisma.user.findFirst({
               where: {
-                email: email,
+                AND: [{ email: email }, { userStatus: "Active" }],
               },
             });
 
@@ -40,6 +42,12 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
             if (!checkPassword) {
               throw new Error("Password is wrong !");
             }
+
+            setCookie(
+              "next-auth-redirect",
+              `${user.userType.toLowerCase()}/${user.id}`,
+              { req, res, maxAge: 60 * 6 * 24 }
+            );
             // Login Success
             return user;
           } catch (error: any) {
@@ -138,7 +146,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
         if (isUserSignedIn) {
           token.id = user.id.toString();
           token.image = user.image ? user.image.toString() : null;
-          token.name = user.firstName ? user.firstName.toString() : "testing";
+          token.name = user.firstName ? user.firstName.toString() : "";
         }
         return Promise.resolve(token);
       },

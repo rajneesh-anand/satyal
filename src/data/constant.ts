@@ -22,3 +22,6 @@ export const documentOptions: documentType[] = [
   },
   { id: "4", value: "Teacher License Number", label: "Teacher License Number" },
 ];
+
+export const ACCEPTED_FILE_TYPES =
+  "image/*,application/pdf,application/zip,application/vnd.rar,application/epub+zip,.psd";

@@ -5,16 +5,61 @@
   padding: 6px 0;
 }
 
+.os-theme-thin > .os-scrollbar-horizontal {
+  right: 14px;
+  height: 14px;
+  padding: 0px 6px;
+}
+
+.os-theme-thin
+  > .os-scrollbar-horizontal
+  > .os-scrollbar-track
+  > .os-scrollbar-handle {
+  height: 100%;
+  min-width: 30px;
+}
+
+.os-theme-thin.os-host-transition
+  > .os-scrollbar-horizontal
+  > .os-scrollbar-track
+  > .os-scrollbar-handle:before {
+  transition: height 0.3s, margin-top 0.3s, background 0.2s;
+}
+
+.os-theme-thin
+  > .os-scrollbar-horizontal
+  > .os-scrollbar-track
+  > .os-scrollbar-handle:hover:before,
+.os-theme-thin
+  > .os-scrollbar-horizontal
+  > .os-scrollbar-track
+  > .os-scrollbar-handle.active:before {
+  height: 4px;
+  margin-top: -2px;
+}
+
+.os-theme-thin > .os-scrollbar-horizontal > .os-scrollbar-track:before,
+.os-theme-thin
+  > .os-scrollbar-horizontal
+  > .os-scrollbar-track
+  > .os-scrollbar-handle:before {
+  left: 0;
+  right: 0;
+  height: 2px;
+  top: 50%;
+  margin-top: -1px;
+}
+
 .os-theme-thin > .os-scrollbar > .os-scrollbar-track {
   background: transparent;
 }
 
 .os-theme-thin > .os-scrollbar-horizontal > .os-scrollbar-track:before,
 .os-theme-thin > .os-scrollbar-vertical > .os-scrollbar-track:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
-  background: rgba(0, 0, 0, 0.1);
+  @apply bg-black/10 dark:bg-gray-500;
 }
 
 .os-theme-thin > .os-scrollbar-vertical > .os-scrollbar-track:before,
@@ -48,17 +93,17 @@
   left: 50%;
   margin-left: -1px;
   border-radius: 15px;
-  background: rgba(0, 0, 0, 0.1);
+  @apply bg-black/10 dark:bg-gray-600;
 }
 .os-theme-thin
   > .os-scrollbar
   > .os-scrollbar-track
   > .os-scrollbar-handle:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
-  background: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  @apply bg-black/30 dark:bg-gray-800;
 }
 
 .os-theme-thin
@@ -87,34 +132,15 @@
   -webkit-overflow-scrolling: touch;
   max-height: calc(100vh - 160px);
 }
-@media (min-width: 768px) {
-  .cart-scrollbar {
-    max-height: calc(100vh - 188px);
-  }
+/* .table-scrollbar {
+  background-color: green;
+} */
+.table-scrollbar::-webkit-scrollbar {
+  -webkit-appearance: none;
 }
 
-.checkout-scrollbar {
-  max-height: calc(100vh - 182px);
-  -webkit-overflow-scrolling: touch;
-}
-
-.menu-scrollbar {
-  max-height: calc(100vh - 78px);
-  -webkit-overflow-scrolling: touch;
-}
-.category-scrollbar {
-  max-height: calc(75vh - 88px);
-  -webkit-overflow-scrolling: touch;
-}
-@media (min-width: 1024px) {
-  .category-scrollbar {
-    max-height: calc(100vh - 67px);
-  }
-}
-.category-mobile-sidebar {
-  height: calc(100% - 80px);
-}
-
-.category-filter-scrollbar {
-  height: 583px;
+.table-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.075);
+  border-radius: 10px;
+  border: 2px solid red;
 }

@@ -1,4 +1,4 @@
-import { QueryKey } from 'react-query';
+import { QueryKey } from "react-query";
 
 export type CollectionsQueryOptionsType = {
   text?: string;
@@ -31,11 +31,13 @@ export type QueryParamsType = {
   queryKey: QueryKey;
   pageParam?: string;
 };
+
 export type Attachment = {
-  id: string | number;
   thumbnail: string;
   original: string;
+  id?: string | number;
 };
+
 export type Category = {
   id: number | string;
   name: string;

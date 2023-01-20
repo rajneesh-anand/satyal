@@ -5,7 +5,8 @@
 /* Write your own custom base styles here */
 @layer base {
   :root {
-    --color-primary: 2, 178, 144;
+    --color-primary: 128, 0, 0;
+    --color-primary-light: 197, 95, 95;
     --color-tangerine: 243, 142, 0;
     --color-red: 220, 38, 38;
     --color-red-secondary: 253, 84, 115;
@@ -39,6 +40,14 @@
     --color-button-disable: 238, 238, 238;
     --color-button-hover: 229, 234, 241;
     --color-highlighted: 237, 197, 55;
+    --toastify-color-success: green;
+    --toastify-color-warning: #f1c40f;
+    --toastify-color-error: red;
+
+    --toastify-icon-color-info: var(--toastify-color-info);
+    --toastify-icon-color-success: var(--toastify-color-success);
+    --toastify-icon-color-warning: var(--toastify-color-warning);
+    --toastify-icon-color-error: var(--toastify-color-error);
     --box-shadow-card: "0px 0px 6px rgba(79, 95, 120, 0.1)";
     --box-shadow-card-hover: "0px 0px 6px rgba(79, 95, 120, 0.2)";
     --box-shadow-counter: "0px 4px 20px rgba(79, 95, 120, 0.15)";

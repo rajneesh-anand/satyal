@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 import { useModalAction } from "@components/common/modal/modal.context";
 import useOnClickOutside from "@utils/use-click-outside";
 import MenuIcon from "@components/icons/menu-icon";
-import { Drawer } from "@components/common/drawer/drawer";
+import { Drawer } from "@components/common/drawer";
 import { getDirection } from "@utils/get-direction";
 import { useRouter } from "next/router";
 import AuthMenu from "@components/layout/header/auth-menu";

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
-import Transition from "@components/ui/transition";
+import { Transition } from "@components/ui/transition";
 import Link from "@components/ui/link";
 
 function AuthMenu() {
@@ -57,11 +57,11 @@ function AuthMenu() {
         className="origin-top-right z-10 absolute top-full right-0 rounded bg-white border border-gray-200 shadow-lg overflow-hidden mt-2 bg-gradient-to-r from-indigo-500 to-blue-500"
         show={dropdownOpen}
         enter="transition ease-out duration-200 transform"
-        enterStart="opacity-0 -translate-y-2"
-        enterEnd="opacity-100 translate-y-0"
+        enterFrom="opacity-0 -translate-y-2"
+        enterTo="opacity-100 translate-y-0"
         leave="transition ease-out duration-200"
-        leaveStart="opacity-100"
-        leaveEnd="opacity-0"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
       >
         <div
           ref={dropdown}
