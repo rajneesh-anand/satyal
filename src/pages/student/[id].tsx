@@ -2,9 +2,9 @@ import Layout from "@components/layout";
 import Container from "@components/ui/container";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps, GetStaticProps } from "next";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import Seo from "@components/seo/seo";
-import { setCookie } from "cookies-next";
+import { setCookie, deleteCookie } from "cookies-next";
 import http from "@framework/utils/http";
 import ProfileLayout from "@components/profile/layout";
 import { UserProvider } from "@contexts/user/user.context";
@@ -34,9 +34,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   const { req, res } = await context;
   const { id } = await context.params;
-  const { data } = await http.get(`/student/${id}`);
+  const { data } = await http.get(`/student/${id}`, {
+    headers: { Authorization: `Bearer ${session?.accessToken}` },
+  });
 
   if (!session) {
+    deleteCookie("next-auth-redirect");
     setCookie("next-auth-redirect", `student/${id}`, {
       req,
       res,

@@ -94,7 +94,6 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
 
       encode: async ({ secret, token, maxAge }) => {
         const jwtClaims = {
-          sub: token.sub.toString(),
           name: token.name,
           email: token.email,
           image: token.image,
@@ -134,14 +133,15 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
         const encodedToken = jwt.sign(token, getEnv("SECRET"), {
           algorithm: "HS256",
         });
-        session.id = token.id;
+
         session.user.image = token.image;
         session.user.name = token.name;
+        session.accessToken = encodedToken;
         return Promise.resolve(session);
       },
       async jwt({ token, user, account, profile, isNewUser }) {
         const isUserSignedIn = user ? true : false;
-        // make a http call to our graphql api
+        // make a http call to our  api
         // store this in postgres
         if (isUserSignedIn) {
           token.id = user.id.toString();

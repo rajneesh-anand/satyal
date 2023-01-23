@@ -75,12 +75,12 @@ export default function ResetPassword() {
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
             <div className="w-full mb-3 ">
               <PasswordInput
-                label="Set Your New Password"
+                label="Set your new password"
                 variant="outline"
-                placeholder="Set Your New Password !"
+                placeholder="Set your new password !"
                 // helperText="[ minimum 8 characters ] "
                 {...register("password", {
-                  required: "You must set password !",
+                  required: "You must set your password !",
                   pattern: {
                     value: /^(?=.*).{8,}$/,
                     message: "Invalid Password  !",
@@ -115,7 +115,7 @@ export default function ResetPassword() {
               onClose={() => setErrorMsg("")}
             />
             <div>
-              <Link href="/user/forgot-password">Forgot Password</Link>
+              <Link href="/auth/forgot-password">Forgot Password</Link>
             </div>
           </div>
         )}

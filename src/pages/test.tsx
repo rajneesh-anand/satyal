@@ -6,6 +6,7 @@ import { getSession } from "next-auth/react";
 import Seo from "@components/seo/seo";
 import TestForm from "@components/form/TestForm";
 import { setCookie } from "cookies-next";
+import http from "@framework/utils/http";
 
 export default function TestPage() {
   return (
@@ -28,6 +29,8 @@ TestPage.Layout = Layout;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   const { req, res } = await context;
+  const { data } = await http.get(`/student/students-list`);
+  console.log(data);
   if (!session) {
     setCookie("next-auth-redirect", "test", { req, res, maxAge: 60 * 6 * 24 });
 

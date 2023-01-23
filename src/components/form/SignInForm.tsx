@@ -74,7 +74,7 @@ function SignInForm({ csrfToken, redirectPath }) {
             variant="outline"
             className="mb-4"
             forgotPassHelpText="Forgot Password"
-            forgotPageLink="/user/forgot-password"
+            forgotPageLink="/auth/forgot-password"
             {...register("password", {
               required: "You must provide your password !",
             })}
