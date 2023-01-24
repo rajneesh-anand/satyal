@@ -36,6 +36,7 @@ function SignInForm({ csrfToken, redirectPath }) {
     if (result?.error) {
       setErrorMsg(result?.error);
     }
+
     if (result?.url) router.push(result.url);
   };
 

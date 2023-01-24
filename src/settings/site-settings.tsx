@@ -31,6 +31,7 @@ export const siteSettings = {
   },
   defaultLanguage: "en",
   currencyCode: "USD",
+
   site_header: {
     menu: [
       // {

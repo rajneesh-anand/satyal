@@ -12,7 +12,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   const { req, res } = await context;
   const redirectPath = getCookie("next-auth-redirect", { req, res });
-  console.log(redirectPath);
 
   if (session) {
     return {

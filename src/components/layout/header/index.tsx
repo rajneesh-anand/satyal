@@ -58,7 +58,7 @@ const Header: React.FC = () => {
       )}
     >
       <div className="navbar w-screen lg:w-full transition-all duration-200 ease-in-out body-font bg-dark-footer z-20">
-        <Container className="top-bar flex items-center justify-between py-3 lg:py-1 border-b border-skin-base">
+        <Container className="top-bar flex items-center justify-between py-3 lg:py-1.5 border-b border-skin-base">
           <Logowhite className="logo -mt-1.5 md:-mt-1 md:pl-0 md:ml-auto lg:mx-0" />
           <div className=" hidden lg:block">
             {/* <HeaderMenu

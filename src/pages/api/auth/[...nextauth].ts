@@ -94,9 +94,11 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
 
       encode: async ({ secret, token, maxAge }) => {
         const jwtClaims = {
+          id: token.id,
           name: token.name,
           email: token.email,
           image: token.image,
+          userType: token.userType,
           iat: Date.now() / 1000,
           exp: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         };
@@ -133,10 +135,11 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
         const encodedToken = jwt.sign(token, getEnv("SECRET"), {
           algorithm: "HS256",
         });
-
+        session.user.id = token.id;
         session.user.image = token.image;
         session.user.name = token.name;
         session.accessToken = encodedToken;
+        session.user.userType = token.userType;
         return Promise.resolve(session);
       },
       async jwt({ token, user, account, profile, isNewUser }) {
@@ -147,6 +150,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
           token.id = user.id.toString();
           token.image = user.image ? user.image.toString() : null;
           token.name = user.firstName ? user.firstName.toString() : "";
+          token.userType = user.userType.toString();
         }
         return Promise.resolve(token);
       },
