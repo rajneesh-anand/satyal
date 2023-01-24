@@ -26,11 +26,9 @@ const Widgets: React.FC<WidgetsProps> = ({ widgets }) => {
           <WidgetLink
             key={`footer-widget--key${widget.id}`}
             data={widget}
-            className="pb-3.5 sm:pb-0 col-span-1 md:ml-16 md:col-span-3"
+            className="pb-3.5 sm:pb-0 col-span-1 md:ml-16 md:col-span-4"
           />
         ))}
-
-        <WidgetSubscription className="col-span-full sm:col-span-1 md:col-start-4 xl:col-start-auto md:col-span-4 xl:col-span-3 2xl:ps-7 3xl:ps-16 pt-8 sm:pt-0 border-t sm:border-t-0 border-skin-three " />
       </div>
     </Container>
   );
