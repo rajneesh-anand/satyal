@@ -8,7 +8,6 @@ import prisma from "@utils/prisma";
 import jwt from "jsonwebtoken";
 import { getEnv } from "@utils/get-env";
 import { NextApiRequest, NextApiResponse } from "next";
-import { setCookie } from "cookies-next";
 
 export default (req: NextApiRequest, res: NextApiResponse) =>
   NextAuth(req, res, {
@@ -43,11 +42,6 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
               throw new Error("Password is wrong !");
             }
 
-            setCookie(
-              "next-auth-redirect",
-              `${user.userType.toLowerCase()}/${user.id}`,
-              { req, res, maxAge: 60 * 6 * 24 }
-            );
             // Login Success
             return user;
           } catch (error: any) {
@@ -129,8 +123,11 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
       //   return true;
       // },
       // async redirect({ url, baseUrl }) {
-      //        return baseUrl;
+      //   return url.startsWith(baseUrl)
+      //     ? Promise.resolve(url)
+      //     : Promise.resolve(baseUrl);
       // },
+
       async session({ session, user, token }) {
         const encodedToken = jwt.sign(token, getEnv("SECRET"), {
           algorithm: "HS256",

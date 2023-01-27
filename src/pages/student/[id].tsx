@@ -4,7 +4,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { getSession, useSession } from "next-auth/react";
 import Seo from "@components/seo/seo";
-import { setCookie, deleteCookie } from "cookies-next";
 import http from "@framework/utils/http";
 import ProfileLayout from "@components/profile/layout";
 import { UserProvider } from "@contexts/user/user.context";
@@ -39,13 +38,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   });
 
   if (!session) {
-    deleteCookie("next-auth-redirect");
-    setCookie("next-auth-redirect", `student/${id}`, {
-      req,
-      res,
-      maxAge: 60 * 6 * 24,
-    });
-
     return {
       redirect: {
         destination: "/auth/signin",

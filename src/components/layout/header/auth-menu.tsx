@@ -1,36 +1,16 @@
 import React, { useState, useRef, useEffect, Fragment } from "react";
 import { useSession, signOut } from "next-auth/react";
-// import { Transition } from "@components/ui/transition";
 import Link from "@components/ui/link";
 import { Menu, Transition } from "@headlessui/react";
 import cn from "classnames";
 import { useRouter } from "next/router";
 
 function AuthMenu() {
-  const router = useRouter();
   const { data: session, status } = useSession();
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-  const trigger = useRef<any>(null);
-  const dropdown = useRef<any>(null);
 
-  function handleClick(path: string) {
-    router.push(path);
+  function handleSignOut() {
+    signOut();
   }
-
-  // // close on click outside
-  // useEffect(() => {
-  //   const clickHandler = (ev: Event) => {
-  //     if (
-  //       !dropdownOpen ||
-  //       dropdown?.current.contains(ev.target) ||
-  //       trigger.current.contains(ev.target)
-  //     )
-  //       return;
-  //     setDropdownOpen(false);
-  //   };
-  //   document.addEventListener("click", clickHandler);
-  //   return () => document.removeEventListener("click", clickHandler);
-  // });
 
   return (
     <Menu
@@ -102,7 +82,7 @@ function AuthMenu() {
           <Menu.Item>
             <li>
               <button
-                onClick={() => signOut()}
+                onClick={handleSignOut}
                 className={cn(
                   "block w-full pb-4 px-6 text-[12px] font-semibold uppercase text-heading transition duration-200 hover:text-accent focus:outline-none ltr:text-left rtl:text-right"
                 )}

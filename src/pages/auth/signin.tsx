@@ -5,13 +5,10 @@ import { GetServerSideProps } from "next";
 import { getCsrfToken, getSession } from "next-auth/react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import SignInForm from "@components/form/SignInForm";
-import { getCookie } from "cookies-next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const csrfToken = await getCsrfToken(context);
   const session = await getSession(context);
-  const { req, res } = await context;
-  const redirectPath = getCookie("next-auth-redirect", { req, res });
 
   if (session) {
     return {
@@ -25,7 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       csrfToken: csrfToken,
-      redirectPath: redirectPath ? redirectPath : "",
       ...(await serverSideTranslations(context.locale!, [
         "common",
         "forms",
@@ -36,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default function LoginPage({ csrfToken, redirectPath }: any) {
+export default function LoginPage({ csrfToken }) {
   return (
     <>
       <Seo
@@ -45,7 +41,7 @@ export default function LoginPage({ csrfToken, redirectPath }: any) {
         path="/auth/signin"
       />
       <Container>
-        <SignInForm csrfToken={csrfToken} redirectPath={redirectPath} />
+        <SignInForm csrfToken={csrfToken} />
       </Container>
     </>
   );
