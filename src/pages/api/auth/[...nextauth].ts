@@ -22,9 +22,9 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
           };
 
           try {
-            const user = await prisma.user.findFirst({
+            const user = await prisma.user.findUnique({
               where: {
-                AND: [{ email: email }, { userStatus: "Active" }],
+                email: email,
               },
             });
 
