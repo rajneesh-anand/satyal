@@ -78,7 +78,7 @@ export default function ResetPassword() {
                 label="Set Your New Password"
                 variant="outline"
                 placeholder="Set Your New Password !"
-                helperText="[ minimum 8 characters ] "
+                // helperText="[ minimum 8 characters ] "
                 {...register("password", {
                   required: "You must set password !",
                   pattern: {

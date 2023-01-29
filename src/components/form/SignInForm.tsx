@@ -1,0 +1,114 @@
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import Input from "@components/ui/input";
+import PasswordInput from "@components/ui/form/password-input";
+import Link from "@components/ui/link";
+import Alert from "@components/ui/alert";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
+
+interface FormValues {
+  email: string;
+  password: string;
+}
+
+function SignInForm({ csrfToken, redirectPath }) {
+  const router = useRouter();
+  const [errorMsg, setErrorMsg] = useState<string | undefined>();
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  const onSubmit = async (data: FormValues) => {
+    const result = await signIn<"credentials">("credentials", {
+      redirect: false,
+      email: data.email,
+      password: data.password,
+      callbackUrl: `http://localhost:3000/${redirectPath}`,
+    });
+
+    if (result?.error) {
+      setErrorMsg(result?.error);
+    }
+    if (result?.url) router.push(result.url);
+  };
+
+  return (
+    <div className="max-w-screen-xl px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg mt-6">
+      <div className="text-center pt-4">
+        <div>
+          <h2 className="text-xl lg:text-2xl font-semibold leading-tight">
+            Sign In to Satyal Digital Learning
+          </h2>
+          <div className="text-gray-700 mt-4">
+            Refer 5 friends &amp; Get 50% Discount on Tuitionn Fee
+          </div>
+        </div>
+        <div className="mt-1 lg:mt-[56px] ">{/* <HeroIcon /> */}</div>
+      </div>
+      <div className="flex justify-center items-center">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full md:px-16">
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+          <Input
+            label="Email"
+            type="email"
+            variant="outline"
+            className="mb-4"
+            {...register("email", {
+              required: "You must provide your email address !",
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "Invalid email address !",
+              },
+            })}
+            error={errors.email?.message}
+          />
+          <PasswordInput
+            label="Password"
+            variant="outline"
+            className="mb-4"
+            forgotPassHelpText="Forgot Password"
+            forgotPageLink="/user/forgot-password"
+            {...register("password", {
+              required: "You must provide your password !",
+            })}
+            error={errors?.password?.message!}
+          />
+          <div className="text-center mt-8 mb-8">
+            <button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+              Sign In
+            </button>
+          </div>
+
+          <div className="text-sm sm:text-base text-body text-center">
+            Don't have an account ?{" "}
+            <Link
+              href="/auth/register"
+              className="ms-1 underline text-accent font-semibold transition-colors duration-200 focus:outline-none hover:text-accent-hover focus:text-accent-700 hover:no-underline focus:no-underline"
+            >
+              Register
+            </Link>
+          </div>
+
+          {errorMsg ? (
+            <Alert
+              message={errorMsg}
+              variant="error"
+              closeable={true}
+              className="mt-5"
+              onClose={() => setErrorMsg("")}
+            />
+          ) : null}
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default SignInForm;

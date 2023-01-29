@@ -79,7 +79,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
           {helperText && (
             <>
               <button type="button" ref={setReferenceElement}>
-                Reference element
+                <i className="icofont-info-circle"></i>
               </button>
 
               <div

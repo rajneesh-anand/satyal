@@ -14,6 +14,11 @@ type EnvVariables = {
   readonly GOOGLE_CLIENT_SECRET: string;
   readonly FACEBOOK_CLIENT_ID: string;
   readonly FACEBOOK_CLIENT_SECRET: string;
+  readonly EMAIL_SERVER_HOST: string;
+  readonly EMAIL_SERVER_PORT: string;
+  readonly EMAIL_SERVER_USER: string;
+  readonly EMAIL_SERVER_PASSWORD: string;
+  readonly EMAIL_FROM: string;
 };
 export function getEnv(
   name: keyof EnvVariables
