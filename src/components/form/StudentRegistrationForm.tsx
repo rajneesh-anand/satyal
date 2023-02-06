@@ -102,43 +102,34 @@ function StudentRegistrationForm() {
   }
 
   return (
-    <div className="md:grid md:grid-cols-2 md:gap-6 mt-4">
-      {/* <div className="md:col-span-1 mx-8 my-8">
-        <h1 className="text-xl lg:text-3xl font-bold leading-tight">
-          Satyal Digital Registration
-        </h1>
-        <p className="text-gray-700 mt-4">
-          Refer 5 friends &amp; Get 50% Discount on Tuitionn Fee
-        </p>
-      </div> */}
-
-      <div className="mt-5 md:col-span-1 md:mt-0 lg:mx-14">
-        <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
-          <div className="flex flex-col lg:flex-row">
-            <div className="w-full md:w-1/2  mb-3">
-              <Input
-                variant="outline"
-                type="text"
-                label="First Name"
-                {...register("fname", {
-                  required: "You must provide your first name !",
-                })}
-                error={errors.fname?.message}
-              />
-            </div>
-            <div className="w-full md:w-1/2  mb-3 md:ml-[4px]">
-              <Input
-                variant="outline"
-                type="text"
-                label="Last Name"
-                {...register("lname", {
-                  required: "You must provide your last name !",
-                })}
-                error={errors.lname?.message}
-              />
-            </div>
+    <div className="mt-5">
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full md:w-1/2  mb-3">
+            <Input
+              variant="outline"
+              type="text"
+              label="First Name"
+              {...register("fname", {
+                required: "You must provide your first name !",
+              })}
+              error={errors.fname?.message}
+            />
           </div>
-          <div className="w-full mb-3 ">
+          <div className="w-full md:w-1/2  mb-3 md:ml-[4px]">
+            <Input
+              variant="outline"
+              type="text"
+              label="Last Name"
+              {...register("lname", {
+                required: "You must provide your last name !",
+              })}
+              error={errors.lname?.message}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full md:w-1/2  mb-3">
             <Input
               type="email"
               variant="outline"
@@ -154,7 +145,7 @@ function StudentRegistrationForm() {
               error={errors.email?.message}
             />
           </div>
-          <div className="w-full mb-3 ">
+          <div className="w-full md:w-1/2  mb-3 md:ml-[4px]">
             <PasswordInput
               label="Password"
               variant="outline"
@@ -170,98 +161,98 @@ function StudentRegistrationForm() {
               error={errors?.password?.message!}
             />
           </div>
-          <div className="flex flex-col lg:flex-row">
-            <div className="w-full lg:w-1/2  mb-3 ">
-              <label
-                htmlFor="class"
-                className="block mb-3 text-sm font-semibold leading-none text-body-dark"
-              >
-                Class
-              </label>
-              <Select
-                id="class"
-                defaultValue={selectedClass}
-                options={classOptions}
-                isSearchable={false}
-                onChange={classChange}
-              />
-            </div>
-            <div className="w-full lg:w-1/2  mb-3 ">
-              <Input
-                type="text"
-                variant="outline"
-                label="Contact Number "
-                placeholder="Mobile Number"
-                {...register("mobile", {
-                  required: "You must provide your mobile number !",
-                  pattern: {
-                    value: /^((\+91?)|\+)?[7-9][0-9]{9}$/,
-                    message: "Invalid Mobile Number !",
-                  },
-                })}
-                error={errors.mobile?.message}
-              />
-            </div>
+        </div>
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full lg:w-1/2  mb-3 ">
+            <label
+              htmlFor="class"
+              className="block mb-3 text-sm font-semibold leading-none text-body-dark"
+            >
+              Class
+            </label>
+            <Select
+              id="class"
+              defaultValue={selectedClass}
+              options={classOptions}
+              isSearchable={false}
+              onChange={classChange}
+            />
           </div>
-
-          <div className="w-full mb-3 ">
+          <div className="w-full lg:w-1/2  mb-3  md:ml-[4px] ">
             <Input
               type="text"
               variant="outline"
-              label="Address"
-              placeholder="Enter Your Address"
-              {...register("address", {
-                required: "You must provide your address !",
+              label="Contact Number "
+              placeholder="Mobile Number"
+              {...register("mobile", {
+                required: "You must provide your mobile number !",
+                pattern: {
+                  value: /^((\+91?)|\+)?[7-9][0-9]{9}$/,
+                  message: "Invalid Mobile Number !",
+                },
               })}
-              error={errors.address?.message}
+              error={errors.mobile?.message}
+            />
+          </div>
+        </div>
+
+        <div className="w-full mb-3 ">
+          <Input
+            type="text"
+            variant="outline"
+            label="Address"
+            placeholder="Enter Your Address"
+            {...register("address", {
+              required: "You must provide your address !",
+            })}
+            error={errors.address?.message}
+          />
+        </div>
+
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full md:w-1/2  mb-3 ">
+            <Input
+              type="text"
+              variant="outline"
+              label="City"
+              placeholder="Your City/Town Name"
+              {...register("city")}
+              error={errors.city?.message}
             />
           </div>
 
-          <div className="flex flex-col lg:flex-row">
-            <div className="w-full md:w-1/2  mb-3 ">
-              <Input
-                type="text"
-                variant="outline"
-                label="City"
-                placeholder="Your City/Town Name"
-                {...register("city")}
-                error={errors.city?.message}
-              />
-            </div>
-
-            <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
-              <label
-                htmlFor="state"
-                className="block mb-3 text-sm font-semibold leading-none text-body-dark"
-              >
-                State
-              </label>
-              <Select
-                id="state"
-                defaultValue={selectedState}
-                options={statesOptions}
-                isSearchable={false}
-                onChange={stateChange}
-              />
-            </div>
-          </div>
-
-          <div className="text-center mt-8 mb-8">
-            <button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
-              {processing ? "Submitting Form ... " : "Register"}
-            </button>
-          </div>
-          {errorMsg ? (
-            <Alert
-              message={errorMsg}
-              variant="error"
-              closeable={true}
-              className="mt-5"
-              onClose={() => setErrorMsg("")}
+          <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
+            <label
+              htmlFor="state"
+              className="block mb-3 text-sm font-semibold leading-none text-body-dark"
+            >
+              State
+            </label>
+            <Select
+              id="state"
+              defaultValue={selectedState}
+              options={statesOptions}
+              isSearchable={false}
+              onChange={stateChange}
             />
-          ) : null}
-        </form>
-      </div>
+          </div>
+        </div>
+
+        <div className="text-end mt-8 mb-8">
+          <button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+            {processing ? "Submitting Form ... " : "Register"}
+          </button>
+        </div>
+        {errorMsg ? (
+          <Alert
+            message={errorMsg}
+            variant="error"
+            closeable={true}
+            className="mt-5"
+            onClose={() => setErrorMsg("")}
+          />
+        ) : null}
+      </form>
     </div>
   );
 }

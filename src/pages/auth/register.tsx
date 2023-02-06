@@ -7,6 +7,8 @@ import { getSession } from "next-auth/react";
 import Seo from "@components/seo/seo";
 import Container from "@components/ui/container";
 import Layout from "@components/layout";
+import Card from "@components/common/card";
+
 import StudentRegistrationForm from "@components/form/StudentRegistrationForm";
 import TeacherRegistrationForm from "@components/form/TeacherRegistrationForm";
 
@@ -55,10 +57,9 @@ export default function RegisterPage() {
       />
 
       <Container>
-        <div className="md:grid md:grid-cols-2 md:gap-6 mt-14">
-          <div className="md:col-span-1 mx-8 my-8"></div>
-          <div className="mt-5 md:col-span-1 md:mt-0">
-            <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center">
+          <Card className=" w-full md:w-8/12 mt-2">
+            <div className="flex justify-center items-center bg-slate-200 py-4 rounded">
               <button
                 onClick={(e) => buttonHandler(e, "Student")}
                 className="inline-block mx-4 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
@@ -72,13 +73,14 @@ export default function RegisterPage() {
                 I am a Teacher
               </button>
             </div>
-          </div>
+
+            {renderForm === "Student" ? (
+              <StudentRegistrationForm />
+            ) : (
+              <TeacherRegistrationForm />
+            )}
+          </Card>
         </div>
-        {renderForm === "Student" ? (
-          <StudentRegistrationForm />
-        ) : (
-          <TeacherRegistrationForm />
-        )}
       </Container>
     </>
   );
