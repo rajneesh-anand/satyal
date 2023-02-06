@@ -1,33 +1,9 @@
-export interface StateValue {
+export interface ValueType {
   label: string;
   value: string;
 }
 
-export interface ClassValue {
-  label: string;
-  value: string;
-}
-
-export interface MediumValue {
-  label: string;
-  value: string;
-}
-
-export const StreamOptions = [
-  "None",
-  "Science",
-  "Arts",
-  "Commerce",
-  "Humanity",
-];
-export const SubjectsOptions = [
-  "Physics",
-  "Chemistry",
-  "Mathematics",
-  "Biology",
-];
-
-export const classOptions: ClassValue[] = [
+export const classOptions: ValueType[] = [
   {
     label: "CLASS VI",
     value: "CLASS VI",
@@ -46,14 +22,21 @@ export const classOptions: ClassValue[] = [
   { value: "CLASS XII", label: "CLASS XII" },
 ];
 
-export const statesOptions: StateValue[] = [
+export const subjectsOptions: ValueType[] = [
+  { value: "Science", label: "Science" },
+  { value: "Mathematics", label: "Mathematics" },
+  { value: "English", label: "English" },
+  { value: "Physics", label: "Physics" },
+];
+
+export const statesOptions: ValueType[] = [
   { value: "Delhi", label: "Delhi" },
   { value: "Haryana", label: "Haryana" },
   { value: "Uttar Pradesh", label: "Uttar Pradesh" },
   { value: "Punjab", label: "Punjab" },
 ];
 
-export const mediumOptions: MediumValue[] = [
+export const mediumOptions: ValueType[] = [
   { value: "HINDI MEDIUM", label: "HINDI MEDIUM" },
   { value: "ENGLISH MEDIUM", label: "ENGLISH MEDIUM" },
 ];

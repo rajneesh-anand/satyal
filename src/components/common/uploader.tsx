@@ -2,7 +2,6 @@ import { UploadIcon } from "@components/icons/upload-icon";
 import { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Attachment } from "@framework/types";
-import CloseIcon from "@components/icons/close-icon";
 import Loader from "@components/ui/loader/loader";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
@@ -24,56 +23,27 @@ export default function Uploader({
 }: any) {
   const { t } = useTranslation();
   const [files, setFiles] = useState<Attachment[]>(getPreviewImage(value));
-  // const { mutate: upload, isLoading: loading } = useUploadMutation();
+
   const [error, setError] = useState<string | null>(null);
   const { getRootProps, getInputProps } = useDropzone({
     ...(!acceptFile ? { accept: "image/*" } : { accept: ACCEPTED_FILE_TYPES }),
     multiple,
-    // onDrop: async (acceptedFiles) => {
-    //   if (acceptedFiles.length) {
-    //     upload(
-    //       acceptedFiles, // it will be an array of uploaded attachments
-    //       {
-    //         onSuccess: (data: any) => {
-    //           // Process Digital File Name section
-    //           data &&
-    //             data?.map((file: any, idx: any) => {
-    //               const splitArray = file?.original?.split('/');
-    //               let fileSplitName =
-    //                 splitArray[splitArray?.length - 1]?.split('.');
-    //               const fileType = fileSplitName?.pop(); // it will pop the last item from the fileSplitName arr which is the file ext
-    //               const filename = fileSplitName?.join('.'); // it will join the array with dot, which restore the original filename
-    //               data[idx]['file_name'] = filename + '.' + fileType;
-    //             });
+    onDrop: async (acceptedFiles) => {
+      if (acceptedFiles.length) {
+      }
+    },
 
-    //           let mergedData;
-    //           if (multiple) {
-    //             mergedData = files.concat(data);
-    //             setFiles(files.concat(data));
-    //           } else {
-    //             mergedData = data[0];
-    //             setFiles(data);
-    //           }
-    //           if (onChange) {
-    //             onChange(mergedData);
-    //           }
-    //         },
-    //       }
-    //     );
-    //   }
-    // },
-
-    // onDropRejected: (fileRejections) => {
-    //   fileRejections.forEach((file) => {
-    //     file?.errors?.forEach((error) => {
-    //       if (error?.code === 'file-too-large') {
-    //         setError(t('error-file-too-large'));
-    //       } else if (error?.code === 'file-invalid-type') {
-    //         setError(t('error-invalid-file-type'));
-    //       }
-    //     });
-    //   });
-    // },
+    onDropRejected: (fileRejections) => {
+      fileRejections.forEach((file) => {
+        file?.errors?.forEach((error) => {
+          if (error?.code === "file-too-large") {
+            setError(t("error-file-too-large"));
+          } else if (error?.code === "file-invalid-type") {
+            setError(t("error-invalid-file-type"));
+          }
+        });
+      });
+    },
   });
 
   const handleDelete = (image: string) => {
@@ -113,7 +83,7 @@ export default function Uploader({
 
       return (
         <div
-          className={`relative mt-2 inline-flex flex-col overflow-hidden rounded me-2 ${
+          className={`relative mt-2 inline-flex flex-col overflow-hidden rounded mr-2 ${
             isImage ? "border border-border-200" : ""
           }`}
           key={idx}
@@ -142,7 +112,7 @@ export default function Uploader({
               className="absolute top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-xs text-light shadow-xl outline-none end-1"
               onClick={() => handleDelete(file.thumbnail)}
             >
-              <CloseIcon width={10} height={10} />
+              X
             </button>
           ) : null}
         </div>
@@ -191,7 +161,7 @@ export default function Uploader({
         )}
       </div>
 
-      {(!!thumbs.length || loading) && (
+      {/* {(!!thumbs.length || loading) && (
         <aside className="mt-2 flex flex-wrap">
           {!!thumbs.length && thumbs}
           {loading && (
@@ -200,7 +170,7 @@ export default function Uploader({
             </div>
           )}
         </aside>
-      )}
+      )} */}
     </section>
   );
 }
