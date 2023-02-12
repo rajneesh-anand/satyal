@@ -5,7 +5,6 @@ import { GetServerSideProps, GetStaticProps } from "next";
 import { getSession } from "next-auth/react";
 import Seo from "@components/seo/seo";
 import TestForm from "@components/form/TestForm";
-import { setCookie } from "cookies-next";
 
 export default function TestPage() {
   return (
@@ -26,18 +25,20 @@ export default function TestPage() {
 TestPage.Layout = Layout;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context);
-  const { req, res } = await context;
-  if (!session) {
-    setCookie("next-auth-redirect", "test", { req, res, maxAge: 60 * 6 * 24 });
+  // const session = await getSession(context);
+  // const { req, res } = await context;
+  // const { data } = await http.get(`/student/students-list`);
 
-    return {
-      redirect: {
-        destination: "/auth/signin",
-        permanent: false,
-      },
-    };
-  }
+  // if (!session) {
+  //   setCookie("next-auth-redirect", "test", { req, res, maxAge: 60 * 6 * 24 });
+
+  //   return {
+  //     redirect: {
+  //       destination: "/auth/signin",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
   return {
     props: {
       ...(await serverSideTranslations(context.locale!, [

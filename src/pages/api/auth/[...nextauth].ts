@@ -20,8 +20,9 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
             email: string;
             password: string;
           };
+
           try {
-            const user = await prisma.user.findFirst({
+            const user = await prisma.user.findUnique({
               where: {
                 email: email,
               },
@@ -40,6 +41,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
             if (!checkPassword) {
               throw new Error("Password is wrong !");
             }
+
             // Login Success
             return user;
           } catch (error: any) {
@@ -86,10 +88,11 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
 
       encode: async ({ secret, token, maxAge }) => {
         const jwtClaims = {
-          sub: token.sub.toString(),
+          id: token.id,
           name: token.name,
           email: token.email,
           image: token.image,
+          userType: token.userType,
           iat: Date.now() / 1000,
           exp: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         };
@@ -120,25 +123,31 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
       //   return true;
       // },
       // async redirect({ url, baseUrl }) {
-      //        return baseUrl;
+      //   return url.startsWith(baseUrl)
+      //     ? Promise.resolve(url)
+      //     : Promise.resolve(baseUrl);
       // },
+
       async session({ session, user, token }) {
         const encodedToken = jwt.sign(token, getEnv("SECRET"), {
           algorithm: "HS256",
         });
-        session.id = token.id;
+        session.user.id = token.id;
         session.user.image = token.image;
         session.user.name = token.name;
+        session.accessToken = encodedToken;
+        session.user.userType = token.userType;
         return Promise.resolve(session);
       },
       async jwt({ token, user, account, profile, isNewUser }) {
         const isUserSignedIn = user ? true : false;
-        // make a http call to our graphql api
+        // make a http call to our  api
         // store this in postgres
         if (isUserSignedIn) {
           token.id = user.id.toString();
           token.image = user.image ? user.image.toString() : null;
-          token.name = user.firstName ? user.firstName.toString() : "testing";
+          token.name = user.firstName ? user.firstName.toString() : "";
+          token.userType = user.userType.toString();
         }
         return Promise.resolve(token);
       },

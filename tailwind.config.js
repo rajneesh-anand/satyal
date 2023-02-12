@@ -18,6 +18,11 @@ module.exports = {
       nunito: ['"Nunito", sans-serif'],
     },
     extend: {
+      colors: {
+        dark: "#690f00",
+        black: "#161c2d",
+        "dark-footer": "#690f00",
+      },
       textColor: {
         skin: {
           primary: withOpacity("--color-primary"),
@@ -40,6 +45,7 @@ module.exports = {
       backgroundColor: {
         skin: {
           primary: withOpacity("--color-primary"),
+          light: withOpacity("--color-primary-light"),
           red: withOpacity("--color-red"),
           "red-secondary": withOpacity("--color-red-secondary"),
           tangerine: withOpacity("--color-tangerine"),
@@ -158,5 +164,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
 };

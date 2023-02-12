@@ -6,13 +6,16 @@ import Link from "@components/ui/link";
 import Alert from "@components/ui/alert";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import Cookies from "js-cookie";
 
 interface FormValues {
   email: string;
   password: string;
 }
 
-function SignInForm({ csrfToken, redirectPath }) {
+function SignInForm({ csrfToken }) {
+  const { data: session } = useSession();
   const router = useRouter();
   const [errorMsg, setErrorMsg] = useState<string | undefined>();
 
@@ -25,18 +28,27 @@ function SignInForm({ csrfToken, redirectPath }) {
     formState: { errors },
   } = useForm<FormValues>();
 
+  useEffect(() => {
+    if (session)
+      router.replace(
+        `${
+          process.env.NEXT_PUBLIC_SITE_URL
+        }/${session.user.userType.toLowerCase()}/${session.user.id}`
+      );
+  }, [session]);
+
   const onSubmit = async (data: FormValues) => {
     const result = await signIn<"credentials">("credentials", {
       redirect: false,
       email: data.email,
       password: data.password,
-      callbackUrl: `http://localhost:3000/${redirectPath}`,
     });
 
     if (result?.error) {
       setErrorMsg(result?.error);
     }
-    if (result?.url) router.push(result.url);
+
+    // if (result?.url) router.push(result.url);
   };
 
   return (
@@ -74,7 +86,7 @@ function SignInForm({ csrfToken, redirectPath }) {
             variant="outline"
             className="mb-4"
             forgotPassHelpText="Forgot Password"
-            forgotPageLink="/user/forgot-password"
+            forgotPageLink="/auth/forgot-password"
             {...register("password", {
               required: "You must provide your password !",
             })}

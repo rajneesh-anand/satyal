@@ -17,13 +17,21 @@ export const siteSettings = {
   },
   logo: {
     url: "/images/logo.svg",
-    alt: "logo-1",
+    alt: "brand logo",
+    href: "/",
+    width: 128,
+    height: 30,
+  },
+  whitelogo: {
+    url: "/images/whitelogo.svg",
+    alt: "brand logo",
     href: "/",
     width: 128,
     height: 30,
   },
   defaultLanguage: "en",
   currencyCode: "USD",
+
   site_header: {
     menu: [
       // {

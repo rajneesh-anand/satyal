@@ -4,11 +4,13 @@ import NextAuth, { DefaultSession } from "next-auth";
 declare module "next-auth" {
   interface Session {
     id?: string;
-    token?: string;
+    accessToken?: string;
     user: {
+      id: string;
       address: string;
       image: string;
       name: string;
+      userType: string;
     } & DefaultSession["user"];
   }
 }
@@ -17,6 +19,8 @@ declare module "next-auth" {
   interface User {
     id: number;
     firstName?: string;
+    accessToken?: string;
+    userType?: string;
   }
 }
 
@@ -26,5 +30,7 @@ declare module "next-auth/jwt" {
     /** OpenID ID Token */
     id?: string;
     image?: string;
+    accessToken?: string;
+    userType?: string;
   }
 }

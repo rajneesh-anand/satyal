@@ -103,14 +103,14 @@ function StudentRegistrationForm() {
 
   return (
     <div className="md:grid md:grid-cols-2 md:gap-6 mt-4">
-      <div className="md:col-span-1 mx-8 my-8">
+      {/* <div className="md:col-span-1 mx-8 my-8">
         <h1 className="text-xl lg:text-3xl font-bold leading-tight">
           Satyal Digital Registration
         </h1>
         <p className="text-gray-700 mt-4">
           Refer 5 friends &amp; Get 50% Discount on Tuitionn Fee
         </p>
-      </div>
+      </div> */}
 
       <div className="mt-5 md:col-span-1 md:mt-0 lg:mx-14">
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">

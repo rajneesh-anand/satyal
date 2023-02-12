@@ -58,7 +58,7 @@ function TestForm() {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/teacher/kyc/2`,
+        `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/test/upload/5`,
         {
           method: "POST",
           body: formData,

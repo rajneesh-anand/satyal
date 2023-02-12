@@ -5,12 +5,12 @@ import { useUI } from "@contexts/ui.context";
 import { siteSettings } from "@settings/site-settings";
 import { addActiveScroll } from "@utils/add-active-scroll";
 import Container from "@components/ui/container";
-import Logo from "@components/ui/logo";
+import Logowhite from "@components/ui/whitelogo";
 import { useSession } from "next-auth/react";
 import { useModalAction } from "@components/common/modal/modal.context";
 import useOnClickOutside from "@utils/use-click-outside";
 import MenuIcon from "@components/icons/menu-icon";
-import { Drawer } from "@components/common/drawer/drawer";
+import { Drawer } from "@components/common/drawer";
 import { getDirection } from "@utils/get-direction";
 import { useRouter } from "next/router";
 import AuthMenu from "@components/layout/header/auth-menu";
@@ -53,13 +53,13 @@ const Header: React.FC = () => {
       id="siteHeader"
       ref={siteHeaderRef}
       className={cn(
-        "sticky-header sticky top-0 z-20 lg:relative w-full",
+        "sticky-header sticky top-0 z-20 lg:relative w-full ",
         displayMobileSearch && "active-mobile-search"
       )}
     >
-      <div className="navbar w-screen lg:w-full transition-all duration-200 ease-in-out body-font bg-skin-fill z-20">
-        <Container className="top-bar flex items-center justify-between py-3 lg:py-1 border-b border-skin-base">
-          <Logo className="logo -mt-1.5 md:-mt-1 md:pl-0 md:ml-auto lg:mx-0" />
+      <div className="navbar w-screen lg:w-full transition-all duration-200 ease-in-out body-font bg-dark-footer z-20">
+        <Container className="top-bar flex items-center justify-between py-3 lg:py-1.5 border-b border-skin-base">
+          <Logowhite className="logo -mt-1.5 md:-mt-1 md:pl-0 md:ml-auto lg:mx-0" />
           <div className=" hidden lg:block">
             {/* <HeaderMenu
               data={site_header.menu}
@@ -82,7 +82,7 @@ const Header: React.FC = () => {
               )}
             </div>
           </div>
-          <div className="items-center flex lg:hidden shrink-0 xl:mx-3.5 mx-2.5">
+          <div className="items-center flex lg:hidden shrink-0 xl:mx-3.5 mx-2.5 text-white">
             <button
               aria-label="Menu"
               className="flex flex-col items-center justify-center flex-shrink-0 outline-none focus:outline-none"

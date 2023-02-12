@@ -1,18 +1,18 @@
-import cn from 'classnames';
-import { Disclosure, Transition } from '@headlessui/react';
-import { useTranslation } from 'next-i18next';
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import cn from "classnames";
+import { Disclosure, Transition } from "@headlessui/react";
+import { useTranslation } from "next-i18next";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 type CollapseProps = {
   item: any;
   translatorNS: string;
-  variant?: 'gray' | 'transparent';
+  variant?: "gray" | "transparent";
 };
 
 export const Accordion: React.FC<CollapseProps> = ({
   item,
   translatorNS,
-  variant = 'gray',
+  variant = "gray",
 }) => {
   const { t } = useTranslation(translatorNS);
   const { id, title, content } = item;
@@ -25,18 +25,18 @@ export const Accordion: React.FC<CollapseProps> = ({
               <Disclosure.Button className="flex justify-between w-full px-5 py-4 2xl:px-6 2xl:py-6 text-base font-medium text-start text-skin-base focus:outline-none">
                 <span
                   className={cn(
-                    'text-sm font-medium leading-relaxed text-heading pe-2',
+                    "text-sm font-medium leading-relaxed text-heading pe-2 text-pink-900",
                     {
-                      'md:text-base': variant === 'gray',
-                      'md:text-base lg:text-lg': variant === 'transparent',
+                      "md:text-base": variant === "gray",
+                      "md:text-base lg:text-lg": variant === "transparent",
                     }
                   )}
                 >
                   {t(title)}
                 </span>
                 <MdKeyboardArrowRight
-                  className={`text-xl lg:text-2xl text-skin-base text-opacity-60 group-hover:text-opacity-100 -mr-2 lg:-mr-1.5 flex-shrink-0 ${
-                    open ? 'transform rotate-90' : ''
+                  className={`text-xl lg:text-2xl text-red-600 text-opacity-60 group-hover:text-opacity-100 -mr-2 lg:-mr-1.5 flex-shrink-0 ${
+                    open ? "transform rotate-90" : ""
                   }`}
                 />
               </Disclosure.Button>

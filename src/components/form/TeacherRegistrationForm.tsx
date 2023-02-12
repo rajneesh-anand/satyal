@@ -12,11 +12,10 @@ import useWindowSize from "@utils/use-window-size";
 import { useRouter } from "next/router";
 
 interface FormValues {
-  name: string;
+  fname: string;
+  lname: string;
   email: string;
   password: string;
-  class: string;
-  medium: string;
   address: string;
   city: string;
   state: string;
@@ -29,8 +28,6 @@ function TeacherRegistrationForm() {
   const [processing, setProcessing] = useState(false);
   const [status, setStatus] = useState("");
   const [selectedState, setSelectedState] = useState(statesOptions[0]);
-  const [selectedClass, setSelectedClass] = useState(classOptions[0]);
-  const [selectedMedium, setSelectedMedium] = useState(mediumOptions[0]);
   const [errorMsg, setErrorMsg] = useState<string | undefined>("");
 
   const {
@@ -56,26 +53,20 @@ function TeacherRegistrationForm() {
     }
   }, [status]);
 
-  function classChange(value: any) {
-    setSelectedClass(value);
-  }
   function stateChange(value: any) {
     setSelectedState(value);
-  }
-
-  function mediumChange(value: any) {
-    setSelectedMedium(value);
   }
 
   async function onSubmit(data: FormValues) {
     setProcessing(true);
     const formData = new FormData();
-    formData.append("name", data.name);
+    formData.append("fname", data.fname);
+    formData.append("lname", data.lname);
     formData.append("email", data.email);
     formData.append("password", data.password);
     formData.append("address", data.address);
     formData.append("city", data.city);
-    formData.append("state", data.state ? data.state : selectedState.value);
+    formData.append("province", data.state ? data.state : selectedState.value);
     formData.append("mobile", data.mobile);
     formData.append("userType", "Teacher");
     try {
@@ -114,17 +105,29 @@ function TeacherRegistrationForm() {
 
       <div className="mt-5 md:col-span-1 md:mt-0">
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="w-full">
-          <div className="w-full mb-3">
-            <Input
-              variant="outline"
-              type="text"
-              label="Full Name"
-              placeholder="Enter your full name"
-              {...register("name", {
-                required: "You must provide your full name !",
-              })}
-              error={errors.name?.message}
-            />
+          <div className="flex flex-col lg:flex-row">
+            <div className="w-full md:w-1/2  mb-3">
+              <Input
+                variant="outline"
+                type="text"
+                label="First Name"
+                {...register("fname", {
+                  required: "You must provide your first name !",
+                })}
+                error={errors.fname?.message}
+              />
+            </div>
+            <div className="w-full md:w-1/2  mb-3 md:ml-[4px]">
+              <Input
+                variant="outline"
+                type="text"
+                label="Last Name"
+                {...register("lname", {
+                  required: "You must provide your last name !",
+                })}
+                error={errors.lname?.message}
+              />
+            </div>
           </div>
           <div className="w-full mb-3 ">
             <Input

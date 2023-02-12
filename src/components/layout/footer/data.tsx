@@ -104,22 +104,6 @@ export const footer = {
       width: 76,
       height: 20,
     },
-    {
-      id: 4,
-      path: "/",
-      image: "/images/payment/jcb.svg",
-      name: "payment-jcb",
-      width: 26,
-      height: 20,
-    },
-    {
-      id: 5,
-      path: "/",
-      image: "/images/payment/skrill.svg",
-      name: "payment-skrill",
-      width: 39,
-      height: 20,
-    },
   ],
   social: [
     {
