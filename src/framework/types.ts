@@ -32,6 +32,13 @@ export type QueryParamsType = {
   pageParam?: string;
 };
 
+export interface PaymentInfo {
+  account?: string;
+  name?: string;
+  email?: string;
+  bank?: string;
+}
+
 export type Attachment = {
   thumbnail: string;
   original: string;

@@ -8,6 +8,7 @@ import { usePopper } from "react-popper";
 export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   inputClassName?: string;
+  labelClassName?: string;
   label: string;
   name: string;
   forgotPageLink?: string;
@@ -32,7 +33,7 @@ const classes = {
 const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
   (
     {
-      className,
+      className = "block",
       inputClassName,
       label,
       name,
@@ -44,6 +45,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
       forgotPageLink,
       forgotPassHelpText,
       helperText,
+      labelClassName,
       forgotPageRouteOnClick,
       ...rest
     },
@@ -71,46 +73,52 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
 
     return (
       <div className={className}>
-        <div className="flex items-center justify-between mb-2">
-          <label htmlFor={name} className="font-semibold text-sm text-body">
+        {label && (
+          <label
+            htmlFor={name}
+            className={`block font-semibold  text-sm leading-none mb-3 cursor-pointer ${
+              labelClassName || "text-skin-base text-opacity-70"
+            }`}
+          >
             {label}
           </label>
+        )}
 
-          {helperText && (
-            <>
-              <button type="button" ref={setReferenceElement}>
-                <i className="icofont-info-circle"></i>
-              </button>
-
-              <div
-                ref={setPopperElement}
-                style={styles.popper}
-                {...attributes.popper}
-              >
-                {helperText}
-                <div ref={setArrowElement} style={styles.arrow} />
-              </div>
-            </>
-          )}
-
-          {forgotPageLink && (
-            <Link
-              href={forgotPageLink}
-              className="text-xs text-accent transition-colors duration-200 focus:outline-none focus:text-accent-700 focus:font-semibold hover:text-accent-hover"
-            >
-              {forgotPassHelpText}
-            </Link>
-          )}
-          {forgotPageRouteOnClick && (
-            <button
-              onClick={forgotPageRouteOnClick}
-              type="button"
-              className="text-xs text-accent transition-colors duration-200 focus:outline-none focus:text-accent-700 focus:font-semibold hover:text-accent-hover"
-            >
-              {forgotPassHelpText}
+        {helperText && (
+          <>
+            <button type="button" ref={setReferenceElement}>
+              <i className="icofont-info-circle"></i>
             </button>
-          )}
-        </div>
+
+            <div
+              ref={setPopperElement}
+              style={styles.popper}
+              {...attributes.popper}
+            >
+              {helperText}
+              <div ref={setArrowElement} style={styles.arrow} />
+            </div>
+          </>
+        )}
+
+        {forgotPageLink && (
+          <Link
+            href={forgotPageLink}
+            className="text-xs text-accent transition-colors duration-200 focus:outline-none focus:text-accent-700 focus:font-semibold hover:text-accent-hover"
+          >
+            {forgotPassHelpText}
+          </Link>
+        )}
+        {forgotPageRouteOnClick && (
+          <button
+            onClick={forgotPageRouteOnClick}
+            type="button"
+            className="text-xs text-accent transition-colors duration-200 focus:outline-none focus:text-accent-700 focus:font-semibold hover:text-accent-hover"
+          >
+            {forgotPassHelpText}
+          </button>
+        )}
+
         <div className="relative">
           <input
             id={name}
@@ -146,5 +154,5 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
     );
   }
 );
-PasswordInput.displayName = "PasswordInput";
+
 export default PasswordInput;

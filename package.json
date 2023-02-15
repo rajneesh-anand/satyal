@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "pg-push": "npx prisma db push",
-    "postinstall": "npx prisma generate"
+    "postinstall": "npx prisma generate && npx prisma db push"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.2",

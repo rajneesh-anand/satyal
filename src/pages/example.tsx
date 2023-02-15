@@ -39,7 +39,7 @@ const Popover = () => {
                 blueGray tooltip title
               </div>
               <div className=" p-3">
-                And here's some amazing content. It's very engaging. Right?
+                And here's some amazing content. It's very engaging. Right? test
               </div>
             </div>
           </div>

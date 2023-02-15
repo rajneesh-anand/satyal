@@ -9,14 +9,14 @@ import ProfileLayout from "@components/profile/layout";
 import { UserProvider } from "@contexts/user/user.context";
 import DrawersContainer from "@components/drawer-views/container";
 import ProfileUpdateForm from "@components/form/profile-update-form";
-import KYCForm from "@components/form/KYCForm";
+import TeacherKYCForm from "@components/form/TeacherKYCForm";
 import KYCReviewForm from "@components/form/KYCReviewForm";
 
 export default function TeacherDashboard({ teacher }) {
   if (teacher.kycStatus === "Kyc Pending") {
     return (
       <Container>
-        <KYCForm />
+        <TeacherKYCForm />
       </Container>
     );
   }
@@ -42,7 +42,6 @@ TeacherDashboard.Layout = Layout;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
-  const { req, res } = await context;
   const { id } = await context.params;
   const { data } = await http.get(`/teacher/${id}`);
 
