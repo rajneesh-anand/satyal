@@ -91,7 +91,7 @@ function StudentRegistrationForm() {
       } else {
         setStatus("success");
         setProcessing(false);
-        router.push("/auth/signin");
+        router.push("/auth/payment");
       }
     } catch (error: any) {
       console.log(error.message);

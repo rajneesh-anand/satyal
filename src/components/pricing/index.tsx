@@ -25,6 +25,49 @@ export default function Pricing() {
     fetchPricingData();
   }, []);
 
+  const handlePayment = async () => {
+    const res = await fetch("https://a.khalti.com/api/v2/", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Key test_secret_key_65a46088879242a9952157646d80bb9",
+      },
+      method: "POST",
+      body: JSON.stringify({
+        return_url: "http://localhost:3000/auth/payment",
+        website_url: "http://localhost:3000",
+        amount: 1300,
+        purchase_order_id: "test15022023",
+        purchase_order_name: "test_order_name",
+        customer_info: {
+          name: "Ashim Upadhaya",
+          email: "example@gmail.com",
+          phone: "9811496763",
+        },
+        amount_breakdown: [
+          {
+            label: "Mark Price",
+            amount: 1000,
+          },
+          {
+            label: "VAT",
+            amount: 300,
+          },
+        ],
+        product_details: [
+          {
+            identity: "1234567890",
+            name: "Khalti logo",
+            total_price: 1300,
+            quantity: 1,
+            unit_price: 1300,
+          },
+        ],
+      }),
+    });
+    console.log(res);
+  };
+
   return (
     <div className="mx-auto max-w-7xl bg-white py-24 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col justify-center items-center">
@@ -77,6 +120,7 @@ export default function Pricing() {
             </div>
 
             <button
+              onClick={handlePayment}
               className={classNames(
                 item.most_popular
                   ? "bg-indigo-500 text-white hover:bg-indigo-600"
