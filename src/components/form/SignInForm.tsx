@@ -84,14 +84,22 @@ function SignInForm({ csrfToken }) {
           <PasswordInput
             label="Password"
             variant="outline"
-            className="mb-4"
-            forgotPassHelpText="Forgot Password"
-            forgotPageLink="/auth/forgot-password"
+            className="mb-2"
+            // forgotPassHelpText="Forgot Password"
+            // forgotPageLink="/auth/forgot-password"
             {...register("password", {
               required: "You must provide your password !",
             })}
             error={errors?.password?.message!}
           />
+          <div className="text-end">
+            <Link
+              href="/auth/forgot-password"
+              className="text-[14px] text-red-900 font-semibold font-nunito "
+            >
+              Forgot Your Password ?
+            </Link>
+          </div>
           <div className="text-center mt-8 mb-8">
             <button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
               Sign In

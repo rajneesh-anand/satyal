@@ -6,6 +6,7 @@ import HeroSliderBlock from "@components/hero/hero-slider-block";
 import { GetStaticProps } from "next";
 import Seo from "@components/seo/seo";
 import CollectionGrid from "@components/common/collection-grid";
+import Pricing from "@components/pricing";
 
 export default function Home() {
   return (
@@ -204,6 +205,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <Pricing />
       </Container>
       <CollectionGrid
         headingPosition="center"

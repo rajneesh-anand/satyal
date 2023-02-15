@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import cn from "classnames";
-import Logo from "@components/ui/logo";
+import Logo from "@components/ui/whitelogo";
 import { useWindowScroll } from "@utils/use-window-scroll";
 import { FlashIcon } from "@components/icons/flash";
 import Hamburger from "@components/ui/hamburger";
