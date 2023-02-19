@@ -68,7 +68,7 @@ const CollectionGrid: React.FC<Props> = ({
         <div className="text-center">
           <h4 className="font-nunito font-bold lg:leading-normal leading-normal text-2xl lg:text-4xl mb-5 text-black dark:text-white">
             What our proud students think about{" "}
-            <span className="text-indigo-600">Satyal Learning</span>
+            <span className="text-dark-footer">Satyal Learning</span>
           </h4>
         </div>
         {width! < 1536 ? (

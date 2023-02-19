@@ -49,12 +49,12 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="feather feather-hexagon h-32 w-32 fill-indigo-600/5 mx-auto"
+                    className="feather feather-hexagon h-32 w-32 fill-dark-footer/5 mx-auto"
                   >
                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                   </svg>
 
-                  <div className="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-4xl flex align-middle justify-center items-center">
+                  <div className="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-dark-footer rounded-xl transition-all duration-500 ease-in-out text-4xl flex align-middle justify-center items-center">
                     <i className="icofont-live-support"></i>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export default function Home() {
                 <div className="mt-6">
                   <a
                     href="#"
-                    className="font-body text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
+                    className="font-body text-xl font-medium transition-all duration-500 ease-in-out hover:text-dark-footer"
                   >
                     24/7 Support &amp; Help
                   </a>
@@ -85,11 +85,11 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="feather feather-hexagon h-32 w-32 fill-indigo-600/5 mx-auto"
+                    className="feather feather-hexagon h-32 w-32 fill-dark-footer/5 mx-auto"
                   >
                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                   </svg>
-                  <div className="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-4xl flex align-middle justify-center items-center">
+                  <div className="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-dark-footer rounded-xl transition-all duration-500 ease-in-out text-4xl flex align-middle justify-center items-center">
                     <i className="icofont-wallet"></i>
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export default function Home() {
                 <div className="mt-6">
                   <a
                     href="#"
-                    className=" font-body text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
+                    className=" font-body text-xl font-medium transition-all duration-500 ease-in-out hover:text-dark-footer"
                   >
                     Affordable Education Fee
                   </a>
@@ -120,11 +120,11 @@ export default function Home() {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="feather feather-hexagon h-32 w-32 fill-indigo-600/5 mx-auto"
+                    className="feather feather-hexagon h-32 w-32 fill-dark-footer/5 mx-auto"
                   >
                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                   </svg>
-                  <div className="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl transition-all duration-500 ease-in-out text-4xl flex align-middle justify-center items-center">
+                  <div className="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-dark-footer rounded-xl transition-all duration-500 ease-in-out text-4xl flex align-middle justify-center items-center">
                     <i className="icofont-users-alt-5"></i>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ export default function Home() {
                 <div className="mt-6">
                   <a
                     href="#"
-                    className="font-body text-xl font-medium transition-all duration-500 ease-in-out hover:text-indigo-600"
+                    className="font-body text-xl font-medium transition-all duration-500 ease-in-out hover:text-dark-footer"
                   >
                     Highly Skilled Teachers
                   </a>
@@ -217,14 +217,14 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2  gap-[30px]">
           <div className="pb-10 col-span-full md:col-span-1 mb-4 mt-16">
             <div className="flex justify-start items-center mx-4 md:mx-32">
-              <div className="w-20 h-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-4xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800">
+              <div className="w-20 h-20 bg-dark-footer/5 text-dark-footer rounded-xl text-4xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800">
                 <i className="icofont-phone-circle "></i>
               </div>
 
               <div className="ml-4 ">
                 <a
                   href="tel:+152534-468-854"
-                  className="font-body text-dark hover:text-gray-400 after:bg-indigo-600 duration-500 ease-in-out"
+                  className="font-body text-dark hover:text-gray-400 after:bg-dark-footer duration-500 ease-in-out"
                 >
                   +152 534-468-854
                 </a>
@@ -232,21 +232,21 @@ export default function Home() {
             </div>
 
             <div className="flex justify-start items-center mx-4 md:mx-32 mt-4">
-              <div className="w-20 h-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800">
+              <div className="w-20 h-20 bg-dark-footer/5 text-dark-footer rounded-xl text-3xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800">
                 <i className="icofont-email"></i>
               </div>
 
               <div className="ml-4">
                 <a
                   href="mailto:help@satyallearning.com"
-                  className="font-body text-dark hover:text-gray-400 after:bg-indigo-600 duration-500 ease-in-out"
+                  className="font-body text-dark hover:text-gray-400 after:bg-dark-footer duration-500 ease-in-out"
                 >
                   help@satyallearning.com
                 </a>
               </div>
             </div>
             <div className="flex justify-start items-center mx-4 md:mx-32 mt-4">
-              <div className="w-20 h-20 bg-indigo-600/5 text-indigo-600 rounded-xl text-4xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800">
+              <div className="w-20 h-20 bg-dark-footer/5  text-dark-footer rounded-xl text-4xl flex align-middle justify-center items-center shadow-sm dark:shadow-gray-800">
                 <i className="icofont-location-pin"></i>
               </div>
 
@@ -254,7 +254,7 @@ export default function Home() {
                 <a
                   href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39206.002432144705!2d-95.4973981212445!3d29.709510002925988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c16de81f3ca5%3A0xf43e0b60ae539ac9!2sGerald+D.+Hines+Waterwall+Park!5e0!3m2!1sen!2sin!4v1566305861440!5m2!1sen!2sin"
                   data-type="iframe"
-                  className="font-body text-dark hover:text-gray-400 after:bg-indigo-600 duration-500 ease-in-out"
+                  className="font-body text-dark-footer hover:text-gray-400 after:bg-dark-footer duration-500 ease-in-out"
                 >
                   View on Google map
                 </a>
