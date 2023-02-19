@@ -38,7 +38,7 @@ export default function TeacherDashboard({ teacher }) {
   );
 }
 
-TeacherDashboard.Layout = Layout;
+// TeacherDashboard.Layout = Layout;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);

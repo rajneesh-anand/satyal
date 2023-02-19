@@ -6,6 +6,7 @@ import HeroSliderBlock from "@components/hero/hero-slider-block";
 import { GetStaticProps } from "next";
 import Seo from "@components/seo/seo";
 import CollectionGrid from "@components/common/collection-grid";
+import Pricing from "@components/pricing";
 
 export default function Home() {
   return (
@@ -180,7 +181,7 @@ export default function Home() {
                 <div className="lg:ml-5">
                   <h4 className="font-nunito font-bold lg:leading-normal leading-normal text-2xl lg:text-4xl mb-5 text-black dark:text-white">
                     Interactive &amp; Fun{" "}
-                    <span className="text-indigo-600">Video Cources</span>
+                    <span className="text-dark-footer">Video Courses</span>
                   </h4>
 
                   <p className="text-slate-400 max-w-xl">
@@ -194,7 +195,7 @@ export default function Home() {
                   <div className="mt-6">
                     <a
                       href=""
-                      className="btn btn-link font-semibold text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out"
+                      className="btn btn-link font-semibold text-dark-footer after:bg-indigo-600 duration-500 ease-in-out"
                     >
                       Learn more <i className="zmdi zmdi-arrow-right"></i>
                     </a>
@@ -204,6 +205,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <Pricing />
       </Container>
       <CollectionGrid
         headingPosition="center"
@@ -343,7 +346,7 @@ export default function Home() {
                   type="submit"
                   id="submit"
                   name="send"
-                  className="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full justify-center flex items-center"
+                  className="btn bg-dark-footer hover:bg-red-700 text-white rounded-md w-full justify-center flex items-center"
                 >
                   Send Message
                 </button>

@@ -43,7 +43,7 @@ const HeroSliderBlock: React.FC<Props> = ({
                 <div className="md:ml-8">
                   <h4 className="font-bold font-nunito lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 text-black dark:text-white relative">
                     Learn with{" "}
-                    <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-600 relative inline-block">
+                    <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-dark-footer relative inline-block">
                       <span className="relative text-white">Experts</span>
                     </span>{" "}
                     Anytime &amp; Anywhere
@@ -57,7 +57,7 @@ const HeroSliderBlock: React.FC<Props> = ({
                   <div className="text-center mt-8">
                     <Link
                       href="/auth/register"
-                      className="inline-block px-6 py-2.5 bg-blue-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                      className="inline-block px-6 py-2.5 bg-dark-footer text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-red-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                     >
                       Get Started
                     </Link>
@@ -70,9 +70,9 @@ const HeroSliderBlock: React.FC<Props> = ({
                   <div className="col-span-5">
                     <div className="grid grid-cols-1 gap-4">
                       <img
-                        src="/images/hero/02.jpg"
-                        className="shadow rounded-lg"
-                        alt=""
+                        src="/images/photo2.svg"
+                        //className="shadow rounded-lg"
+                        //alt=""
                       />
 
                       <div className="ml-auto">

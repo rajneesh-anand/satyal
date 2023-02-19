@@ -23,7 +23,7 @@ export const siteSettings = {
     height: 30,
   },
   whitelogo: {
-    url: "/images/whitelogo.svg",
+    url: "/images/logo.svg",
     alt: "brand logo",
     href: "/",
     width: 128,
