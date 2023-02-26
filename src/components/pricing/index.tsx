@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import classNames from "classnames";
+import Router from "next/router";
+import { useModalAction } from "@components/common/modal/modal.context";
 
 export default function Pricing() {
+  const { closeModal, openModal } = useModalAction();
+
+  function handlePayment() {
+    return openModal("PAYMENT");
+  }
   const [pricingData, setPricingData] = useState<
     {
       plan_name: string;
@@ -25,52 +32,66 @@ export default function Pricing() {
     fetchPricingData();
   }, []);
 
-  const handlePayment = async () => {
-    const res = await fetch("https://a.khalti.com/api/v2/", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Key test_secret_key_65a46088879242a9952157646d80bb9",
-      },
-      method: "POST",
-      body: JSON.stringify({
-        return_url: "http://localhost:3000/auth/payment",
-        website_url: "http://localhost:3000",
-        amount: 1300,
-        purchase_order_id: "test15022023",
-        purchase_order_name: "test_order_name",
-        customer_info: {
-          name: "Ashim Upadhaya",
-          email: "example@gmail.com",
-          phone: "9811496763",
-        },
-        amount_breakdown: [
-          {
-            label: "Mark Price",
-            amount: 1000,
-          },
-          {
-            label: "VAT",
-            amount: 300,
-          },
-        ],
-        product_details: [
-          {
-            identity: "1234567890",
-            name: "Khalti logo",
-            total_price: 1300,
-            quantity: 1,
-            unit_price: 1300,
-          },
-        ],
-      }),
-    });
-    console.log(res);
-  };
+  // const handlePayment = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       "https://a.khalti.com/api/v2/epayment/initiate/",
+  //       {
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //           Authorization: "Key fd0bbb0969ca474ca644b9d75e3a0452",
+  //         },
+  //         method: "POST",
+  //         body: JSON.stringify({
+  //           return_url: "http://localhost:3000/auth/signin",
+  //           website_url: "http://localhost:3000",
+  //           amount: 1300,
+  //           purchase_order_id: "test15022023",
+  //           purchase_order_name: "test_order_name",
+  //           customer_info: {
+  //             name: "Ashim Upadhaya",
+  //             email: "example@gmail.com",
+  //             phone: "9811496763",
+  //           },
+  //           amount_breakdown: [
+  //             {
+  //               label: "Mark Price",
+  //               amount: 1000,
+  //             },
+  //             {
+  //               label: "VAT",
+  //               amount: 300,
+  //             },
+  //           ],
+  //           product_details: [
+  //             {
+  //               identity: "1234567890",
+  //               name: "Khalti logo",
+  //               total_price: 1300,
+  //               quantity: 1,
+  //               unit_price: 1300,
+  //             },
+  //           ],
+  //         }),
+  //       }
+  //     );
+
+  //     const result = await res.json();
+  //     if (res.status >= 400 && res.status < 600) {
+  //       throw new Error(result.message);
+  //     } else {
+  //       Router.push(result.payment_url);
+  //     }
+  //   } catch (error: any) {
+  //     console.log(error.message);
+  //     setStatus("failed");
+  //   }
+  // };
 
   return (
-    <div className="mx-auto max-w-7xl bg-white py-24 px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col justify-center items-center">
+    <div className="mx-auto max-w-7xl bg-white ">
+      {/* <div className="flex flex-col justify-center items-center">
         <h4 className="font-nunito font-bold lg:leading-normal leading-normal text-2xl lg:text-4xl mb-5 text-black dark:text-white">
           We have very affordable{" "}
           <span className="text-indigo-600">Pricing Plans</span>
@@ -79,13 +100,13 @@ export default function Pricing() {
           Choose an affordable plan that's packed with the best features for
           engaging your audience, creating customer loyalty, and driving sales.
         </p>
-      </div>
+      </div> */}
 
-      <div className="mt-32 space-y-12 lg:grid lg:grid-cols-4 lg:gap-x-2 lg:space-y-0">
-        {pricingData?.map((item) => (
+      <div className="mt-16 space-y-12 lg:grid lg:grid-cols-4 lg:gap-x-2 lg:space-y-0">
+        {pricingData?.map((item, index) => (
           <div
-            key={item.plan_name}
-            className="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
+            key={index}
+            className="relative flex flex-col rounded-md border border-gray-200 bg-white p-8 shadow-sm"
           >
             <div className="flex-1">
               <h3 className="text-xl font-semibold text-gray-900 uppercase">
@@ -106,29 +127,24 @@ export default function Pricing() {
               </p>
               <p className="mt-6 text-gray-500">{item.plan_description}</p>
 
-              <ul role="list" className="mt-6 space-y-6">
-                {item.features.map((feature) => (
-                  <li key={feature} className="flex">
+              <ul role="list" className="mt-6 space-y-3">
+                {item.features.map((feature, index) => (
+                  <li key={index} className="flex items-center">
                     <AiOutlineCheck
-                      className="h-6 w-6 flex-shrink-0 text-indigo-500"
+                      className="h-4 w-4 flex-shrink-0 text-indigo-500"
                       aria-hidden="true"
                     />
-                    <span className="ml-3 text-gray-500">{feature}</span>
+                    <span className="ml-2 text-gray-500">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <button
-              onClick={handlePayment}
-              className={classNames(
-                item.most_popular
-                  ? "bg-indigo-500 text-white hover:bg-indigo-600"
-                  : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100",
-                "mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium"
-              )}
+              // onClick={handlePayment}
+              className="bg-indigo-500 text-white mt-8 block w-full py-2 px-4 border border-transparent rounded-md text-center font-medium focus:bg-dark-footer focus:shadow-lg focus:outline-none focus:ring-0 active:bg-dark-footer active:shadow-lg transition duration-150 ease-in-out"
             >
-              Pay Now
+              Select Plan
             </button>
           </div>
         ))}

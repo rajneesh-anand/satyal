@@ -11,7 +11,8 @@ import Card from "@components/common/card";
 import Image from "next/image";
 
 import StudentRegistrationForm from "@components/form/StudentRegistrationForm";
-import TeacherRegistrationForm from "@components/form/TeacherRegistrationForm";
+import TeacherRegistrationForm from "@components/teacher";
+import RegisterStudentForm from "@components/student";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const queryClient = new QueryClient();
@@ -57,9 +58,9 @@ export default function RegisterPage() {
         path="/auth/register"
       />
 
-      <Container>
+      <Container className="bg-[#f0f6ff]">
         <div className="flex justify-center items-center">
-          <Card className=" w-full md:w-8/12 mt-2">
+          <div className="w-full mt-2">
             <div className="flex justify-center items-center py-4 rounded">
               <button
                 onClick={(e) => buttonHandler(e, "Student")}
@@ -90,11 +91,11 @@ export default function RegisterPage() {
             </div>
 
             {renderForm === "Student" ? (
-              <StudentRegistrationForm />
+              <RegisterStudentForm />
             ) : (
               <TeacherRegistrationForm />
             )}
-          </Card>
+          </div>
         </div>
       </Container>
     </>

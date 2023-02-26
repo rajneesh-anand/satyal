@@ -5,8 +5,8 @@ export const selectStyles = {
     color: "rgb(var(--text-heading))",
     paddingLeft: 16,
     paddingRight: 16,
-    paddingTop: 12,
-    paddingBottom: 12,
+    paddingTop: 8,
+    paddingBottom: 8,
     cursor: "pointer",
     borderBottom: "1px solid #E5E7EB",
     backgroundColor: state.isSelected
@@ -18,11 +18,11 @@ export const selectStyles = {
   control: (_: any, state: any) => ({
     display: "flex",
     alignItems: "center",
-    minHeight: "2rem",
+    // minHeight: "2rem",
     backgroundColor: "#ffffff",
     borderRadius: 5,
-    border: "1px solid #F1F1F1",
-    borderColor: state.isFocused ? "rgb(var(--color-gray-500))" : "#F1F1F1",
+    border: "1px solid #d6d9e6",
+    borderColor: state.isFocused ? "rgb(var(--color-gray-500))" : "#d6d9e6",
     boxShadow:
       state.menuIsOpen &&
       "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",

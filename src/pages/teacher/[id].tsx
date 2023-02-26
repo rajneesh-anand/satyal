@@ -31,8 +31,9 @@ export default function TeacherDashboard({ teacher }) {
   return (
     <UserProvider>
       <DrawersContainer />
-      <ProfileLayout data={teacher}>
-        <ProfileUpdateForm />
+      <ProfileLayout>
+        {/* <ProfileUpdateForm /> */}
+        <h1>Hello</h1>
       </ProfileLayout>
     </UserProvider>
   );

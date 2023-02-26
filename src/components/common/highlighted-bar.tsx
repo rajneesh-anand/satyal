@@ -12,7 +12,7 @@ const variantBasedClasses = {
   dark: "bg-gray-800",
   primary: "bg-skin-primary",
   highlighted: "bg-skin-highlighted",
-  highlightedTwo: "bg-skin-yellow-three",
+  highlightedTwo: "bg-red-900",
 };
 
 const HighlightedBar: React.FunctionComponent<HighlightedBarProps> = ({

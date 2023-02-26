@@ -7,9 +7,10 @@ import Link from "@components/ui/link";
 import { toast } from "react-toastify";
 import Alert from "@components/ui/alert";
 import Select from "@components/ui/form/select/select";
-import { statesOptions, classOptions, mediumOptions } from "@data/student";
+import { statesOptions, classOptions } from "@data/constant";
 import useWindowSize from "@utils/use-window-size";
 import { useRouter } from "next/router";
+import Pricing from "@components/pricing";
 
 interface FormValues {
   fname: string;
@@ -104,8 +105,8 @@ function StudentRegistrationForm() {
   return (
     <div className="mt-5">
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full md:w-1/2  mb-3">
+        <div className="flex flex-col lg:flex-row justify-center">
+          <div className="w-full md:w-[320px] mb-3">
             <Input
               variant="outline"
               type="text"
@@ -116,7 +117,7 @@ function StudentRegistrationForm() {
               error={errors.fname?.message}
             />
           </div>
-          <div className="w-full md:w-1/2  mb-3 md:ml-[4px]">
+          <div className="w-full md:w-[320px]  mb-3 md:ml-[4px]">
             <Input
               variant="outline"
               type="text"
@@ -128,8 +129,8 @@ function StudentRegistrationForm() {
             />
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full md:w-1/2  mb-3">
+        <div className="flex flex-col lg:flex-row justify-center">
+          <div className="w-full  md:w-[320px]  mb-3">
             <Input
               type="email"
               variant="outline"
@@ -145,7 +146,7 @@ function StudentRegistrationForm() {
               error={errors.email?.message}
             />
           </div>
-          <div className="w-full md:w-1/2  mb-3 md:ml-[4px]">
+          <div className="w-full  md:w-[320px]  mb-3 md:ml-[4px]">
             <PasswordInput
               label="Password"
               variant="outline"
@@ -162,8 +163,8 @@ function StudentRegistrationForm() {
             />
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-1/2  mb-3 ">
+        <div className="flex flex-col lg:flex-row justify-center">
+          <div className="w-full md:w-[320px]  mb-3 ">
             <label
               htmlFor="class"
               className="block mb-3 text-sm font-semibold leading-none text-body-dark"
@@ -178,7 +179,7 @@ function StudentRegistrationForm() {
               onChange={classChange}
             />
           </div>
-          <div className="w-full lg:w-1/2  mb-3  md:ml-[4px] ">
+          <div className="w-full md:w-[320px]  mb-3  md:ml-[4px] ">
             <Input
               type="text"
               variant="outline"
@@ -195,22 +196,23 @@ function StudentRegistrationForm() {
             />
           </div>
         </div>
-
-        <div className="w-full mb-3 ">
-          <Input
-            type="text"
-            variant="outline"
-            label="Address"
-            placeholder="Enter Your Address"
-            {...register("address", {
-              required: "You must provide your address !",
-            })}
-            error={errors.address?.message}
-          />
+        <div className="flex flex-col lg:flex-row justify-center">
+          <div className="w-full  md:w-[640px] mb-3 ">
+            <Input
+              type="text"
+              variant="outline"
+              label="Address"
+              placeholder="Enter Your Address"
+              {...register("address", {
+                required: "You must provide your address !",
+              })}
+              error={errors.address?.message}
+            />
+          </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row">
-          <div className="w-full md:w-1/2  mb-3 ">
+        <div className="flex flex-col lg:flex-row justify-center">
+          <div className="w-full  md:w-[320px]  mb-3 ">
             <Input
               type="text"
               variant="outline"
@@ -221,7 +223,7 @@ function StudentRegistrationForm() {
             />
           </div>
 
-          <div className="w-full md:w-1/2  mb-3 lg:ml-[4px]">
+          <div className="w-full  md:w-[320px]  mb-3 lg:ml-[4px]">
             <label
               htmlFor="state"
               className="block mb-3 text-sm font-semibold leading-none text-body-dark"
@@ -238,8 +240,13 @@ function StudentRegistrationForm() {
           </div>
         </div>
 
-        <div className="text-end mt-8 mb-8">
-          <button className="inline-block px-6 py-2.5 bg-dark-footer text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+        <Pricing />
+
+        <div className="text-center mt-8 mb-8">
+          <button
+            type="submit"
+            className="inline-block px-6 py-2.5 bg-dark-footer text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >
             {processing ? "Submitting Form ... " : "Register"}
           </button>
         </div>

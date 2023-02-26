@@ -13,9 +13,11 @@ const ForgetPasswordForm = dynamic(
 const AddressPopup = dynamic(
   () => import("@components/common/form/add-address")
 );
-const PaymentPopup = dynamic(
-  () => import("@components/common/form/add-payment")
-);
+// const PaymentPopup = dynamic(
+//   () => import("@components/common/form/add-payment")
+// );
+
+const PaymentPopup = dynamic(() => import("@components/common/payment"));
 const PhoneNumberPopup = dynamic(
   () => import("@components/common/form/add-contact")
 );

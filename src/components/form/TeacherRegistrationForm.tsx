@@ -7,7 +7,7 @@ import Link from "@components/ui/link";
 import { toast } from "react-toastify";
 import Alert from "@components/ui/alert";
 import Select from "@components/ui/form/select/select";
-import { statesOptions, classOptions, mediumOptions } from "@data/student";
+import { statesOptions, classOptions } from "@data/constant";
 import useWindowSize from "@utils/use-window-size";
 import { useRouter } from "next/router";
 

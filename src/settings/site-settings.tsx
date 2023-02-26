@@ -1,11 +1,3 @@
-import { ILFlag } from "@components/icons/language/ILFlag";
-import { SAFlag } from "@components/icons/language/SAFlag";
-import { CNFlag } from "@components/icons/language/CNFlag";
-import { USFlag } from "@components/icons/language/USFlag";
-import { DEFlag } from "@components/icons/language/DEFlag";
-import { ESFlag } from "@components/icons/language/ESFlag";
-import { RUFlag } from "@components/icons/language/RUFlag";
-
 export const siteSettings = {
   name: "Satyal Online Learning",
   description:
@@ -30,7 +22,34 @@ export const siteSettings = {
     height: 30,
   },
   defaultLanguage: "en",
-  currencyCode: "USD",
+  currencyCode: "NPR",
+  paymentOptions: [
+    {
+      id: "1",
+      name: "Master Card",
+      iconSrc: "/images/payment/mastercard.svg",
+    },
+    {
+      id: "2",
+      name: "Visa Card",
+      iconSrc: "/images/payment/visa.svg",
+    },
+    {
+      id: "3",
+      name: "Paypal",
+      iconSrc: "/images/payment/paypal.svg",
+    },
+    {
+      id: "4",
+      name: "JCB",
+      iconSrc: "/images/payment/jcb.svg",
+    },
+    {
+      id: "5",
+      name: "Skrill",
+      iconSrc: "/images/payment/skrill.svg",
+    },
+  ],
 
   site_header: {
     menu: [
@@ -214,26 +233,6 @@ export const siteSettings = {
         id: 3,
         path: "/services/",
         label: "menu-contact",
-      },
-    ],
-    languageMenu: [
-      {
-        id: "en",
-        name: "English",
-        value: "en",
-        icon: <USFlag />,
-      },
-      {
-        id: "de",
-        name: "Deutsch",
-        value: "de",
-        icon: <DEFlag />,
-      },
-      {
-        id: "ru",
-        name: "Русский",
-        value: "ru",
-        icon: <RUFlag />,
       },
     ],
   },

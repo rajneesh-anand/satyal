@@ -18,11 +18,11 @@ const Layout: React.FC<Props> = ({ children }) => {
   );
   return (
     <div className="flex flex-col min-h-screen">
-      {highlightedBar !== "true" && (
+      {/* {highlightedBar !== "true" && (
         <HighlightedBar
           onClose={() => setHighlightedBar("true")}
           variant="highlightedTwo"
-          className="text-[#460135]"
+          className="text-white"
         >
           <div className="text-sm font-medium py-0.5 pr-6">
             <span>
@@ -41,7 +41,7 @@ const Layout: React.FC<Props> = ({ children }) => {
             </span>
           </div>
         </HighlightedBar>
-      )}
+      )} */}
       <Header />
       <main
         className="relative flex-grow"

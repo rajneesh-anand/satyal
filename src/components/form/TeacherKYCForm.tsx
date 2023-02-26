@@ -6,7 +6,7 @@ import Card from "@components/common/card";
 import FileInput from "@components/ui/file-input";
 import { getFormattedImage } from "@utils/get-formatted-image";
 import Description from "@components/ui/description";
-import { classOptions, subjectsOptions } from "@data/student";
+import { classOptions, subjectsOptions } from "@data/constant";
 import SelectInput from "@components/ui/select/select";
 import { useDropzone } from "react-dropzone";
 import { UploadIcon } from "@components/icons/upload-icon";

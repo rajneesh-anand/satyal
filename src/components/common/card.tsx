@@ -1,15 +1,20 @@
-import cn from 'classnames';
+import cn from "classnames";
 
 type Props = {
   className?: string;
   [key: string]: unknown;
+  children: React.ReactNode;
+  onClick?: () => void;
 };
-const Card: React.FC<Props> = ({ className, ...props }) => {
+const Card: React.FC<Props> = ({ children, className, onClick, ...props }) => {
   return (
     <div
-      className={cn('p-5 md:p-8 bg-light shadow rounded', className)}
+      className={cn(" bg-light shadow rounded", className)}
+      onClick={onClick}
       {...props}
-    />
+    >
+      {children}
+    </div>
   );
 };
 

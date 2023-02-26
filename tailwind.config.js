@@ -1,3 +1,5 @@
+/** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
     if (opacityValue !== undefined) {
@@ -6,7 +8,6 @@ function withOpacity(variableName) {
     return `rgba(var(${variableName}))`;
   };
 }
-
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
@@ -18,9 +19,20 @@ module.exports = {
       nunito: ['"Nunito", sans-serif'],
     },
     extend: {
+      // backgroundImage: {
+      //   "sidebar-image-mobile": "url('/public/images/bg-sidebar-mobile.svg')",
+      //   "sidebar-image-desktop": "url('/public/images/bg-sidebar-desktop.svg')",
+      // },
       colors: {
-        dark: "#690f00",
-        black: "#161c2d",
+        "primary-marine-blue": "#02295a",
+        "primary-purplish-blue": "#473dff",
+        "primary-pastel-blue": "#adbeff",
+        "primary-light-blue": "#bfe2fd",
+        "primary-starberry-red": "#ed3548",
+        "neutral-cool-gray": "#9699ab",
+        "neutral-light-gray": "#d6d9e6",
+        "neutral-magnolia": "#f0f6ff",
+        "neutral-alabaster": "#fafbff",
         "dark-footer": "#690f00",
       },
       textColor: {
@@ -164,5 +176,18 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    plugin(({ addVariant, e }) => {
+      addVariant("sidebar-expanded", ({ modifySelectors, separator }) => {
+        modifySelectors(
+          ({ className }) =>
+            `.sidebar-expanded .${e(
+              `sidebar-expanded${separator}${className}`
+            )}`
+        );
+      });
+    }),
+  ],
 };
