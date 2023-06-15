@@ -32,7 +32,7 @@ export const useCart = () => {
 
 export const CartProvider: React.FC<Props> = (props) => {
   const [savedCart, saveCart] = useLocalStorage(
-    `borobazar-cart`,
+    `Satyal-cart`,
     JSON.stringify(initialState)
   );
   const [state, dispatch] = React.useReducer(

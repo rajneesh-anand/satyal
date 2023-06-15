@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import { Input } from "@components/teacher/input";
+import { Input } from "@components/form/teacher/input";
 import Description from "@components/ui/description";
 import { classOptions, subjectsOptions } from "@data/constant";
 import SelectInput from "@components/ui/select/select";

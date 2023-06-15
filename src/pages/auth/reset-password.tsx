@@ -11,7 +11,7 @@ export default function ResetPasswordPage() {
       <Seo
         title="Reset Password"
         description="Reset Password"
-        path="user/reset-password"
+        path="auth/reset-password"
       />
       <Container>
         <ResetPassword />

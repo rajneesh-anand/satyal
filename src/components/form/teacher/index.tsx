@@ -5,9 +5,9 @@ import {
   UserServiceConfiguration,
 } from "AppTypes";
 import { Button } from "@components/ui/button/button";
-import { PersonalInfo } from "@components/teacher/personal-info";
-import { TeacherKYCForm } from "@components/teacher/kyc";
-import { Sidebar } from "@components/teacher/sidebar";
+import { PersonalInfo } from "@components/form/teacher/personal-info";
+import { TeacherKYCForm } from "@components/form/teacher/kyc";
+import { Sidebar } from "@components/form/teacher/sidebar";
 import useWindowSize from "@utils/use-window-size";
 import { toast } from "react-toastify";
 import Router from "next/router";

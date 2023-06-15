@@ -1,16 +1,32 @@
-import Layout from "@components/layout";
-import Container from "@components/ui/container";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { getSession, useSession } from "next-auth/react";
 import Seo from "@components/seo/seo";
 import http from "@framework/utils/http";
-import ProfileLayout from "@components/profile/layout";
+import StudentDashboardLayout from "@components/layout-dashboard-student";
 import { UserProvider } from "@contexts/user/user.context";
-import DrawersContainer from "@components/drawer-views/container";
-import ProfileUpdateForm from "@components/form/profile-update-form";
+import { useEffect } from "react";
+import socket from "@utils/socket";
 
 export default function StudentDashboard({ student }) {
+  useEffect(() => {
+    const sessionID = localStorage.getItem("sessionID");
+
+    if (sessionID) {
+      this.usernameAlreadySelected = true;
+      socket.auth = { sessionID };
+      socket.connect();
+    }
+
+    socket.on("session", ({ sessionID, userID }) => {
+      // attach the session ID to the next reconnection attempts
+      socket.auth = { sessionID };
+      // store it in the localStorage
+      localStorage.setItem("sessionID", sessionID);
+      // save the ID of the user
+      (socket as any).userID = userID;
+    });
+  }, []);
   return (
     <>
       <Seo
@@ -20,10 +36,9 @@ export default function StudentDashboard({ student }) {
       />
 
       <UserProvider>
-        <DrawersContainer />
-        <ProfileLayout data={student}>
-          <ProfileUpdateForm />
-        </ProfileLayout>
+        <StudentDashboardLayout>
+          <h1>Student</h1>
+        </StudentDashboardLayout>
       </UserProvider>
     </>
   );
@@ -31,12 +46,6 @@ export default function StudentDashboard({ student }) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
-  const { req, res } = await context;
-  const { id } = await context.params;
-  const { data } = await http.get(`/student/${id}`, {
-    headers: { Authorization: `Bearer ${session?.accessToken}` },
-  });
-
   if (!session) {
     return {
       redirect: {
@@ -45,6 +54,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
+
+  const { data } = await http.get(`/student/${session?.user?.id}`, {
+    headers: { Authorization: `Bearer ${session?.accessToken}` },
+  });
   return {
     props: {
       student: data.data,

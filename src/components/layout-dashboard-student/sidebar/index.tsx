@@ -1,74 +1,3 @@
-// import cn from "classnames";
-// import AuthorCard from "@components/ui/author-card";
-// import { MenuItem } from "@components/ui/collapsible-menu";
-// import { menuItems } from "@components/profile/sidebar/menu-items";
-// import { useUserContext } from "@contexts/user/user.context";
-// import AuthorImage from "@assets/placeholders/category.png";
-// import Logo from "@components/ui/logo";
-// import Button from "@components/ui/button";
-// import { Close } from "@components/icons/close";
-// import { useDrawer } from "@components/drawer-views/context";
-// import AccountLogoutIcon from "@components/icons/account-logout";
-// import { signOut } from "next-auth/react";
-
-// export default function Sidebar({ className }: { className?: string }) {
-//   const { user } = useUserContext();
-//   const { closeDrawer } = useDrawer();
-
-//   return (
-//     <aside
-//       className={cn(
-//         "top-0 z-40 h-full w-full max-w-full border-dashed bg-slate-100 ltr:left-0 ltr:border-r rtl:right-0 rtl:border-l dark:border-gray-700 dark:bg-dark xs:w-80 xl:fixed  xl:w-72 2xl:w-80",
-//         className
-//       )}
-//     >
-//       <div className="relative flex items-center bg-skin-primary justify-between overflow-hidden px-6 py-4 2xl:px-8 ">
-//         <Logo />
-//         <div className="md:hidden">
-//           <Button
-//             title="Close"
-//             color="white"
-//             shape="circle"
-//             variant="transparent"
-//             size="small"
-//             onClick={closeDrawer}
-//           >
-//             <Close className="h-auto w-3.5 text-white" />
-//           </Button>
-//         </div>
-//       </div>
-
-//       <div className="px-6 py-5 2xl:px-8">
-//         <AuthorCard
-//           image={user.image ? user.image : AuthorImage}
-//           name={`${user.firstName}  ${user.lastName}`}
-//           role={user.userType}
-//         />
-
-//         <div className="mt-4">
-//           {menuItems(user.id).map((item, index) => (
-//             <MenuItem
-//               key={"default" + item.name + index}
-//               name={item.name}
-//               href={item.href}
-//               icon={item.icon}
-//             />
-//           ))}
-//           <button
-//             onClick={() => signOut()}
-//             className="relative flex h-10 items-center whitespace-nowrap rounded-lg px-4 text-sm text-black transition-all hover:text-skin-primary "
-//           >
-//             <span className="relative z-[1] ltr:mr-3 rtl:ml-3">
-//               <AccountLogoutIcon />
-//             </span>
-//             <span className="relative z-[1]">Logout</span>
-//           </button>
-//         </div>
-//       </div>
-//     </aside>
-//   );
-// }
-
 import React, { useState, useEffect, useRef } from "react";
 import Link from "@components/ui/link";
 import { useRouter } from "next/router";
@@ -82,9 +11,8 @@ type Props = {
 const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
-
-  const router = useRouter();
-  const pathname = router.pathname;
+  const { pathname } = useRouter();
+  console.log(pathname);
 
   const [sidebarExpanded, setSidebarExpanded] = useState<boolean>(true);
 
@@ -159,7 +87,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>
               <svg
-                className="w-6 h-6 fill-current  sidebar-expanded:rotate-180"
+                className="w-6 h-6 fill-current sidebar-expanded:rotate-180"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -230,50 +158,37 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
 
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes("files") && "bg-gray-900"
+                  pathname.includes("tuition") && "bg-gray-900"
                 }`}
               >
                 <Link
-                  href="/files"
+                  href="/student/tuition"
                   className={`block text-gray-200 hover:text-white truncate transition duration-150 ${
-                    pathname.includes("files") && "hover:text-gray-200"
+                    pathname.includes("tuition") && "hover:text-gray-200"
                   }`}
                 >
                   <div className="flex items-center">
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
                         className={`fill-current text-gray-600 ${
-                          pathname.includes("files") && "text-indigo-500"
+                          pathname.includes("tuition") && "text-indigo-500"
                         }`}
                         d="M 0 0 L 0 24 L 4.479 21.184 L 8.206 23.527 L 11.935 21.184 L 15.662 23.527 L 19.392 21.184 L 23.875 23.999 L 24 0.13 L 0 0 Z M 22.37 21.549 L 19.392 19.679 L 15.663 22.022 L 11.935 19.679 L 8.206 22.022 L 4.479 19.679 L 1.504 21.549 L 1.504 1.171 L 22.37 1.171 L 22.37 21.549 Z"
                       />
 
                       <path
                         className={`fill-current text-gray-400 ${
-                          pathname.includes("files") && "text-indigo-300"
+                          pathname.includes("tuition") && "text-indigo-300"
                         }`}
                         d="M 12.333 17 L 6.994 11.557 L 7.025 10.479 C 9.53 10.62 11.478 10.404 11.933 8.473 L 6.593 8.448 L 7.457 7.269 L 11.717 7.318 C 11.068 6.22 9.283 6.085 6.5 6.165 L 7.457 5.011 L 16.5 5 L 15.605 6.139 L 13.105 6.139 C 13.562 6.532 13.897 6.985 13.908 7.368 L 16.5 7.344 L 15.605 8.472 L 13.877 8.497 C 13.607 10.181 11.708 11.178 9.309 11.407 L 14.684 16.999 L 12.333 16.999 L 12.333 17 Z"
                       />
-
-                      {/* <path
-                        className={`fill-current text-gray-600 ${
-                          pathname.includes("files") && "text-indigo-500"
-                        }`}
-                        d="M0 20h24v2H0z"
-                      />
-                      <path
-                        className={`fill-current text-gray-400 ${
-                          pathname.includes("files") && "text-indigo-300"
-                        }`}
-                        d="M4 18h2a1 1 0 001-1V8a1 1 0 00-1-1H4a1 1 0 00-1 1v9a1 1 0 001 1zM11 18h2a1 1 0 001-1V3a1 1 0 00-1-1h-2a1 1 0 00-1 1v14a1 1 0 001 1zM17 12v5a1 1 0 001 1h2a1 1 0 001-1v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1z"
-                      /> */}
                     </svg>
                     <span
                       className={` ${
-                        pathname.includes("files") && "text-indigo-300"
+                        pathname.includes("tuition") && "text-indigo-300"
                       } text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200`}
                     >
-                      Plans Pricing
+                      Online Tuition
                     </span>
                   </div>
                 </Link>

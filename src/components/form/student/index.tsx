@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Plan, StudentInfo, UserServiceConfiguration } from "AppTypes";
 import { Button } from "@components/ui/button/button";
-import { PersonalInfo } from "@components/student/personal-info";
-import { SelectPlan } from "@components/student/select-plan";
-import { Sidebar } from "@components/student/sidebar";
-import Payment from "@components/student/payment";
+import { PersonalInfo } from "@components/form/student/personal-info";
+import { SelectPlan } from "@components/form/student/select-plan";
+import { Sidebar } from "@components/form/student/sidebar";
+import Payment from "@components/form/student/payment";
 
 function RegisterStudentForm() {
   const [step, setStep] = useState(1);

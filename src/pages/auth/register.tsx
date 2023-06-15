@@ -10,9 +10,8 @@ import Layout from "@components/layout";
 import Card from "@components/common/card";
 import Image from "next/image";
 
-import StudentRegistrationForm from "@components/form/StudentRegistrationForm";
-import TeacherRegistrationForm from "@components/teacher";
-import RegisterStudentForm from "@components/student";
+import TeacherRegistrationForm from "@components/form/teacher";
+import StudentRegistrationForm from "@components/form/student";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const queryClient = new QueryClient();
@@ -91,7 +90,7 @@ export default function RegisterPage() {
             </div>
 
             {renderForm === "Student" ? (
-              <RegisterStudentForm />
+              <StudentRegistrationForm />
             ) : (
               <TeacherRegistrationForm />
             )}

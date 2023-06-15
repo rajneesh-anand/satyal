@@ -1,4 +1,4 @@
-  {
+{
   "breadcrumb-home": "Home",
   "app-heading": "Erleichtern Sie Ihren Online-Shop mit unserer mobilen App",
   "app-description": "Wir bieten hochwertige Filme und die beste Auswahl an Dokumentarfilmen sowie die Möglichkeit, alphabetisch und nach Genres zu stöbern",
@@ -42,7 +42,7 @@
   "banner-meat-needs-title": "Fleisch nach Ihren Wünschen! Vergessen Sie nicht das InstaMeat",
   "banner-thousand-grocery-title": "Tausend der besten Lebensmittelartikel",
   "banner-healthy-vegetable-description": "Wir beziehen und verkaufen das beste Rind-, Lamm- und Schweinefleisch, das mit größter Sorgfalt vom Landwirt bezogen wird.",
-  "banner-thousand-grocery-title-description": "Online-Einkaufen von Lebensmitteln zu niedrigen Preisen weltweit auf BoroBazar",
+  "banner-thousand-grocery-title-description": "Online-Einkaufen von Lebensmitteln zu niedrigen Preisen weltweit auf Satyal",
   "button-send-message": "Nachricht senden",
   "button-go-home": "Geh nach Hause",
   "button-order-now": "Jetzt bestellen",
@@ -164,7 +164,7 @@
   "text-and": "und",
   "text-login": "Login",
   "text-account-wishlist": "Favoritenliste",
-  "text-by-placing-your-order": "Mit der Aufgabe Ihrer Bestellung erklären Sie sich damit einverstanden, an BoroBazar gebunden zu sein.",
+  "text-by-placing-your-order": "Mit der Aufgabe Ihrer Bestellung erklären Sie sich damit einverstanden, an Satyal gebunden zu sein.",
   "text-terms-of-service": "Allgemeine Geschäftsbedingungen (AGB)",
   "text-credit-debit": "Ihre Kredit-/Debitkartendaten werden nicht gespeichert.",
   "text-bag-fee": "Eine Gepäckgebühr kann zu Ihrem endgültigen Gesamtbetrag hinzugefügt werden, wenn dies gesetzlich oder vom Einzelhändler vorgeschrieben ist. Die Gebühr wird nach der Lieferung auf Ihrer Quittung sichtbar sein.",
@@ -229,4 +229,4 @@
   "text-all-shops": "Alle Shops",
   "text-more-info": "Weitere Informationen",
   "text-details": "Details"
-  }
+}

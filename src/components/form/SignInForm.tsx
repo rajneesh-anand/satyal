@@ -5,9 +5,8 @@ import PasswordInput from "@components/ui/form/password-input";
 import Link from "@components/ui/link";
 import Alert from "@components/ui/alert";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 interface FormValues {
   email: string;
@@ -15,27 +14,26 @@ interface FormValues {
 }
 
 function SignInForm({ csrfToken }) {
-  const { data: session } = useSession();
   const router = useRouter();
+  const { data: session } = useSession();
   const [errorMsg, setErrorMsg] = useState<string | undefined>();
+  const [status, setStatus] = useState<string | undefined>();
 
   const {
     register,
     handleSubmit,
-    control,
-    setValue,
-    reset,
     formState: { errors },
   } = useForm<FormValues>();
 
   useEffect(() => {
-    if (session)
-      router.replace(
-        `${
-          process.env.NEXT_PUBLIC_SITE_URL
-        }/${session.user.userType.toLowerCase()}/${session.user.id}`
+    if (status === "success") {
+      router.push(
+        session?.user?.userType === "Teacher"
+          ? `${process.env.NEXT_PUBLIC_SITE_URL}/teacher/dashboard`
+          : `${process.env.NEXT_PUBLIC_SITE_URL}/student/dashboard`
       );
-  }, [session]);
+    }
+  }, [status]);
 
   const onSubmit = async (data: FormValues) => {
     const result = await signIn<"credentials">("credentials", {
@@ -46,6 +44,10 @@ function SignInForm({ csrfToken }) {
 
     if (result?.error) {
       setErrorMsg(result?.error);
+    }
+
+    if (result?.status === 200) {
+      setStatus("success");
     }
 
     // if (result?.url) router.push(result.url);
