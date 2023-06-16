@@ -21,15 +21,15 @@ export default function Home() {
         contentClassName="pb-24 xl:pb-32 pt-16 xl:pt-24"
       />
 
-      <Container>
+      <Container className="border border-black border-solid">
         <section className="relative md:py-24 py-16 overflow-hidden">
-          <div className="container">
+          <div className="container ">
             <div className="grid grid-cols-1 pb-8 text-center">
               <h4 className="font-nunito font-bold lg:leading-normal leading-normal text-3xl lg:text-4xl mb-5 text-black dark:text-white">
                 Why Choose{" "}
                 <span className="text-indigo-600">Satyal Online Leaning</span>
               </h4>
-
+               
               <p className="text-slate-400 max-w-xl mx-auto">
                 Start working with Tailwind CSS that can provide everything you
                 need to generate awareness, drive traffic, connect.
@@ -145,7 +145,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="container md:mt-24 mt-16">
+          <div className="container md:mt-24 mt-16 ">
             <div className="grid md:grid-cols-12 grid-cols-1 items-center gap-[30px]">
               <div className="lg:col-span-5 md:col-span-6 md:ml-8">
                 <div className="grid grid-cols-12 gap-6 items-center relative">
@@ -213,7 +213,7 @@ export default function Home() {
         className="mb-12 pb-1 lg:pb-0 lg:mb-14 xl:mb-16 2xl:pt-4"
       />
 
-      <div className="container md:py-24 py-16">
+      <div className="container md:py-24 py-16 border border-red border-solid">
         <div className="grid grid-cols-1 lg:grid-cols-2  gap-[30px]">
           <div className="pb-10 col-span-full md:col-span-1 mb-4 mt-16">
             <div className="flex justify-start items-center mx-4 md:mx-32">

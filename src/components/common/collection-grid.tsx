@@ -64,7 +64,7 @@ const CollectionGrid: React.FC<Props> = ({
   const { width } = useWindowSize();
   return (
     <div className={className}>
-      <Container>
+      <Container className="border border-blue-900 border-solid">
         <div className="text-center">
           <h4 className="font-nunito font-bold lg:leading-normal leading-normal text-2xl lg:text-4xl mb-5 text-black dark:text-white">
             What our proud students think about{" "}

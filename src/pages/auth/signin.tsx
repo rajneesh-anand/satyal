@@ -9,7 +9,8 @@ import SignInForm from "@components/form/SignInForm";
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const csrfToken = await getCsrfToken(context);
   const session = await getSession(context);
-
+ 
+ 
   if (session) {
     return {
       redirect: {
@@ -42,6 +43,7 @@ export default function LoginPage({ csrfToken }) {
       />
       <Container>
         <SignInForm csrfToken={csrfToken} />
+        {/* <SignInForm/> */}
       </Container>
     </>
   );
