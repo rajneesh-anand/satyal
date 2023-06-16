@@ -118,9 +118,3 @@ model Testinomial{
   createdAt     DateTime  @default(now()) @map(name: "created_at")
 }
  
-model Aryan {
-  id                 Int     @default(autoincrement()) @id
-  userId             Int
-  type               String
-  
-}
