@@ -1,50 +1,82 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '@components/layout/index';
+import React, { useEffect, useState } from 'react';
+import { useSession, getSession } from 'next-auth/react';
+import { GetServerSideProps } from 'next';
+import Layout from '@components/layout';
 import Container from '@components/ui/container';
 import Loader from '@components/ui/loader/loader';
-// import { Image } from '@components/ui/image';
 
-function photos() {
-  const [photos, setPhotos] = useState<string[]>();
+type userType = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+};
+
+export default function PhotosPage() {
+  // const [photos, setPhotos] = useState<string[]>();
+  const [users, setUsers] = useState<userType[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPhotos = async () => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/test/get-photos`
+        `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/test/test-user`
       );
       const data = await res.json();
-      console.log(data.photos);
-      setPhotos(data.photos);
+      setUsers(data.data);
       setLoading(false);
     };
-
     fetchPhotos();
   }, []);
 
   return (
-    <Container>
-      <h1 className="bg-violet-500 hover:bg-violet-600">Minio KYC Bucket Images:</h1>
-      {loading ? (
-        <Loader />
-      ) : (
-        photos && (
-          <div className="grid grid-cols-4 gap-4">
-            {photos.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
-              >
-                <img className="object-cover h-48 w-62" src={item} alt={`photo-${idx}`} />
-              </div>
-            ))}
+    <Container className="mt-4">
+      <div className="text-center">
+        <input type="text" />
+      </div>
+      <div className="grid grid-cols-12 gap-4 py-4">
+        {loading ? (
+          <div className="text-center">
+            <Loader />
           </div>
-        )
-      )}
+        ) : (
+          users &&
+          users.map((itm, idx) => (
+            <div
+              key={idx}
+              className="col-span-12 lg:col-span-3 text-center relative border border-gray-200 rounded shadow hover:bg-gray-100 "
+            >
+              <div className="text-center py-8">
+                <p className="font-semibold text-[24px] text-rose-700">{itm.firstName}</p>
+                <p>{itm.lastName}</p>
+                <h3>{itm.email}</h3>
+                <p className="text-slate-600">{itm.address}</p>
+                <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-sm text-sm px-5 py-2.5 text-center mr-2 my-2">
+                  Edit
+                </button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </Container>
   );
 }
+PhotosPage.Layout = Layout;
 
-photos.Layout = Layout;
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const session = await getSession(context);
 
-export default photos;
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: "/auth/signin",
+//         permanent: false,
+//       },
+//     };
+//   }
+
+//   return {
+//     props: {},
+//   };
+// };
