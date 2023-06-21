@@ -64,8 +64,9 @@ model User {
   password      String?
   address       String?
   city          String?
+  parent        String?
   province      String?
-  class         String?
+  className     String?
   mobile        String?
   image         String?
   userType      String  
@@ -118,9 +119,3 @@ model Testinomial{
   createdAt     DateTime  @default(now()) @map(name: "created_at")
 }
  
-model Aryan {
-  id                 Int     @default(autoincrement()) @id
-  userId             Int
-  type               String
-  
-}
