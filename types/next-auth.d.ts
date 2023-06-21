@@ -11,6 +11,7 @@ declare module "next-auth" {
       image: string;
       name: string;
       userType: string;
+      className: string;
     } & DefaultSession["user"];
   }
 }
@@ -21,6 +22,7 @@ declare module "next-auth" {
     firstName?: string;
     accessToken?: string;
     userType?: string;
+    className?: string;
   }
 }
 
@@ -32,5 +34,6 @@ declare module "next-auth/jwt" {
     image?: string;
     accessToken?: string;
     userType?: string;
+    className?: string;
   }
 }

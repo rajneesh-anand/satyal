@@ -93,6 +93,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
           email: token.email,
           image: token.image,
           userType: token.userType,
+          className: token.className,
           iat: Date.now() / 1000,
           exp: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         };
@@ -137,6 +138,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
         session.user.name = token.name;
         session.accessToken = encodedToken;
         session.user.userType = token.userType;
+        session.user.className = token.className;
         return Promise.resolve(session);
       },
       async jwt({ token, user, account, profile, isNewUser }) {
@@ -148,6 +150,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
           token.image = user.image ? user.image.toString() : null;
           token.name = user.firstName ? user.firstName.toString() : "";
           token.userType = user.userType.toString();
+          token.className = user.className.toString();
         }
         return Promise.resolve(token);
       },

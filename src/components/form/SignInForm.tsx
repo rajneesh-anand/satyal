@@ -103,22 +103,22 @@ function SignInForm({ csrfToken }) {
             </Link>
           </div>
           <div className="text-center mt-8 mb-8">
-            <button className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+            <button className="inline-block px-6 py-2.5 bg-brown text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-brown/70 hover:shadow-lg  focus:shadow-lg focus:outline-none focus:ring-0  active:shadow-lg transition duration-150 ease-in-out">
               Sign In
             </button>
           </div>
 
-          <div className="text-sm sm:text-base text-body text-center">
-            Don't have an account ?{" "}
+          <div className="text-[12px] text-brown text-center">
+            Don't have an account ?
             <Link
               href="/auth/register"
-              className="ms-1 underline text-accent font-semibold transition-colors duration-200 focus:outline-none hover:text-accent-hover focus:text-accent-700 hover:no-underline focus:no-underline"
+              className="ml-1 underline text-accent font-semibold transition-colors duration-200 focus:outline-none hover:text-accent-hover focus:text-accent-700 hover:no-underline focus:no-underline"
             >
               Register
             </Link>
           </div>
 
-          {errorMsg ? (
+          {errorMsg && (
             <Alert
               message={errorMsg}
               variant="error"
@@ -126,7 +126,7 @@ function SignInForm({ csrfToken }) {
               className="mt-5"
               onClose={() => setErrorMsg("")}
             />
-          ) : null}
+          )}
         </form>
       </div>
     </div>

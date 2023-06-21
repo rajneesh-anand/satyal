@@ -34,6 +34,7 @@ module.exports = {
         "neutral-magnolia": "#f0f6ff",
         "neutral-alabaster": "#fafbff",
         "dark-footer": "#690f00",
+        brown: "#690f00",
       },
       textColor: {
         skin: {

@@ -35,11 +35,9 @@ export default function StudentDashboard({ student }) {
         path="/"
       />
 
-      <UserProvider>
-        <StudentDashboardLayout>
-          <h1>Student</h1>
-        </StudentDashboardLayout>
-      </UserProvider>
+      <StudentDashboardLayout>
+        <h1>Student</h1>
+      </StudentDashboardLayout>
     </>
   );
 }
