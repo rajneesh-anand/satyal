@@ -27,6 +27,14 @@ function SignInForm({ csrfToken }) {
 
   useEffect(() => {
     if (status === "success") {
+      localStorage.setItem(
+        "cUser",
+        JSON.stringify({
+          name: session?.user?.name,
+          email: session?.user?.email,
+        })
+      );
+
       router.push(
         session?.user?.userType === "Teacher"
           ? `${process.env.NEXT_PUBLIC_SITE_URL}/teacher/dashboard`
@@ -49,8 +57,6 @@ function SignInForm({ csrfToken }) {
     if (result?.status === 200) {
       setStatus("success");
     }
-
-    // if (result?.url) router.push(result.url);
   };
 
   return (
