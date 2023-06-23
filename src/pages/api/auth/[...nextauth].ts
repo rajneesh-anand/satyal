@@ -150,7 +150,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
           token.image = user.image ? user.image.toString() : null;
           token.name = user.firstName ? user.firstName.toString() : "";
           token.userType = user.userType.toString();
-          token.className = user.className.toString();
+          token.className = user.className ? user.className.toString() : "";
         }
         return Promise.resolve(token);
       },

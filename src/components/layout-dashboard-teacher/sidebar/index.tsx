@@ -13,8 +13,8 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   const sidebar = useRef<any>(null);
   const router = useRouter();
   const pathname = router.pathname;
-  console.log(router.query);
-  console.log(pathname);
+  // console.log(router.query);
+  // console.log(pathname);
 
   const [sidebarExpanded, setSidebarExpanded] = useState<boolean>(true);
 

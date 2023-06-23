@@ -20,7 +20,7 @@ const nextConfig = {
   env: {
     API_URL: apiUrl,
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   compiler: {
     removeConsole: process.env.NODE_ENV !== "development",
