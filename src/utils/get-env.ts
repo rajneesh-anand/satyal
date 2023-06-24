@@ -1,7 +1,7 @@
 type EnvVariables = {
-  readonly ENV: "production" | "staging" | "development" | "test";
-  readonly NODE_ENV: "production" | "development";
-  readonly FRAMEWORK_PROVIDER: "graphql" | "rest";
+  readonly ENV: 'production' | 'staging' | 'development' | 'test';
+  readonly NODE_ENV: 'production' | 'development';
+  readonly FRAMEWORK_PROVIDER: 'graphql' | 'rest';
   readonly NEXT_PUBLIC_REST_API_ENDPOINT: string;
   readonly NEXT_PUBLIC_GRAPHQL_API_ENDPOINT: string;
   readonly NEXT_PUBLIC_DEFAULT_LANGUAGE: string;
@@ -20,9 +20,7 @@ type EnvVariables = {
   readonly EMAIL_SERVER_PASSWORD: string;
   readonly EMAIL_FROM: string;
 };
-export function getEnv(
-  name: keyof EnvVariables
-): EnvVariables[keyof EnvVariables] {
+export function getEnv(name: keyof EnvVariables): EnvVariables[keyof EnvVariables] {
   const val = process.env[name];
   if (!val) {
     throw new Error(`Cannot find environmental variable: ${name}`);

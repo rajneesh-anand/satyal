@@ -335,9 +335,7 @@ export const useUI = () => {
 };
 
 export const ManagedUIContext: React.FC<Props> = ({ children }) => (
-  <CartProvider>
-    <UIProvider>
-      <ModalProvider>{children}</ModalProvider>
-    </UIProvider>
-  </CartProvider>
+  <UIProvider>
+    <ModalProvider>{children}</ModalProvider>
+  </UIProvider>
 );

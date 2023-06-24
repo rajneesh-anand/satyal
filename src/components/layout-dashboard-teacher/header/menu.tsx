@@ -4,8 +4,6 @@ import { Menu, Transition } from "@headlessui/react";
 
 function UserMenu() {
   const { data: session, status } = useSession();
-  console.log(session);
-  console.log(session?.user);
 
   return (
     <Menu as="div" className="relative inline-flex ml-auto">

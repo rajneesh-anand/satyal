@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useSession, getSession } from "next-auth/react";
-import { GetServerSideProps } from "next";
-import Layout from "@components/layout";
-import Container from "@components/ui/container";
-import Loader from "@components/ui/loader/loader";
+import React, { useEffect, useState } from 'react';
+import { useSession, getSession } from 'next-auth/react';
+import { GetServerSideProps } from 'next';
+import Layout from '@components/layout';
+import Container from '@components/ui/container';
+import Loader from '@components/ui/loader/loader';
 
 type userType = {
   email: string;
@@ -47,9 +47,7 @@ export default function PhotosPage() {
               className="col-span-12 lg:col-span-3 text-center relative border border-gray-200 rounded shadow hover:bg-gray-100 "
             >
               <div className="text-center py-8">
-                <p className="font-semibold text-[24px] text-rose-700">
-                  {itm.firstName}
-                </p>
+                <p className="font-semibold text-[24px] text-rose-700">{itm.firstName}</p>
                 <p>{itm.lastName}</p>
                 <h3>{itm.email}</h3>
                 <p className="text-slate-600">{itm.address}</p>

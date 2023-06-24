@@ -1,32 +1,21 @@
+import React, { useEffect, useState, useRef } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { getSession, useSession } from "next-auth/react";
 import Seo from "@components/seo/seo";
-import http from "@framework/utils/http";
 import StudentDashboardLayout from "@components/layout-dashboard-student";
-import { UserProvider } from "@contexts/user/user.context";
-import { useEffect } from "react";
-import socket from "@utils/socket";
+import { io } from "socket.io-client";
 
-export default function StudentDashboard({ student }) {
+export default function StudentDashboard() {
+  const socket = useRef<any>();
+  const { data: session, status } = useSession();
+
   useEffect(() => {
-    const sessionID = localStorage.getItem("sessionID");
-
-    if (sessionID) {
-      this.usernameAlreadySelected = true;
-      socket.auth = { sessionID };
-      socket.connect();
+    if (session) {
+      socket.current = io("http://localhost:4000");
+      socket.current.emit("connected", session?.user?.email);
     }
-
-    socket.on("session", ({ sessionID, userID }) => {
-      // attach the session ID to the next reconnection attempts
-      socket.auth = { sessionID };
-      // store it in the localStorage
-      localStorage.setItem("sessionID", sessionID);
-      // save the ID of the user
-      (socket as any).userID = userID;
-    });
-  }, []);
+  }, [session]);
   return (
     <>
       <Seo
@@ -53,12 +42,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
-  const { data } = await http.get(`/student/${session?.user?.id}`, {
-    headers: { Authorization: `Bearer ${session?.accessToken}` },
-  });
   return {
     props: {
-      student: data.data,
       ...(await serverSideTranslations(context.locale!, [
         "common",
         "forms",
