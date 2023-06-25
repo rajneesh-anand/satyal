@@ -20,7 +20,7 @@ export default function Home() {
         heroBanner={heroBanner}
         contentClassName="pb-24 xl:pb-32 pt-16 xl:pt-24"
       />
-      <h1>hello</h1>
+      {/* <h1>hello</h1> */}
 
       <Container className="border border-black border-solid">
         <section className="relative md:py-24 py-16 overflow-hidden">
