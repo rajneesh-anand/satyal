@@ -65,8 +65,8 @@ function AuthMenu() {
                 <Link
                   href={
                     session?.user?.userType === "Student"
-                      ? `/student/${session?.user?.id}`
-                      : `/teacher/${session?.user?.id}`
+                      ? `/student/dashboard`
+                      : `/teacher/dashboard`
                   }
                   className={cn(
                     "block w-full pt-4 pb-3 px-6 text-[12px] font-semibold uppercase text-heading transition duration-200 hover:text-red-800 focus:outline-none ltr:text-left rtl:text-right",
