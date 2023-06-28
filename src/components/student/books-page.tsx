@@ -1,6 +1,7 @@
 import Container from '@components/ui/container';
 import { useSession } from 'next-auth/react';
 import React, { useState, useEffect } from 'react';
+import Link from '@components/ui/link';
 
 export default function StudentBooks() {
   const { data: session, status } = useSession();
@@ -23,22 +24,27 @@ export default function StudentBooks() {
 
   return (
     <Container>
-      <div className="grid grid-cols-12 gap-4 py-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-4">
         {books &&
           books.map((item, idx) => (
-            <div
-              key={idx}
-              className="col-span-12 lg:col-span-3 text-center bg-slate-200 rounded-lg relative shadow-sm hover:bg-slate-300 "
-            >
-              <div className="mt-6 w-fit mx-auto">
-                <img
-                  src="/images/avatar.svg"
-                  className="rounded-full w-28 "
-                  alt="profile picture"
-                />
+            <div key={idx} className="group relative rounded-lg overflow-hidden">
+              <img
+                src={`/images/test/colorful.jpg`}
+                className="w-full h-64 object-cover"
+                alt="Book cover"
+              />
+              <div className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-60"></div>
+              <div className="absolute inset-0 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <h4 className="text-brown text-2xl font-lg">Science</h4>
+                <p className="text-brown text-md font-lg">for class XI</p>
+                <div className="mt-4">
+                  <Link href={`/student/book/colorful`}>
+                    <button className="py-2 px-8 uppercase bg-brown opacity-100 hover:bg-brown-mid text-white text-md font-md rounded-md hover:text-white-dark">
+                      Read
+                    </button>
+                  </Link>
+                </div>
               </div>
-
-              <button>Read</button>
             </div>
           ))}
       </div>

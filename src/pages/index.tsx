@@ -1,12 +1,12 @@
-import Layout from "@components/layout";
-import Container from "@components/ui/container";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { homeTwoHeroBanner as heroBanner } from "@framework/static/banner";
-import HeroSliderBlock from "@components/hero/hero-slider-block";
-import { GetStaticProps } from "next";
-import Seo from "@components/seo/seo";
-import CollectionGrid from "@components/common/collection-grid";
-import Pricing from "@components/pricing";
+import Layout from '@components/layout';
+import Container from '@components/ui/container';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { homeTwoHeroBanner as heroBanner } from '@framework/static/banner';
+import HeroSliderBlock from '@components/hero/hero-slider-block';
+import { GetStaticProps } from 'next';
+import Seo from '@components/seo/seo';
+import CollectionGrid from '@components/common/collection-grid';
+import Pricing from '@components/pricing';
 
 export default function Home() {
   return (
@@ -27,13 +27,12 @@ export default function Home() {
           <div className="container">
             <div className="grid grid-cols-1 pb-8 text-center">
               <h4 className="font-nunito font-bold lg:leading-normal leading-normal text-3xl lg:text-4xl mb-5 text-black dark:text-white">
-                Why Choose{" "}
-                <span className="text-indigo-600">Satyal Online Leaning</span>
+                Why Choose <span className="text-indigo-600">Satyal Online Leaning</span>
               </h4>
 
               <p className="text-slate-400 max-w-xl mx-auto">
-                Start working with Tailwind CSS that can provide everything you
-                need to generate awareness, drive traffic, connect.
+                Start working with Tailwind CSS that can provide everything you need to
+                generate awareness, drive traffic, connect.
               </p>
             </div>
 
@@ -68,8 +67,8 @@ export default function Home() {
                     24/7 Support &amp; Help
                   </a>
                   <p className="text-slate-400 transition-all duration-500 ease-in-out mt-3">
-                    If the distribution of letters and 'words' is random, the
-                    reader will not be distracted from making.
+                    If the distribution of letters and 'words' is random, the reader will
+                    not be distracted from making.
                   </p>
                 </div>
               </div>
@@ -103,8 +102,8 @@ export default function Home() {
                     Affordable Education Fee
                   </a>
                   <p className="text-slate-400 transition-all duration-500 ease-in-out mt-3">
-                    If the distribution of letters and 'words' is random, the
-                    reader will not be distracted from making.
+                    If the distribution of letters and 'words' is random, the reader will
+                    not be distracted from making.
                   </p>
                 </div>
               </div>
@@ -138,8 +137,8 @@ export default function Home() {
                     Highly Skilled Teachers
                   </a>
                   <p className="text-slate-400 transition-all duration-500 ease-in-out mt-3">
-                    If the distribution of letters and 'words' is random, the
-                    reader will not be distracted from making.
+                    If the distribution of letters and 'words' is random, the reader will
+                    not be distracted from making.
                   </p>
                 </div>
               </div>
@@ -181,16 +180,15 @@ export default function Home() {
               <div className="lg:col-span-7 md:col-span-6">
                 <div className="lg:ml-5">
                   <h4 className="font-nunito font-bold lg:leading-normal leading-normal text-2xl lg:text-4xl mb-5 text-black dark:text-white">
-                    Interactive &amp; Fun{" "}
+                    Interactive &amp; Fun{' '}
                     <span className="text-indigo-600">Video Cources</span>
                   </h4>
 
                   <p className="text-slate-400 max-w-xl">
-                    Start working with Tailwind CSS that can provide everything
-                    you need to generate awareness, drive traffic, connect.
-                    Dummy text is text that is used in the publishing industry
-                    or by web designers to occupy the space which will later be
-                    filled with 'real' content.
+                    Start working with Tailwind CSS that can provide everything you need
+                    to generate awareness, drive traffic, connect. Dummy text is text that
+                    is used in the publishing industry or by web designers to occupy the
+                    space which will later be filled with 'real' content.
                   </p>
 
                   <div className="mt-6">
@@ -365,12 +363,7 @@ Home.Layout = Layout;
 export const getStaticProps: GetStaticProps = async ({ locale }: any) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale!, [
-        "common",
-        "forms",
-        "menu",
-        "footer",
-      ])),
+      ...(await serverSideTranslations(locale!, ['common', 'forms', 'menu', 'footer'])),
     },
   };
 };
