@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Sidebar from "@components/layout-dashboard-student/sidebar";
-import Header from "@components/layout-dashboard-student/header";
+import React, { useState } from 'react';
+import Sidebar from '@components/layout-dashboard-student/sidebar';
+import Header from '@components/layout-dashboard-student/header';
 
 export default function ProfileLayout({ children }: React.PropsWithChildren) {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
