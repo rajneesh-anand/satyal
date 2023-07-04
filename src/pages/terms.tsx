@@ -19,24 +19,32 @@ export default function TermsPage() {
         path="terms"
       />
       <PageHeroSection heroTitle="text-page-terms-condition" />
-      <div className="py-12 lg:py-16 2xl:py-20">
+      <div className=" pb-24 ">
         <Container>
           <div className="w-full xl:max-w-[1200px] mx-auto">
-            {termsAndServices?.map((item) => (
+            <p className="text-md md:text-lg font-md text-justify text-black">{termsAndServices.main_description}</p>
+            {termsAndServices?.term.map((item) => (
               // @ts-ignore
               <div
                 key={item.title}
-                className="mb-8 lg:mb-12 last:mb-0 order-list-enable"
+                className="mb-8 my-12 last:mb-0 order-list-enable"
               >
-                <Heading className="mb-4 lg:mb-6 font-body" variant="title">
-                  {t(item.title)}
+               
+                <Heading className="mb-4 lg:mb-6 font-body text-dark-footer" variant="title">
+                <span>{item?.id} .</span> {t(item.title)}
                 </Heading>
-                <div
-                  className="text-skin-muted text-sm lg:text-15px leading-7 space-y-5"
-                  dangerouslySetInnerHTML={{
-                    __html: t(item.description),
-                  }}
-                />
+                <div className="">
+                  <p className="text-justify text-black">{t(item?.sub_description)}</p>
+                  <div className="">
+                    {item?.points&&item?.points.map((subitem)=>{
+                      return(
+                        <p className="text-justify text-black"><span className="pl-2 text-lg  text-black">{subitem?.point_id} .</span> {t(subitem?.point_description)}</p>
+                      )
+                     
+                    })}
+                  </div>
+                  </div>
+              
               </div>
             ))}
           </div>
