@@ -18,7 +18,7 @@ export default function StudentBooks() {
         );
         const { data } = await res.json();
         console.log('Yo books ho hai:', data.books[0]);
-        // console.log('Yo books ho hai:', data.images);
+        console.log('Yo books ko images ho hai:', data.images);
         setBooks(data.books);
         setBookCovers(data.images);
       }
