@@ -17,7 +17,7 @@ export default function StudentBooks() {
           `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/test/book/${studentClass}`
         );
         const { data } = await res.json();
-        console.log('Yo books ho hai:', data.books[0]);
+        console.log('Yo books ho hai:', data.books);
         console.log('Yo books ko images ho hai:', data.images);
         setBooks(data.books);
         setBookCovers(data.images);
@@ -74,7 +74,6 @@ export default function StudentBooks() {
                 className="w-full h-64 object-cover"
                 alt="Book cover"
               />
-              <h1>{idx}</h1>
               <div className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-60"></div>
               <div className="absolute inset-0 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <h4 className="text-brown text-2xl font-lg text-center whitespace-normal">
