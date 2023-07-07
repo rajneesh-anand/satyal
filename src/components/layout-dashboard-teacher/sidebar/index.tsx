@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import Link from "@components/ui/link";
-import { useRouter } from "next/router";
-import Image from "@components/ui/image";
-import SidebarItems from "@components/sidebaritems/SidebarItems";
-import OnlineClass from "../../../assets/icons/Online Class.svg";
-import Assignments from "../../../assets/icons/Assignments.svg";
-import Books from "../../../assets/icons/E-Books.svg";
-import OnlineTest from "../../../assets/icons/Online Test.svg";
-import Questionmaker from "../../../assets/icons/Question.svg";
-import SmartClassVideos from "../../../assets/icons/Smart Class.svg";
-import OnlineTution from "../../../assets/icons/Tuition.svg";
+import React, { useState, useEffect, useRef } from 'react';
+import Link from '@components/ui/link';
+import { useRouter } from 'next/router';
+import Image from '@components/ui/image';
+import SidebarItems from '@components/sidebaritems/SidebarItems';
+import OnlineClass from '../../../assets/icons/Online Class.svg';
+import Assignments from '../../../assets/icons/Assignments.svg';
+import Books from '../../../assets/icons/E-Books.svg';
+import OnlineTest from '../../../assets/icons/Online Test.svg';
+import Questionmaker from '../../../assets/icons/Question.svg';
+import SmartClassVideos from '../../../assets/icons/Smart Class.svg';
+import OnlineTution from '../../../assets/icons/Tuition.svg';
 
 type Props = {
   sidebarOpen: boolean;
@@ -34,53 +34,53 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
         return;
       setSidebarOpen(false);
     };
-    document?.addEventListener("click", clickHandler);
-    return () => document?.removeEventListener("click", clickHandler);
+    document?.addEventListener('click', clickHandler);
+    return () => document?.removeEventListener('click', clickHandler);
   });
 
   useEffect(() => {
-    let bodyElement: Element | null = document.querySelector("body");
+    let bodyElement: Element | null = document.querySelector('body');
     if (sidebarExpanded) {
-      bodyElement?.classList.add("sidebar-expanded");
+      bodyElement?.classList.add('sidebar-expanded');
     } else {
-      bodyElement?.classList.remove("sidebar-expanded");
+      bodyElement?.classList.remove('sidebar-expanded');
     }
   }, [sidebarExpanded]);
 
   const sidebarItems = [
     {
-      title: "Online Class",
-      href: "/",
+      title: 'Online Class',
+      href: '/',
       icon: OnlineClass,
     },
     {
-      title: "Online Test",
-      href: "/",
+      title: 'Online Test',
+      href: '/',
       icon: OnlineTest,
     },
     {
-      title: "Smart Class Videos ",
-      href: "/",
+      title: 'Smart Class Videos ',
+      href: '/',
       icon: SmartClassVideos,
     },
     {
-      title: "E-Books",
-      href: "/",
+      title: 'E-Books',
+      href: '/',
       icon: Books,
     },
     {
-      title: "Question Maker",
-      href: "/",
+      title: 'Question Maker',
+      href: '/',
       icon: Questionmaker,
     },
     {
-      title: "Assignments",
-      href: "/",
+      title: 'Assignments',
+      href: '/',
       icon: Assignments,
     },
     {
-      title: "Host Online Tuition",
-      href: "/",
+      title: 'Host Online Tuition',
+      href: '/',
       icon: OnlineTution,
     },
   ];
@@ -89,7 +89,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
     <div>
       <div
         className={`fixed inset-0 bg-[#690f00] bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
-          sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden="true"
       ></div>
@@ -98,7 +98,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
         id="sidebar"
         ref={sidebar}
         className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-60 lg:w-20 lg:sidebar-expanded:!w-60 2xl:!w-60 shrink-0 bg-[#690f00] p-4 transition-all duration-200 ease-in-out ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-60"
+          sidebarOpen ? 'translate-x-0' : '-translate-x-60'
         }`}
       >
         <div className="flex sidebar-expanded:justify-between justify-center items-center pb-4 ">
@@ -121,7 +121,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
 
           <Link href="/" className="lg:hidden lg:sidebar-expanded:block">
             <Image
-              src="/images/whitelogo.svg"
+              src="/images/White Colour.svg"
               width={100}
               height={32}
               alt="satyal-logo"
@@ -158,11 +158,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
             </h3>
             <ul>
               {sidebarItems.map((item, index) => (
-                <SidebarItems
-                  path={item.href}
-                  Icon={item.icon}
-                  title={item.title}
-                />
+                <SidebarItems path={item.href} Icon={item.icon} title={item.title} />
               ))}
             </ul>
           </div>
