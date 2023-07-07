@@ -22,7 +22,7 @@ export default function Home() {
       />
       {/* <h1>hello</h1> */}
 
-      <Container className="border border-black border-solid">
+      <Container className="">
         <section className="relative md:py-24 py-16 overflow-hidden">
           <div className="container ">
             <div className="grid grid-cols-1 pb-8 text-center">
@@ -214,7 +214,7 @@ export default function Home() {
         className="mb-12 pb-1 lg:pb-0 lg:mb-14 xl:mb-16 2xl:pt-4"
       />
 
-      <div className="container md:py-24 py-16 border border-red border-solid">
+      <div className="container md:py-24 py-16 ">
         <div className="grid grid-cols-1 lg:grid-cols-2  gap-[30px]">
           <div className="pb-10 col-span-full md:col-span-1 mb-4 mt-16">
             <div className="flex justify-start items-center mx-4 md:mx-32">

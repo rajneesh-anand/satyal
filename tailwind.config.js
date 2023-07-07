@@ -19,10 +19,11 @@ module.exports = {
       nunito: ['"Nunito", sans-serif'],
     },
     extend: {
-      // backgroundImage: {
-      //   "sidebar-image-mobile": "url('/public/images/bg-sidebar-mobile.svg')",
-      //   "sidebar-image-desktop": "url('/public/images/bg-sidebar-desktop.svg')",
-      // },
+      backgroundImage: {
+        "sidebar-image-mobile": "url('/public/images/bg-sidebar-mobile.svg')",
+        "sidebar-image-desktop": "url('/public/images/bg-sidebar-desktop.svg')",
+       
+      },
       colors: {
         "primary-marine-blue": "#02295a",
         "primary-purplish-blue": "#473dff",
@@ -34,6 +35,7 @@ module.exports = {
         "neutral-magnolia": "#f0f6ff",
         "neutral-alabaster": "#fafbff",
         "dark-footer": "#690f00",
+        "main-background":"#fff",
         brown: "#690f00",
       },
       textColor: {
@@ -175,8 +177,10 @@ module.exports = {
         vendorSidebar:
           "0px 1px 2px rgba(0, 0, 0, 0.03), 0px 1px 3px rgba(0, 0, 0, 0.05)",
       },
+
     },
   },
+ 
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),

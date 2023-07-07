@@ -19,7 +19,7 @@ export default function TermsPage() {
         path="terms"
       />
       <PageHeroSection heroTitle="text-page-terms-condition" />
-      <div className=" pb-24 ">
+      <div className=" pb-24 bg-main-background ">
         <Container>
           <div className="w-full xl:max-w-[1200px] mx-auto">
             <p className="text-md md:text-lg font-md text-justify text-black">{termsAndServices.main_description}</p>

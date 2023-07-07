@@ -16,6 +16,7 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
   const options = siteSettings.paymentOptions;
   const [status, setStatus] = useState("");
 
+
   useEffect(() => {
     if (status !== "") {
       toast.error(`${status}`, {
@@ -65,26 +66,30 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
   };
 
   return (
-    <div className="w-full md:w-[508px] mx-auto p-5 sm:p-8  rounded-sm">
+    <div className="w-full md:w-[1108px] mx-auto p-5 px-0 sm:p-8  rounded-sm ">
       <div className="text-center pb-8">
         <h4 className="uppercase font-semibold font-body">
           Pick Your Payment Option
         </h4>
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center flex-wrap xl:flex-nowrap ">
         {options?.map((item, index) => (
           <button
             key={index}
             onClick={(e) => paymentHandler(e, item.name)}
-            className="inline-block mx-4 px-2 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-dark-footer hover:shadow-lg focus:bg-dark-footer focus:shadow-lg focus:outline-none focus:ring-0 active:bg-dark-footer active:shadow-lg transition duration-150 ease-in-out"
+            className="inline-block mx-3 my-2 xl:my-0 md:mx-4  px-2 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-dark-footer hover:shadow-lg focus:bg-dark-footer focus:shadow-lg focus:outline-none focus:ring-0 active:bg-dark-footer active:shadow-lg transition duration-150 ease-in-out w-[100px] h-[100px]"
           >
             <Image
               src={item.iconSrc}
               alt={item.name}
+              width={100}
+              height={100}
               quality={100}
-              width={80}
-              height={80}
-              objectFit="fill"
+              style={{
+                width:"100%",
+                height:"100%",
+                
+              }}
             />
           </button>
         ))}
@@ -94,3 +99,6 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
 };
 
 export default Payment;
+
+// 
+// objectFit="fill"

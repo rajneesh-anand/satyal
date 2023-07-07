@@ -7,6 +7,7 @@ import Alert from "@components/ui/alert";
 import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface FormValues {
   email: string;
@@ -61,19 +62,29 @@ function SignInForm({ csrfToken }) {
 
   return (
     <div className="max-w-screen-xl px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg mt-6">
-      <div className="text-center pt-4">
+      <div className="text-center pt-4 ">
         <div>
           <h2 className="text-xl lg:text-2xl font-semibold leading-tight">
             Sign In to Satyal Digital Learning
           </h2>
-          <div className="text-gray-700 mt-4">
+          {/* <div className="text-gray-700 mt-4">
             Refer 5 friends &amp; Get 50% Discount on Tuitionn Fee
+          </div> */}
+          <div className="pt-6 hidden md:block">
+            <Image src="/images/hero/design-img.svg" alt="desing image"
+            width={200}
+            height={200}/>
+
+             <Image src="/images/hero/design-img2.svg" alt="desing image"
+            width={200}
+            height={200}/>
+
           </div>
         </div>
         <div className="mt-1 lg:mt-[56px] ">{/* <HeroIcon /> */}</div>
       </div>
-      <div className="flex justify-center items-center">
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full md:px-16">
+      <div className="flex justify-center items-center ">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full lg:px-16">
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <Input
             label="Email"

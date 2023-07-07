@@ -30,7 +30,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
     };
     document?.addEventListener('click', clickHandler);
     return () => document?.removeEventListener('click', clickHandler);
-  });
+  },[]);
 
   useEffect(() => {
     let bodyElement: Element | null = document.querySelector('body');
@@ -42,7 +42,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   }, [sidebarExpanded]);
 
   return (
-    <div>
+    <div >
       <div
         className={`fixed inset-0 bg-[#690f00] bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
           sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -75,7 +75,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
             </svg>
           </button>
 
-          <Link href="/" className="lg:hidden lg:sidebar-expanded:block">
+          <Link href="/" className="lg:hidden lg:sidebar-expanded:block ">
             <Image
               src="/images/whitelogo.svg"
               width={100}
@@ -83,7 +83,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
               alt="satyal-logo"
             />
           </Link>
-          <div className="hidden lg:inline-flex 2xl:hidden justify-end mt-0">
+          <div className="hidden lg:inline-flex 2xl:hidden justify-end mt-0 ">
             <button onClick={() => setSidebarExpanded(!sidebarExpanded)}>
               <span className="sr-only">Expand / collapse sidebar</span>
               <svg
@@ -99,7 +99,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
           </div>
         </div>
 
-        <div className="space-y-8  pt-4">
+        <div className="space-y-8  pt-4 ">
           <div>
             <h3 className="text-xs uppercase text-gray-500 font-semibold pl-3">
               <span
@@ -124,7 +124,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
                     pathname === '/' && 'hover:text-gray-200'
                   }`}
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-center ">
                     <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                       <path
                         className={`fill-current text-gray-400 ${

@@ -12,8 +12,10 @@ declare module "AppTypes" {
 
   export interface StudentInfo {
     fname: string;
+    mname?:string;
     lname: string;
-    parent?: string;
+    parentName: string;
+    parentContact:string;
     email: string;
     password: string;
     class?: string | ValueType;
@@ -25,6 +27,7 @@ declare module "AppTypes" {
 
   export interface TeacherInfo {
     fname: string;
+    mname?:string;
     lname: string;
     email: string;
     password: string;
@@ -32,15 +35,19 @@ declare module "AppTypes" {
     city: string;
     state?: string | ValueType;
     mobile: string;
+    schoolName:string;
+    schoolContact:string;
+    schoolAddress:string;
+    schoolCity:string;
+    schoolState:string | ValueType;  
   }
 
   export interface TeacherKYCInfo {
-    branch?: string;
-    name?: string;
-    number?: string;
-    bank?: string;
-    subjects?: any;
-    class?: any;
+    bank_branch: string;
+    accountHolder_name: string;
+    account_number: string;
+    bank: string;
+    subjects: any;
     citizen_image_first: File | null;
     citizen_image_last?: File | null;
     school_identity_card?: File | null;

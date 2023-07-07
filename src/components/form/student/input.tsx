@@ -22,11 +22,11 @@ export const Input = ({
   return (
     <div className="flex flex-col font-medium">
       <span className="inline-flex justify-between">
-        <label htmlFor={label} className="text-sm text-primary-marine-blue ">
+        <label htmlFor={label} className="text-md text-primary-marine-blue ">
           {label}
         </label>
         {required && showRequired && (
-          <p className="text-primary-starberry-red leading-3">
+          <p className="text-primary-starberry-red leading-3 text-sm">
             This field is required
           </p>
         )}

@@ -9,7 +9,7 @@ export const selectStyles = {
     paddingBottom: 8,
     cursor: "pointer",
     borderBottom: "1px solid #E5E7EB",
-    backgroundColor: state.isSelected
+     backgroundColor: state.isSelected
       ? "#efefef"
       : state.isFocused
       ? "#F9FAFB"
@@ -20,7 +20,7 @@ export const selectStyles = {
     alignItems: "center",
     // minHeight: "2rem",
     backgroundColor: "#ffffff",
-    borderRadius: 5,
+     borderRadius: 5,
     border: "1px solid #d6d9e6",
     borderColor: state.isFocused ? "rgb(var(--color-gray-500))" : "#d6d9e6",
     boxShadow:
@@ -50,10 +50,12 @@ export const selectStyles = {
   menu: (provided: any) => ({
     ...provided,
     borderRadius: 5,
+  
     border: "1px solid #E5E7EB",
-    boxShadow:
+     boxShadow:
       "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
   }),
+ 
   valueContainer: (provided: any, state: any) => ({
     ...provided,
     paddingLeft: state.isRtl ? 4 : 16,
@@ -100,5 +102,6 @@ export const selectStyles = {
     ...provided,
     fontSize: "0.875rem",
     color: "rgba(107, 114, 128, 0.7)",
-  }),
+  })
+
 };

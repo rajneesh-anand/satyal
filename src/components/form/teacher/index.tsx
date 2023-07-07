@@ -23,21 +23,27 @@ function RegisterTeacherForm() {
     useState<UserServiceConfiguration>({
       teacherInfo: {
         fname: "",
+        mname:"",
         lname: "",
         email: "",
         password: "",
         address: "",
         city: "",
-        state: "",
+        state: { value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" },
         mobile: "",
+        schoolName:"",
+        schoolContact:"",
+        schoolAddress:"",
+        schoolCity:"",
+        schoolState:{ value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" }
       },
       teacherKYCInfo: {
-        branch: "",
-        name: "",
-        number: "",
+        bank_branch: "",
+        accountHolder_name: "",
+        account_number: "",
         bank: "",
         subjects: "",
-        class: "",
+        // class:"",
         citizen_image_first: null,
         citizen_image_last: null,
         school_identity_card: null,
@@ -45,6 +51,10 @@ function RegisterTeacherForm() {
         degree_master: null,
       },
     });
+  console.log('information of teacher');
+  
+console.log(userServiceConfiguration.teacherInfo);
+console.log(userServiceConfiguration.teacherKYCInfo);
 
   const updateTeacherInfo = (teacherInfo: TeacherInfo) => {
     setUserServiceConfiguration({ ...userServiceConfiguration, teacherInfo });
@@ -58,6 +68,9 @@ function RegisterTeacherForm() {
   };
 
   const nextStep = (onGoingStep?: number) => {
+    
+   
+    
     if (step === 3) return;
     if (step === 1 || (onGoingStep && onGoingStep !== 1 && step === 1)) {
       if (
@@ -68,20 +81,26 @@ function RegisterTeacherForm() {
         !userServiceConfiguration.teacherInfo.password ||
         !userServiceConfiguration.teacherInfo.mobile ||
         !userServiceConfiguration.teacherInfo.city ||
-        !userServiceConfiguration.teacherInfo.address
+        !userServiceConfiguration.teacherInfo.address||
+        !userServiceConfiguration.teacherInfo.schoolName||
+        !userServiceConfiguration.teacherInfo.schoolContact||
+        !userServiceConfiguration.teacherInfo.schoolAddress||
+        !userServiceConfiguration.teacherInfo.schoolCity
+        
       ) {
         setShowRequiredFields(true);
         return;
       }
     }
-
+  
     if (step === 2 || (onGoingStep && onGoingStep !== 2 && step === 2)) {
+    
+      
       if (
-        !userServiceConfiguration.teacherKYCInfo.name ||
-        !userServiceConfiguration.teacherKYCInfo.number ||
+        !userServiceConfiguration.teacherKYCInfo.accountHolder_name ||
+        !userServiceConfiguration.teacherKYCInfo.account_number ||
         !userServiceConfiguration.teacherKYCInfo.bank ||
-        !userServiceConfiguration.teacherKYCInfo.branch ||
-        !userServiceConfiguration.teacherKYCInfo.class ||
+        !userServiceConfiguration.teacherKYCInfo.bank_branch ||
         !userServiceConfiguration.teacherKYCInfo.subjects
       ) {
         setShowRequiredFields(true);
@@ -90,6 +109,8 @@ function RegisterTeacherForm() {
     }
 
     setStep((step) => {
+      
+      
       if (onGoingStep) return onGoingStep;
       return step + 1;
     });
@@ -116,17 +137,18 @@ function RegisterTeacherForm() {
 
   const handleFormSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
+    console.log('submit button is clicked');
     if (
-      !userServiceConfiguration.teacherKYCInfo.name ||
-      !userServiceConfiguration.teacherKYCInfo.number ||
+      !userServiceConfiguration.teacherKYCInfo.accountHolder_name ||
+      !userServiceConfiguration.teacherKYCInfo.account_number ||
       !userServiceConfiguration.teacherKYCInfo.bank ||
-      !userServiceConfiguration.teacherKYCInfo.branch ||
-      !userServiceConfiguration.teacherKYCInfo.class ||
+      !userServiceConfiguration.teacherKYCInfo.bank_branch ||
       !userServiceConfiguration.teacherKYCInfo.subjects
     ) {
       setShowRequiredFields(true);
       return;
     }
+
 
     const formData = new FormData();
     formData.append(
@@ -150,32 +172,39 @@ function RegisterTeacherForm() {
       userServiceConfiguration.teacherKYCInfo.degree_master
     );
     formData.append(
-      "class",
-      JSON.stringify(userServiceConfiguration.teacherKYCInfo.class)
-    );
-    formData.append(
       "subjects",
       JSON.stringify(userServiceConfiguration.teacherKYCInfo.subjects)
     );
     formData.append("bankName", userServiceConfiguration.teacherKYCInfo.bank);
     formData.append(
       "accountNumber",
-      userServiceConfiguration.teacherKYCInfo.number
+      userServiceConfiguration.teacherKYCInfo.account_number
     );
-    formData.append("name", userServiceConfiguration.teacherKYCInfo.name);
-    formData.append("branch", userServiceConfiguration.teacherKYCInfo.branch);
+    formData.append("accountName", userServiceConfiguration.teacherKYCInfo.accountHolder_name);
+    formData.append("branch", userServiceConfiguration.teacherKYCInfo.bank_branch);
     formData.append("fname", userServiceConfiguration.teacherInfo.fname);
+    formData.append("mname", userServiceConfiguration.teacherInfo.mname);
     formData.append("lname", userServiceConfiguration.teacherInfo.lname);
     formData.append("email", userServiceConfiguration.teacherInfo.email);
     formData.append("password", userServiceConfiguration.teacherInfo.password);
     formData.append("address", userServiceConfiguration.teacherInfo.address);
     formData.append("city", userServiceConfiguration.teacherInfo.city);
+    formData.append("schoolName", userServiceConfiguration.teacherInfo.schoolName);
+    formData.append("schoolContact", userServiceConfiguration.teacherInfo.schoolContact);
+    formData.append("schoolAddress", userServiceConfiguration.teacherInfo.schoolAddress);
+    formData.append("schoolCity", userServiceConfiguration.teacherInfo.schoolCity);
+    formData.append(
+      "schoolProvince",
+      JSON.stringify(userServiceConfiguration.teacherInfo.schoolState)
+    );
     formData.append(
       "province",
       JSON.stringify(userServiceConfiguration.teacherInfo.state)
     );
     formData.append("mobile", userServiceConfiguration.teacherInfo.mobile);
     formData.append("userType", "Teacher");
+   
+    
     try {
       setProcessing(true);
       const res = await fetch(
@@ -199,8 +228,10 @@ function RegisterTeacherForm() {
     }
   };
 
+
+
   return (
-    <main className="h-full flex flex-col text-neutral-cool-gray w-full lg:mx-auto lg:mb-12  grow lg:p-4 lg:rounded-lg lg:bg-white lg:shadow">
+    <main className="h-full flex flex-col text-neutral-cool-gray w-full lg:mx-auto lg:mb-12  grow lg:p-4 lg:rounded-lg lg:bg-white lg:shadow ">
       <Sidebar currentStep={step} handleNextStep={nextStep} />
       <div className="px-4 relative bg-neutral-magnolia  lg:bg-transparent lg:flex lg:flex-col lg:w-full ">
         <form className="bg-neutral-alabaster px-6 py-9  rounded-[0.625rem] -translate-y-[4.5rem]  w-full grow [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-primary-marine-blue [&_h3]:font-medium [&_h3]:text-primary-marine-blue lg:bg-transparent lg:translate-y-0 ">
@@ -236,7 +267,7 @@ function RegisterTeacherForm() {
               </Button>
             </li>
             <li>
-              <button onClick={handleFormSubmit}>
+              <button onClick={handleFormSubmit} className="bg-dark-footer py-2 px-4 rounded-md text-white font-semibold hover:text-dark-footer hover:bg-white border border-solid border-dark-footer cursor-pointer">
                 {processing ? "Submitting ... " : "Submit"}
               </button>
             </li>

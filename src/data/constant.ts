@@ -5,6 +5,27 @@ export interface ValueType {
 
 export const classOptions: ValueType[] = [
   {
+    label: "CLASS I",
+    value: "CLASS I",
+  },
+  {
+    label: "CLASS II",
+    value: "CLASS II",
+  },
+  {
+    label: "CLASS III",
+    value: "CLASS III",
+  },
+  {
+    label: "CLASS IV",
+    value: "CLASS IV",
+  },
+  {
+    label: "CLASS V",
+    value: "CLASS V",
+  },
+
+  {
     label: "CLASS VI",
     value: "CLASS VI",
   },
@@ -17,9 +38,7 @@ export const classOptions: ValueType[] = [
     value: "CLASS VIII",
   },
   { value: "CLASS IX", label: "CLASS IX" },
-  { value: "CLASS X", label: "CLASS X" },
-  { value: "CLASS XI", label: "CLASS XI" },
-  { value: "CLASS XII", label: "CLASS XII" },
+  { value: "CLASS X", label: "CLASS X" }
 ];
 
 export const subjectsOptions: ValueType[] = [
@@ -30,11 +49,15 @@ export const subjectsOptions: ValueType[] = [
 ];
 
 export const statesOptions: ValueType[] = [
-  { value: "Delhi", label: "Delhi" },
-  { value: "Haryana", label: "Haryana" },
-  { value: "Uttar Pradesh", label: "Uttar Pradesh" },
-  { value: "Punjab", label: "Punjab" },
+  { value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" },
+  { value: "State 1 [ Koshi Province ]", label: "State 1 [ Koshi Province ]" },
+  { value: "State 2 [ Madesh Province ]", label: "State 2 [ Madesh Province ]" },
+  { value: "State 4 [ Gandaki  Province ]", label: "State 4 [ Gandaki  Province ]" },
+  { value: "State 5 [ Lumbini  Province ]", label: "State 5 [ Lumbini  Province ]" },
+  { value: "State 6 [ Karnali  Province ]", label: "State 6 [ Karnali  Province ]" },
+  { value: "State 7 [ Sudur Pashchim Province ]", label: "State 7 [ Sudur Pashchim Province ]" },
 ];
+
 
 export const documentOptions: ValueType[] = [
   {
