@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect, Fragment } from "react";
-import { useSession, signOut } from "next-auth/react";
-import Link from "@components/ui/link";
-import { Menu, Transition } from "@headlessui/react";
-import cn from "classnames";
-import { useRouter } from "next/router";
+import React, { useState, useRef, useEffect, Fragment } from 'react';
+import { useSession, signOut } from 'next-auth/react';
+import Link from '@components/ui/link';
+import { Menu, Transition } from '@headlessui/react';
+import cn from 'classnames';
+import { useRouter } from 'next/router';
 
 function AuthMenu() {
   const { data: session, status } = useSession();
@@ -13,14 +13,11 @@ function AuthMenu() {
   }
 
   return (
-    <Menu
-      as="div"
-      className="relative inline-block ltr:text-left rtl:text-right"
-    >
+    <Menu as="div" className="relative inline-block ltr:text-left rtl:text-right">
       <Menu.Button className="flex items-center focus:outline-none">
         <img
           className="w-8 h-8 rounded-full"
-          src={session?.user?.image ?? "/images/avatar.svg"}
+          src={session?.user?.image ?? '/images/avatar.svg'}
           width="32"
           height="32"
           alt="User"
@@ -50,7 +47,7 @@ function AuthMenu() {
         <Menu.Items
           as="ul"
           className={cn(
-            "absolute mt-1 w-32 rounded bg-gray-100 pb-4 shadow-700 focus:outline-none ltr:right-0 ltr:origin-top-right rtl:left-0 rtl:origin-top-left"
+            'absolute mt-1 w-32 rounded bg-gray-100 pb-4 shadow-700 focus:outline-none ltr:right-0 ltr:origin-top-right rtl:left-0 rtl:origin-top-left'
           )}
         >
           {/* <Menu.Item>
@@ -64,13 +61,13 @@ function AuthMenu() {
               <li>
                 <Link
                   href={
-                    session?.user?.userType === "Student"
-                      ? `/student/${session?.user?.id}`
-                      : `/teacher/${session?.user?.id}`
+                    session?.user?.userType === 'Student'
+                      ? `/student/dashboard`
+                      : `/teacher/dashboard`
                   }
                   className={cn(
-                    "block w-full pt-4 pb-3 px-6 text-[12px] font-semibold uppercase text-heading transition duration-200 hover:text-red-800 focus:outline-none ltr:text-left rtl:text-right",
-                    active ? "text-red-600" : "text-heading"
+                    'block w-full pt-4 pb-3 px-6 text-[12px] font-semibold uppercase text-heading transition duration-200 hover:text-red-800 focus:outline-none ltr:text-left rtl:text-right',
+                    active ? 'text-red-600' : 'text-heading'
                   )}
                 >
                   My Account
@@ -84,7 +81,7 @@ function AuthMenu() {
               <button
                 onClick={handleSignOut}
                 className={cn(
-                  "block w-full pb-4 px-6 text-[12px] font-semibold uppercase text-heading transition duration-200 hover:text-accent focus:outline-none ltr:text-left rtl:text-right"
+                  'block w-full pb-4 px-6 text-[12px] font-semibold uppercase text-heading transition duration-200 hover:text-accent focus:outline-none ltr:text-left rtl:text-right'
                 )}
               >
                 Sign Out

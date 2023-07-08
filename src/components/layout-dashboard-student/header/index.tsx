@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
-import Logowhite from "@components/ui/whitelogo";
-import MenuIcon from "@components/icons/menu-icon";
-import { Drawer } from "@components/common/drawer";
-import dynamic from "next/dynamic";
-import { getDirection } from "@utils/get-direction";
-import { useUI } from "@contexts/ui.context";
-import UserMenu from "@components/layout-dashboard-teacher/header/menu";
+import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
+import Logowhite from '@components/ui/whitelogo';
+import MenuIcon from '@components/icons/menu-icon';
+import { Drawer } from '@components/common/drawer';
+import dynamic from 'next/dynamic';
+import { getDirection } from '@utils/get-direction';
+import { useUI } from '@contexts/ui.context';
+import UserMenu from '@components/layout-dashboard-teacher/header/menu';
 
 const MobileMenu = dynamic(
-  () => import("@components/layout-dashboard-teacher/header/mobile-menu")
+  () => import('@components/layout-dashboard-teacher/header/mobile-menu')
 );
 
 type Props = {
@@ -23,7 +23,7 @@ const Header: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   const { locale } = useRouter();
   const dir = getDirection(locale);
   const { openSidebar, closeSidebar, displaySidebar } = useUI();
-  const contentWrapperCSS = dir === "ltr" ? { left: 0 } : { right: 0 };
+  const contentWrapperCSS = dir === 'ltr' ? { left: 0 } : { right: 0 };
   function handleMobileMenu() {
     return openSidebar();
   }
@@ -42,21 +42,22 @@ const Header: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
         return;
       setSidebarOpen(false);
     };
-    document?.addEventListener("click", clickHandler);
-    return () => document?.removeEventListener("click", clickHandler);
+    document?.addEventListener('click', clickHandler);
+    return () => document?.removeEventListener('click', clickHandler);
   });
 
   useEffect(() => {
-    let bodyElement: Element | null = document.querySelector("body");
+    let bodyElement: Element | null = document.querySelector('body');
     if (sidebarExpanded) {
-      bodyElement?.classList.add("sidebar-expanded");
+      bodyElement?.classList.add('sidebar-expanded');
     } else {
-      bodyElement?.classList.remove("sidebar-expanded");
+      bodyElement?.classList.remove('sidebar-expanded');
     }
   }, [sidebarExpanded]);
 
   return (
-    <header className="sticky top-0 bg-red-700 lg:bg-gray-200 border-b border-gray-400 z-30">
+    <header className="sticky top-0 bg-red-700 lg:bg-gray-100  border-gray-100 z-30">
+      {/* <header className="sticky top-0 bg-red-700 lg:bg-white z-30"> */}
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-14 ">
           <button
@@ -73,7 +74,7 @@ const Header: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
       </div>
 
       <Drawer
-        placement={dir === "rtl" ? "right" : "left"}
+        placement={dir === 'rtl' ? 'right' : 'left'}
         open={displaySidebar}
         onClose={closeSidebar}
         handler={false}

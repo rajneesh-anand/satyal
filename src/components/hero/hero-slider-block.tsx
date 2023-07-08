@@ -1,11 +1,12 @@
-import HeroBannerCard from "@components/hero/hero-banner-card";
-import Carousel from "@components/ui/carousel/carousel";
-import { SwiperSlide } from "@components/ui/carousel/slider";
-import Container from "@components/ui/container";
-import Link from "@components/ui/link";
-import { FaFacebook, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import { YouTubeIcon } from "@components/icons/youtube";
-import { HeartOutlineIcon } from "@components/icons/heart-outline";
+import HeroBannerCard from '@components/hero/hero-banner-card';
+import Carousel from '@components/ui/carousel/carousel';
+import { SwiperSlide } from '@components/ui/carousel/slider';
+import Container from '@components/ui/container';
+import Link from '@components/ui/link';
+import { FaFacebook, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+import { YouTubeIcon } from '@components/icons/youtube';
+import { HeartOutlineIcon } from '@components/icons/heart-outline';
+import { useSession } from 'next-auth/react';
 
 interface Props {
   heroBanner?: any;
@@ -16,8 +17,10 @@ interface Props {
 const HeroSliderBlock: React.FC<Props> = ({
   heroBanner,
   className,
-  contentClassName = "py-24",
+  contentClassName = 'py-24',
 }) => {
+  const { data: session, status } = useSession();
+
   return (
     <div>
       <Carousel
@@ -42,25 +45,27 @@ const HeroSliderBlock: React.FC<Props> = ({
               <div className="md:col-span-6 md:text-left text-center mt-4 lg:mt-24">
                 <div className="md:ml-8">
                   <h4 className="font-bold font-nunito lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 text-black dark:text-white relative">
-                    Learn with{" "}
+                    Learn with{' '}
                     <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-indigo-600 relative inline-block">
                       <span className="relative text-white">Experts</span>
-                    </span>{" "}
+                    </span>{' '}
                     Anytime &amp; Anywhere
                   </h4>
 
                   <p className="text-slate-400 text-lg max-w-xl">
-                    We collaborate with people, teams, and businesses to develop
-                    design systems, strategies, and processes to do a better
-                    creative work everyday.
+                    We collaborate with people, teams, and businesses to develop design
+                    systems, strategies, and processes to do a better creative work
+                    everyday.
                   </p>
                   <div className="text-center mt-8">
-                    <Link
-                      href="/auth/register"
-                      className="inline-block px-6 py-2.5 bg-blue-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                    >
-                      Get Started
-                    </Link>
+                    {session ? null : (
+                      <Link
+                        href="/auth/register"
+                        className="inline-block px-6 py-2.5 bg-blue-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-lg hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                      >
+                        Get Started
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -109,9 +114,9 @@ const HeroSliderBlock: React.FC<Props> = ({
                     We are a full-service digital agency
                   </h4>
                   <p className="text-slate-400 text-lg max-w-xl">
-                    We collaborate with people, teams, and businesses to develop
-                    design systems, strategies, and processes to do a better
-                    creative work everyday.
+                    We collaborate with people, teams, and businesses to develop design
+                    systems, strategies, and processes to do a better creative work
+                    everyday.
                   </p>
                 </div>
               </div>
@@ -160,9 +165,9 @@ const HeroSliderBlock: React.FC<Props> = ({
                     We are a full-service digital agency
                   </h4>
                   <p className="text-slate-400 text-lg max-w-xl">
-                    We collaborate with people, teams, and businesses to develop
-                    design systems, strategies, and processes to do a better
-                    creative work everyday.
+                    We collaborate with people, teams, and businesses to develop design
+                    systems, strategies, and processes to do a better creative work
+                    everyday.
                   </p>
                 </div>
               </div>
