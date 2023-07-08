@@ -26,29 +26,55 @@ export const siteSettings = {
   paymentOptions: [
     {
       id: "1",
+      name: "Khalti",
+      iconSrc: "/images/payment/khalti-seeklogo.com.svg",
+    },
+    {
+      id: "2",
+      name: "Esewa",
+      iconSrc: "/images/payment/esewa-seeklogo.com.svg",
+    },
+    {
+      id: "3",
+      name: "Fonepay",
+      iconSrc: "/images/payment/fonepay.svg",
+    },
+    {
+      id: "4",
       name: "Master Card",
       iconSrc: "/images/payment/mastercard.svg",
     },
     {
-      id: "2",
+      id: "5",
       name: "Visa Card",
       iconSrc: "/images/payment/visa.svg",
     },
     {
-      id: "3",
-      name: "Paypal",
-      iconSrc: "/images/payment/paypal.svg",
+      id: "6",
+      name: "Mobile-Banking",
+      iconSrc: "/images/payment/mobile-banking.svg",
+    },
+    // {
+    //   id: "7",
+    //   name: "Unionpay",
+    //   iconSrc: "/images/payment/unionpay-seeklogo.com (1).svg",
+    // },
+    {
+      id: "8",
+      name: "Connect-ips",
+      iconSrc: "/images/payment/connectips.svg",
     },
     {
-      id: "4",
-      name: "JCB",
-      iconSrc: "/images/payment/jcb.svg",
+      id: "9",
+      name: "E-Banking",
+      iconSrc: "/images/payment/E-Banking.svg",
     },
     {
-      id: "5",
-      name: "Skrill",
-      iconSrc: "/images/payment/skrill.svg",
-    },
+      id: "10",
+      name: "SCT-Banking",
+      iconSrc: "/images/payment/sct-logo.svg",
+    }
+  
   ],
 
   site_header: {

@@ -1,27 +1,34 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Plan, StudentInfo, UserServiceConfiguration } from "AppTypes";
 import { Button } from "@components/ui/button/button";
 import { PersonalInfo } from "@components/form/student/personal-info";
 import { SelectPlan } from "@components/form/student/select-plan";
 import { Sidebar } from "@components/form/student/sidebar";
 import Payment from "@components/form/student/payment";
-
+import { toast } from "react-toastify";
+import useWindowSize from "@utils/use-window-size";
 function RegisterStudentForm() {
   const [step, setStep] = useState(1);
   const [showRequired, setShowRequiredFields] = useState(false);
-
+  const [status, setStatus] = useState("");
+  const { width } = useWindowSize();
   const [userServiceConfiguration, setUserServiceConfiguration] =
     useState<UserServiceConfiguration>({
       studentInfo: {
         fname: "",
+        mname:"",
         lname: "",
         email: "",
         password: "",
-        class: "",
-        parent: "",
+        class:  {
+          label: "CLASS I",
+          value: "CLASS I",
+        },
+        parentName: "",
+        parentContact:"",
         address: "",
         city: "",
-        state: "",
+        state: { value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" },
         mobile: "",
       },
       selectedPlan: null,
@@ -38,6 +45,7 @@ function RegisterStudentForm() {
     });
   };
 
+
   const nextStep = (onGoingStep?: number) => {
     if (step === 4) return;
     if (step === 1 || (onGoingStep && onGoingStep !== 1 && step === 1)) {
@@ -48,11 +56,19 @@ function RegisterStudentForm() {
         !userServiceConfiguration.studentInfo.email.includes("@") ||
         !userServiceConfiguration.studentInfo.password ||
         !userServiceConfiguration.studentInfo.mobile ||
-        !userServiceConfiguration.studentInfo.parent ||
+        !userServiceConfiguration.studentInfo.parentName ||
         !userServiceConfiguration.studentInfo.city ||
-        !userServiceConfiguration.studentInfo.address
+        !userServiceConfiguration.studentInfo.address||
+        !userServiceConfiguration.studentInfo.parentContact
+        
       ) {
         setShowRequiredFields(true);
+        return;
+      }
+    }
+    if(step===2|| (onGoingStep && onGoingStep !== 2 && step === 2)){
+      if(!userServiceConfiguration.selectedPlan){
+        setStatus('Please select a plan')
         return;
       }
     }
@@ -67,8 +83,26 @@ function RegisterStudentForm() {
     setStep((step) => step - 1);
   };
 
+useEffect(() => {
+  
+    if (status !== "") {
+    toast.error(`${status}`, {
+      progressClassName: "fancy-progress-bar",
+      position: width! > 768 ? "bottom-right" : "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  }  
+setTimeout(() => {
+  setStatus("")
+}, 500);
+}, [status]);
+
   return (
-    <main className="h-full flex flex-col text-neutral-cool-gray w-full lg:mx-auto  lg:mt-4 lg:mb-12  grow lg:p-4 lg:rounded-lg lg:bg-white md:h-[56.75rem] lg:shadow">
+    <main className="h-full flex flex-col text-neutral-cool-gray w-full lg:mx-auto  lg:mt-4 lg:mb-12  grow lg:p-4 lg:rounded-lg lg:bg-white lg:h-[56.75rem] lg:shadow">
       <Sidebar currentStep={step} handleNextStep={nextStep} />
       <div className="px-4 relative bg-neutral-magnolia  lg:bg-transparent lg:flex lg:flex-col lg:w-full ">
         <form className="bg-neutral-alabaster px-6 py-9 rounded-[0.625rem] -translate-y-[4.5rem] flex justify-center w-full grow [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-primary-marine-blue [&_h3]:font-medium [&_h3]:text-primary-marine-blue lg:bg-transparent lg:translate-y-0 ">
@@ -83,6 +117,7 @@ function RegisterStudentForm() {
             <SelectPlan
               selectedPlan={userServiceConfiguration.selectedPlan}
               updateSelectedPlan={updateSelectedPlan}
+              studentClass={userServiceConfiguration.studentInfo.class}
             />
           )}
           {step === 3 && (
@@ -93,7 +128,7 @@ function RegisterStudentForm() {
           )}
         </form>
         {step === 1 && (
-          <ul className="flex justify-center p-4 mt-auto">
+          <ul className="flex justify-center">
             <li>
               <Button onClick={() => nextStep()} type="primary">
                 Next Step

@@ -8,7 +8,7 @@ import Seo from "@components/seo/seo";
 import Container from "@components/ui/container";
 import Layout from "@components/layout";
 import Card from "@components/common/card";
-import Image from "next/image";
+// import Image from "next/image";
 
 import TeacherRegistrationForm from "@components/form/teacher";
 import StudentRegistrationForm from "@components/form/student";
@@ -47,6 +47,8 @@ export default function RegisterPage() {
   ) => {
     event.preventDefault();
     setRenderForm(value);
+    console.log(value);
+    
   };
 
   return (
@@ -57,35 +59,25 @@ export default function RegisterPage() {
         path="/auth/register"
       />
 
-      <Container className="bg-[#f0f6ff]">
+      <Container className="bg-[#f0f6ff] pb-[30px]  md:pb-[60px] ">
         <div className="flex justify-center items-center">
           <div className="w-full mt-2">
             <div className="flex justify-center items-center py-4 rounded">
               <button
                 onClick={(e) => buttonHandler(e, "Student")}
-                className="inline-block mx-4 px-2 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-dark-footer hover:shadow-lg focus:bg-dark-footer focus:shadow-lg focus:outline-none focus:ring-0 active:bg-dark-footer active:shadow-lg transition duration-150 ease-in-out"
+                
+                className={`inline-block mx-4 px-2 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-dark-footer hover:shadow-lg   transition duration-150 ease-in-out ${(renderForm==='Student')&& 'bg-dark-footer'}`}
               >
-                <Image
-                  src="/images/student.svg"
-                  alt="test"
-                  quality={100}
-                  width={150}
-                  height={150}
-                  objectFit="cover"
-                />
+               
+                <img src="/icons/student-role-icon.svg" alt="student logo" className="w-[110px] h-[110px] md:w-[150px] md:h-[150px] object-cover"/>
               </button>
               <button
                 onClick={(e) => buttonHandler(e, "Teacher")}
-                className="inline-block mx-4 px-2 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-dark-footer hover:shadow-lg focus:bg-dark-footer focus:shadow-lg focus:outline-none focus:ring-0 active:bg-dark-footer active:shadow-lg transition duration-150 ease-in-out"
+                
+                className={`inline-block mx-4 px-2 py-2.5 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-dark-footer hover:shadow-lg   transition duration-150 ease-in-out ${(renderForm==='Teacher')&& 'bg-dark-footer'}`}
               >
-                <Image
-                  src="/images/student.svg"
-                  alt="test"
-                  quality={100}
-                  width={150}
-                  height={150}
-                  objectFit="cover"
-                />
+              
+                 <img src="/icons/teacher-role-icon.svg" alt="student logo" className="w-[110px] h-[110px] md:w-[150px] md:h-[150px] object-cover"/>
               </button>
             </div>
 

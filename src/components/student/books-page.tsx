@@ -1,5 +1,6 @@
 import Container from '@components/ui/container';
 import { useSession } from 'next-auth/react';
+
 import React, { useState, useEffect } from 'react';
 import Link from '@components/ui/link';
 
@@ -95,7 +96,22 @@ export default function StudentBooks() {
                 </div>
               </div>
             </div>
-          ))}
+          ))} 
+          <div className='group w-[250px] h-[300px] shadow-card rounded-lg overflow-hidden  hover:cursor-pointer hover:shadow-cardHover'>
+            <div className='w-full h-full  relative z-0'>
+              <img src='/images/test/math11.jpg' className='w-full h-full object-cover'/>
+              <div className='absolute w-full h-full inset-0 bg-black-500 flex flex-col justify-end '>
+                <div className='w-full h-[130px]  text-center'>
+                  <h4 className='text-2xl font-lg text-white opacity-100'>Mathmatics</h4>
+                  <p className='text-md font-lg text-white'>for class XI</p>
+                   <div className='my-4 '>
+                   <Link  href={`/student/book/math11`} 
+                    className='py-2 px-6  bg-blue-800 text-md font-md text-white rounded-md hover:bg-blue-900'>Read</Link>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </Container>
   );

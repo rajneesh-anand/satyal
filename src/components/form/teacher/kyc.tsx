@@ -272,29 +272,10 @@ export const TeacherKYCForm = ({
         </div>
       </div>
 
-      <div className="my-5 flex flex-wrap items-center border-b border-dashed border-border-base pb-8 sm:my-8">
-        <Description
-          title="SELECT SUBJECTS"
-          details="Pick your subjects"
-          className="sm:pr-4 md:pr-5 w-full px-0 pb-5 sm:w-4/12 sm:py-8 md:w-1/3"
-        />
-        <div className="w-full sm:w-8/12 md:w-2/3">
-          <SelectInput
-            name="class-select"
-            options={classOptions}
-            isClearable={true}
-            defaultValue={selectedClass}
-            onChange={(value) => (teacherKYCInfo.class = value)}
-            isMulti={true}
-            isSearchable={false}
-          />
-        </div>
-      </div>
-
       <div className="my-5 flex flex-wrap  items-center border-b border-dashed border-border-base pb-8 sm:my-4">
         <Description
-          title="SELECT CLASS"
-          details="Pick your class"
+          title="SELECT subject"
+          details="Pick your SUBJECT"
           className="sm:pr-4 md:pr-5 w-full px-0 pb-5 sm:w-4/12 sm:py-8 md:w-1/3"
         />
         <div className="w-full sm:w-8/12 md:w-2/3">
@@ -303,7 +284,7 @@ export const TeacherKYCForm = ({
             isSearchable={false}
             options={subjectsOptions}
             isClearable={true}
-            defaultValue={selectedSubjects}
+            defaultValue={teacherKYCInfo.subjects}
             onChange={(value) => (teacherKYCInfo.subjects = value)}
             isMulti={true}
           />
@@ -319,19 +300,19 @@ export const TeacherKYCForm = ({
         <div className="w-full sm:w-8/12 md:w-2/3">
           <Input
             label="Account Holder Name"
-            showRequired={showRequired && !teacherKYCInfo.name}
-            value={teacherKYCInfo.name}
+            showRequired={showRequired && !teacherKYCInfo.accountHolder_name}
+            value={teacherKYCInfo.accountHolder_name}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "name")
+              handlePersonalInfo(e, "accountHolder_name")
             }
           />
 
           <Input
             label="Bank Account Number"
-            showRequired={showRequired && !teacherKYCInfo.number}
-            value={teacherKYCInfo.number}
+            showRequired={showRequired && !teacherKYCInfo.account_number}
+            value={teacherKYCInfo.account_number}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "number")
+              handlePersonalInfo(e, "account_number")
             }
           />
 
@@ -346,10 +327,10 @@ export const TeacherKYCForm = ({
 
           <Input
             label="Branch Code"
-            showRequired={showRequired && !teacherKYCInfo.branch}
-            value={teacherKYCInfo.branch}
+            showRequired={showRequired && !teacherKYCInfo.bank_branch}
+            value={teacherKYCInfo.bank_branch}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "branch")
+              handlePersonalInfo(e, "bank_branch")
             }
           />
         </div>
