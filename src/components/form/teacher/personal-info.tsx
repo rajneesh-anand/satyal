@@ -4,6 +4,7 @@ import { TeacherInfo } from "AppTypes";
 import Select from "@components/ui/form/select/select";
 import { statesOptions, classOptions, ValueType } from "@data/constant";
 import Link from "@components/ui/link";
+import NextLink from 'next/link'
 
 interface PersonalInfoProps {
   teacherInfo: TeacherInfo;
@@ -34,10 +35,10 @@ export const PersonalInfo = ({
         <p>Please provide your personal information.</p>
 
         <div className="flex flex-col md:flex-row mt-4">
-          <div className="w-full md:w-[320px] mb-3">
+          <div className="w-full lg:w-[340px] mb-3">
             <Input
               label="First Name"
-              placeholder="Write your first name"
+              placeholder="Your First Name"
               showRequired={showRequired && !teacherInfo.fname}
               value={teacherInfo.fname}
               onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -45,10 +46,22 @@ export const PersonalInfo = ({
               }
             />
           </div>
-          <div className="w-full md:w-[320px]  mb-3 md:ml-[8px]">
+          <div className="w-full lg:w-[340px]  mb-3 md:ml-[30px]">
+            <Input
+              label="Middle Name"
+              placeholder="Your Middle Name"
+              value={teacherInfo.mname}
+              onChange={(e: FormEvent<HTMLInputElement>) =>
+                handlePersonalInfo(e, "mname")
+              }
+            />
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row">
+           <div className="w-full lg:w-[340px]  mb-3">
             <Input
               label="Last Name"
-              placeholder="Write your last name"
+              placeholder="Your Last Name"
               showRequired={showRequired && !teacherInfo.lname}
               value={teacherInfo.lname}
               onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -56,13 +69,24 @@ export const PersonalInfo = ({
               }
             />
           </div>
+          <div className="w-full lg:w-[340px] mb-3 md:ml-[30px]">
+            <Input
+              label="Contact Number"
+              placeholder="Your Mobile Number "
+              showRequired={showRequired && !teacherInfo.mobile}
+              value={teacherInfo.mobile}
+              onChange={(e: FormEvent<HTMLInputElement>) =>
+                handlePersonalInfo(e, "mobile")
+              }
+            />
+          </div>
         </div>
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-[320px] mb-3">
+          <div className="w-full lg:w-[340px] mb-3">
             <Input
               label="Email"
               type="email"
-              placeholder="Write your email address"
+              placeholder="Your Email Address"
               showRequired={
                 showRequired &&
                 (!teacherInfo.email || !teacherInfo.email.includes("@"))
@@ -73,7 +97,7 @@ export const PersonalInfo = ({
               }
             />
           </div>
-          <div className="w-full md:w-[320px]  mb-3 md:ml-[8px]">
+          <div className="w-full lg:w-[340px]  mb-3 md:ml-[30px]">
             <Input
               label="Password"
               type="password"
@@ -86,23 +110,12 @@ export const PersonalInfo = ({
             />
           </div>
         </div>
-
         <div className="flex flex-col md:flex-row">
-          <div className="w-full md:w-[320px] mb-3 ">
-            <Input
-              label="Contact Number"
-              placeholder="Your Mobile Number "
-              showRequired={showRequired && !teacherInfo.mobile}
-              value={teacherInfo.mobile}
-              onChange={(e: FormEvent<HTMLInputElement>) =>
-                handlePersonalInfo(e, "mobile")
-              }
-            />
-          </div>
-          <div className="w-full  md:w-[320px] mb-3 md:ml-[8px]">
+         
+          <div className="w-full  md:w-full mb-3 ">
             <Input
               label="Address"
-              placeholder="Write your complete address"
+              placeholder="Your Address"
               showRequired={showRequired && !teacherInfo.address}
               value={teacherInfo.address}
               onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -111,12 +124,11 @@ export const PersonalInfo = ({
             />
           </div>
         </div>
-
         <div className="flex flex-col md:flex-row ">
-          <div className="w-full md:w-[320px]  mb-3 ">
+          <div className="w-full lg:w-[340px]  mb-3 ">
             <Input
               label="City"
-              placeholder="Write your city"
+              placeholder="Your City"
               showRequired={showRequired && !teacherInfo.city}
               value={teacherInfo.city}
               onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -124,7 +136,7 @@ export const PersonalInfo = ({
               }
             />
           </div>
-          <div className="w-full md:w-[320px]  mb-3 md:ml-[8px] ">
+          <div className="w-full lg:w-[340px]  mb-3 md:ml-[30px] ">
             <div className="flex flex-col font-medium">
               <span className="inline-flex justify-between">
                 <label
@@ -145,18 +157,94 @@ export const PersonalInfo = ({
             </div>
           </div>
         </div>
-        <div className="text-center">
-          <span className="text-red-700 font-semibold">
+        <div className="my-2 ">
+          <h2 className="">School Info:</h2>
+          <p>Please provide your school information.</p>
+        </div>
+        <div className="flex flex-col md:flex-row mt-4">
+          <div className="w-full lg:w-[340px] mb-3">
+            <Input
+              label="School's Name"
+              placeholder="School's Name"
+              showRequired={showRequired && !teacherInfo.schoolName}
+              value={teacherInfo.schoolName}
+              onChange={(e: FormEvent<HTMLInputElement>) =>
+                handlePersonalInfo(e, "schoolName")
+              }
+            />
+          </div>
+          <div className="w-full lg:w-[340px]  mb-3 md:ml-[30px]">
+            <Input
+              label="Contact Number"
+              placeholder="School's Contact Number"
+              value={teacherInfo.schoolContact}
+              showRequired={showRequired && !teacherInfo.schoolContact}
+              onChange={(e: FormEvent<HTMLInputElement>) =>
+                handlePersonalInfo(e, "schoolContact")
+              }
+            />
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row">
+          <div className="w-full  md:w-full mb-3 ">
+            <Input
+              label="Address"
+              placeholder="School's Address"
+              showRequired={showRequired && !teacherInfo.schoolAddress}
+              value={teacherInfo.schoolAddress}
+              onChange={(e: FormEvent<HTMLInputElement>) =>
+                handlePersonalInfo(e, "schoolAddress")
+              }
+            />
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row ">
+          <div className="w-full lg:w-[340px]  mb-3 ">
+            <Input
+              label="City"
+              placeholder="City"
+              showRequired={showRequired && !teacherInfo.schoolCity}
+              value={teacherInfo.schoolCity}
+              onChange={(e: FormEvent<HTMLInputElement>) =>
+                handlePersonalInfo(e, "schoolCity")
+              }
+            />
+          </div>
+          <div className="w-full lg:w-[340px]  mb-3 md:ml-[30px] ">
+            <div className="flex flex-col font-medium">
+              <span className="inline-flex justify-between">
+                <label
+                  htmlFor="province"
+                  className="text-sm text-primary-marine-blue "
+                >
+                  State
+                </label>
+              </span>
+
+              <Select
+                id="province"
+                defaultValue={selectedState}
+                options={statesOptions}
+                isSearchable={false}
+                onChange={(value: ValueType) => (teacherInfo.schoolState = value)}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-4 text-sm md:text-md">
+          <span className="text-black font-semibold">
             By registering to Satyal online learning, You agree with our{" "}
           </span>
-          <Link href="/terms" className="text-indigo-700 font-semibold">
-            Terms and Services{" "}
-          </Link>
-          <span className="text-red-700 font-semibold"> &amp; </span>
+          <NextLink href="/terms" >
+            <a target="_blank"  rel="noopener noreferrer" className="text-red-700 font-semibold ">Terms and Services{" "}</a>
+            
+          </NextLink>
+          <span className="text-black font-semibold"> &amp; </span>
 
-          <Link href="/pricay" className="text-indigo-700 font-semibold">
-            Privacy
-          </Link>
+          <NextLink href="/privacy">
+            <a target="_blank" className="text-red-700 font-semibold "> Privacy Policy</a>
+           
+          </NextLink>
         </div>
       </section>
     </div>

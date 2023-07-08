@@ -16,10 +16,11 @@ module.exports = {
       nunito: ['"Nunito", sans-serif'],
     },
     extend: {
-      // backgroundImage: {
-      //   "sidebar-image-mobile": "url('/public/images/bg-sidebar-mobile.svg')",
-      //   "sidebar-image-desktop": "url('/public/images/bg-sidebar-desktop.svg')",
-      // },
+      backgroundImage: {
+        "sidebar-image-mobile": "url('/public/images/bg-sidebar-mobile.svg')",
+        "sidebar-image-desktop": "url('/public/images/bg-sidebar-desktop.svg')",
+       
+      },
       colors: {
         'primary-marine-blue': '#02295a',
         'primary-purplish-blue': '#473dff',
@@ -31,9 +32,20 @@ module.exports = {
         'neutral-magnolia': '#f0f6ff',
         'neutral-alabaster': '#fafbff',
         'dark-footer': '#690f00',
-        brown: '#690F00',
         'brown-mid': '#530D00',
         'brown-dark': '#3D0800',
+        "primary-marine-blue": "#02295a",
+        "primary-purplish-blue": "#473dff",
+        "primary-pastel-blue": "#adbeff",
+        "primary-light-blue": "#bfe2fd",
+        "primary-starberry-red": "#ed3548",
+        "neutral-cool-gray": "#9699ab",
+        "neutral-light-gray": "#d6d9e6",
+        "neutral-magnolia": "#f0f6ff",
+        "neutral-alabaster": "#fafbff",
+        "dark-footer": "#690f00",
+        "main-background":"#fff",
+        brown: "#690f00",
       },
       textColor: {
         skin: {
@@ -173,8 +185,10 @@ module.exports = {
         vendorCardHover: '0px 1px 15px rgba(0, 0, 0, 0.06)',
         vendorSidebar: '0px 1px 2px rgba(0, 0, 0, 0.03), 0px 1px 3px rgba(0, 0, 0, 0.05)',
       },
+
     },
   },
+ 
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),

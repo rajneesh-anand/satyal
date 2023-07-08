@@ -2,6 +2,7 @@ import { NextSeo, NextSeoProps } from "next-seo";
 
 interface SeoProps extends NextSeoProps {
   path: string;
+  
 }
 
 const Seo = ({ title, description, path }: SeoProps) => {

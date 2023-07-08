@@ -28,15 +28,15 @@ export const PersonalInfo = ({
   };
 
   return (
-    <section>
+    <section >
       <h2>Personal Info</h2>
       <p>Please provide your personal information.</p>
 
-      <div className="flex flex-col md:flex-row mt-4">
-        <div className="w-full md:w-[320px] mb-3">
+          <div className="flex flex-col md:flex-row mt-4 md:my-2 md:mt-6">
+        <div className="w-full lg:w-[340px] mb-3 ">
           <Input
             label="First Name"
-            placeholder="Write your first name"
+            placeholder="Your First Name"
             showRequired={showRequired && !studentInfo.fname}
             value={studentInfo.fname}
             onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -44,10 +44,22 @@ export const PersonalInfo = ({
             }
           />
         </div>
-        <div className="w-full md:w-[320px]  mb-3 md:ml-[8px]">
+        <div className="w-full lg:w-[340px]  mb-3 md:ml-[30px]">
+          <Input
+            label="Middle Name"
+            placeholder="Your Middle Name"
+            value={studentInfo.mname}
+            onChange={(e: FormEvent<HTMLInputElement>) =>
+              handlePersonalInfo(e, "mname")
+            }
+          />
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row md:my-2">
+        <div className="w-full lg:w-[340px]  mb-3 ">
           <Input
             label="Last Name"
-            placeholder="Write your last name"
+            placeholder="Your Last Name"
             showRequired={showRequired && !studentInfo.lname}
             value={studentInfo.lname}
             onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -55,13 +67,24 @@ export const PersonalInfo = ({
             }
           />
         </div>
+        <div className="w-full lg:w-[340px] mb-3 md:ml-[30px]">
+          <Input
+            label="Contact Number"
+            placeholder="Your Mobile Number "
+            showRequired={showRequired && !studentInfo.mobile}
+            value={studentInfo.mobile}
+            onChange={(e: FormEvent<HTMLInputElement>) =>
+              handlePersonalInfo(e, "mobile")
+            }
+          />
+        </div>
       </div>
-      <div className="flex flex-col md:flex-row">
-        <div className="w-full md:w-[320px] mb-3">
+      <div className="flex flex-col md:flex-row md:my-2">
+        <div className="w-full lg:w-[340px] mb-3">
           <Input
             label="Email"
             type="email"
-            placeholder="Write your email address"
+            placeholder="Your Email Address"
             showRequired={
               showRequired &&
               (!studentInfo.email || !studentInfo.email.includes("@"))
@@ -72,7 +95,7 @@ export const PersonalInfo = ({
             }
           />
         </div>
-        <div className="w-full md:w-[320px]  mb-3 md:ml-[8px]">
+        <div className="w-full lg:w-[340px]  mb-3 md:ml-[30px]">
           <Input
             label="Password"
             type="password"
@@ -85,21 +108,8 @@ export const PersonalInfo = ({
           />
         </div>
       </div>
-      <div className="flex flex-col md:flex-row ">
-        <div className="w-full  md:w-[648px] mb-3 ">
-          <Input
-            label="Parent's/Guardian's Name"
-            placeholder="Write full name of your parent"
-            showRequired={showRequired && !studentInfo.address}
-            value={studentInfo.parent}
-            onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "parent")
-            }
-          />
-        </div>
-      </div>
-      <div className="flex flex-col md:flex-row">
-        <div className="w-full md:w-[320px]  mb-3 ">
+      <div className="flex flex-col md:flex-row md:my-2">
+        <div className="w-full lg:w-[340px]  mb-3 ">
           <div className="flex flex-col font-medium">
             <span className="inline-flex justify-between">
               <label
@@ -111,31 +121,18 @@ export const PersonalInfo = ({
             </span>
             <Select
               id="class"
-              defaultValue={selectedClass}
+              defaultValue={studentInfo.class}
+              
               options={classOptions}
               isSearchable={false}
               onChange={(value: ValueType) => (studentInfo.class = value)}
             />
           </div>
         </div>
-        <div className="w-full md:w-[320px] mb-3 md:ml-[8px]">
-          <Input
-            label="Contact Number"
-            placeholder="Your Mobile Number "
-            showRequired={showRequired && !studentInfo.mobile}
-            value={studentInfo.mobile}
-            onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "mobile")
-            }
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row">
-        <div className="w-full  md:w-[648px] mb-3 ">
+        <div className="w-full  lg:w-[340px] mb-3 md:ml-[30px]">
           <Input
             label="Address"
-            placeholder="Write your complete address"
+            placeholder="Your Address"
             showRequired={showRequired && !studentInfo.address}
             value={studentInfo.address}
             onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -144,11 +141,11 @@ export const PersonalInfo = ({
           />
         </div>
       </div>
-      <div className="flex flex-col md:flex-row ">
-        <div className="w-full md:w-[320px]  mb-3 ">
+      <div className="flex flex-col md:flex-row md:my-2">
+        <div className="w-full lg:w-[340px]  mb-3 ">
           <Input
-            label="City"
-            placeholder="Write your city"
+            label="City/Town"
+            placeholder="Your City"
             showRequired={showRequired && !studentInfo.city}
             value={studentInfo.city}
             onChange={(e: FormEvent<HTMLInputElement>) =>
@@ -156,7 +153,7 @@ export const PersonalInfo = ({
             }
           />
         </div>
-        <div className="w-full md:w-[320px]  mb-3 md:ml-[8px] ">
+        <div className="w-full lg:w-[340px]  mb-3 md:ml-[30px] ">
           <div className="flex flex-col font-medium">
             <span className="inline-flex justify-between">
               <label
@@ -169,7 +166,7 @@ export const PersonalInfo = ({
 
             <Select
               id="province"
-              defaultValue={selectedState}
+              defaultValue={studentInfo.state}
               options={statesOptions}
               isSearchable={false}
               onChange={(value: ValueType) => (studentInfo.state = value)}
@@ -177,18 +174,29 @@ export const PersonalInfo = ({
           </div>
         </div>
       </div>
-      <div className="text-center">
-        <span className="text-red-700 font-semibold">
-          By registering to Satyal online learning, You agree with our{" "}
-        </span>
-        <Link href="/terms" className="text-indigo-700 font-semibold">
-          Terms{" "}
-        </Link>
-        <span className="text-red-700 font-semibold"> &amp; </span>
-
-        <Link href="/pricay" className="text-indigo-700 font-semibold">
-          Privacy
-        </Link>
+      <div className="flex flex-col md:flex-row md:my-2">
+        <div className="w-full  md:w-[340px] mb-3 ">
+          <Input
+            label="Parent's/Guardian's Name"
+            placeholder="Your Parent's Name"
+            showRequired={showRequired && !studentInfo.parentName}
+            value={studentInfo.parentName}
+            onChange={(e: FormEvent<HTMLInputElement>) =>
+              handlePersonalInfo(e, "parentName")
+            }
+          />
+        </div>
+        <div className="w-full  lg:w-[340px] mb-3 md:ml-[30px] ">
+          <Input
+            label="Parent's/Guardian's Number"
+            placeholder="Your Parent's Contact Number"
+            showRequired={showRequired && !studentInfo.parentContact}
+            value={studentInfo.parentContact}
+            onChange={(e: FormEvent<HTMLInputElement>) =>
+              handlePersonalInfo(e, "parentContact")
+            }
+          />
+        </div>
       </div>
     </section>
   );

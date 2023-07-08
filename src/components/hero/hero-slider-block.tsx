@@ -41,7 +41,7 @@ const HeroSliderBlock: React.FC<Props> = ({
         ))} */}
         <SwiperSlide>
           <Container>
-            <div className="grid md:grid-cols-12 grid-cols-1 items-center mt-4 mb-8 gap-[30px]">
+            <div className="grid md:grid-cols-12 grid-cols-1 items-center mt-4 mb-8 gap-[30px] ">
               <div className="md:col-span-6 md:text-left text-center mt-4 lg:mt-24">
                 <div className="md:ml-8">
                   <h4 className="font-bold font-nunito lg:leading-normal leading-normal text-4xl lg:text-5xl mb-5 text-black dark:text-white relative">

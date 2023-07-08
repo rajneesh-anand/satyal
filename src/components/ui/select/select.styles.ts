@@ -72,6 +72,8 @@ export const selectStyles = {
     backgroundColor: "rgb(var(--color-accent-400))",
     borderRadius: 9999,
     overflow: "hidden",
+    border:'1px solid black',
+    marginRight:"5px",
     boxShadow:
       "0 0px 3px 0 rgba(0, 0, 0, 0.1), 0 0px 2px 0 rgba(0, 0, 0, 0.06)",
   }),
@@ -81,6 +83,7 @@ export const selectStyles = {
     paddingRight: state.isRtl ? 12 : 0,
     fontSize: "0.875rem",
     color: "#008080",
+   
   }),
   multiValueRemove: (provided: any, _: any) => ({
     ...provided,
@@ -88,10 +91,12 @@ export const selectStyles = {
     paddingRight: 6,
     color: "#ffffff",
     cursor: "pointer",
+    
 
     "&:hover": {
       backgroundColor: "rgb(var(--color-accent-300))",
-      color: "#F3F4F6",
+      // color: "#F3F4F6",
+      color:"dark-footer"
     },
   }),
   placeholder: (provided: any, _: any) => ({

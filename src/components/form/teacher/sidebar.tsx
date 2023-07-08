@@ -19,6 +19,8 @@ const steps = [
   },
 ];
 export const Sidebar = ({ currentStep, handleNextStep }: SidebarProps) => {
+ 
+  
   return (
     <aside className="bg-[url('/images/bg-sidebar-mobile.svg')] min-h-[172px] bg-cover bg-no-repeat lg:rounded-lg ">
       <nav>

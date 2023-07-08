@@ -33,7 +33,7 @@ const TeacherKYCForm = ({ initialValues }: { initialValues?: any }) => {
   const { width } = useWindowSize();
   const { data: session } = useSession();
   const [status, setStatus] = useState<string | undefined>("");
-  const [selectedClass, setSelectedClass] = useState(classOptions[0]);
+  // const [selectedClass, setSelectedClass] = useState(classOptions[0]);
   const [selectedSubjects, setSelectedSubjects] = useState(subjectsOptions[0]);
   const [citizenPhotoFirst, setCitizenPhotoFirst] = useState<File | null>(null);
   const [citizenPhotoSecond, setCitizenPhotoSecond] = useState<File | null>(
@@ -66,10 +66,7 @@ const TeacherKYCForm = ({ initialValues }: { initialValues?: any }) => {
     }
   }, [status]);
 
-  function handleClassChange(value: any) {
-    console.log(value);
-    setSelectedClass(value);
-  }
+ 
 
   function handleSubjectChange(value: any) {
     console.log(value);
@@ -84,7 +81,6 @@ const TeacherKYCForm = ({ initialValues }: { initialValues?: any }) => {
     formData.append("schoolIdentity", schoolCard);
     formData.append("degreeBachelor", degreeBachelor);
     formData.append("degreeMaster", degreeMaster);
-    formData.append("class", JSON.stringify(selectedClass));
     formData.append("subjects", JSON.stringify(selectedSubjects));
     formData.append("bankName", data.bank);
     formData.append("accountNumber", data.number);
@@ -369,28 +365,11 @@ const TeacherKYCForm = ({ initialValues }: { initialValues?: any }) => {
               </div>
             </div>
 
-            <div className="my-5 flex flex-wrap items-center border-b border-dashed border-border-base pb-8 sm:my-8">
-              <Description
-                title="SELECT SUBJECTS"
-                details="Pick your subjects"
-                className="sm:pr-4 md:pr-5 w-full px-0 pb-5 sm:w-4/12 sm:py-8 md:w-1/3"
-              />
-              <div className="w-full sm:w-8/12 md:w-2/3">
-                <SelectInput
-                  name="class-select"
-                  options={classOptions}
-                  isClearable={true}
-                  defaultValue={selectedClass}
-                  onChange={handleClassChange}
-                  isMulti={true}
-                  isSearchable={false}
-                />
-              </div>
-            </div>
+           
 
             <div className="my-5 flex flex-wrap  items-center border-b border-dashed border-border-base pb-8 sm:my-4">
               <Description
-                title="SELECT CLASS"
+                title="SELECT SUBJECTS"
                 details="Pick your subjects"
                 className="sm:pr-4 md:pr-5 w-full px-0 pb-5 sm:w-4/12 sm:py-8 md:w-1/3"
               />

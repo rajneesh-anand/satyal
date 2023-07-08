@@ -3,6 +3,7 @@ import { Attachment } from '@framework/types';
 import useWindowSize from '@utils/use-window-size';
 import Breadcrumb from '@components/ui/breadcrumb';
 import cn from 'classnames';
+import Image from 'next/image';
 
 interface HeaderProps {
   backgroundThumbnail?: Attachment | string;
@@ -22,21 +23,23 @@ const PageHeroSection: React.FC<HeaderProps> = ({
   return (
     <div
       className={cn(
-        'flex justify-center md:min-h-[250px] lg:min-h-[288px] py-20 w-full bg-cover bg-no-repeat bg-center page-header-banner',
+        "flex justify-center md:min-h-[250px] lg:min-h-[288px] pb-[20px] mb-6 md:mb-0 md:pb-0 w-full bg-cover  bg-center page-header-banner   bg-no-repeat ",
         {
           'style-variant-white': variant === 'white',
         }
       )}
+      
       style={{
         backgroundImage: `url(${
           width! > 480 ? backgroundThumbnail : mobileBackgroundThumbnail
         })`,
       }}
     >
-      <div className="w-full flex flex-col items-center justify-center relative">
+      <div className="w-[750px] h-[340px] md:h-[300px] flex flex-col-reverse md:flex-row items-center justify-center md:justify-between relative ">
+        <div className='absolute bottom-[-50px] z-20 md:static my-6 md:my-0'>
         <h2
           className={cn(
-            'text-xl md:text-2xl lg:text-3xl 2xl:text-[40px] font-bold text-center',
+            'text-2xl md:text-3xl lg:text-4xl 2xl:text-[40px] font-bold text-center text-dark-footer',
             {
               'text-skin-base': variant === 'default',
               'text-skin-inverted': variant === 'white',
@@ -48,6 +51,16 @@ const PageHeroSection: React.FC<HeaderProps> = ({
           </span>
         </h2>
         <Breadcrumb />
+        </div>
+        <div className='h-[300px] md:h-[300px] '>
+          <Image src='/images/hero/tandc.svg' alt='team and condition image'
+          width={300}
+          height={300}
+          className='h-[150px] md:h-[300px] border border-solid border-blue-900 object-cover'
+         
+          />
+        </div>
+     
       </div>
     </div>
   );
