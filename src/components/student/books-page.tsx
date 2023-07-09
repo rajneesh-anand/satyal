@@ -15,7 +15,7 @@ export default function StudentBooks() {
       if (session) {
         const studentClass = JSON.parse(session?.user?.className).value;
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/test/book/${studentClass}`
+          `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/books/${studentClass}`
         );
         const { data } = await res.json();
         console.log('Yo books ho hai:', data.books);
