@@ -59,6 +59,7 @@ export default function StudentBooks() {
   //     fetchImageUrl();
   //   }, [item]);
   // };
+console.log(bookCovers);
 
   return (
     <Container>
