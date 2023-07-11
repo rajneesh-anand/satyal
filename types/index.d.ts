@@ -9,7 +9,7 @@ declare module "AppTypes" {
     label: string;
     value: string;
   }
-
+  
   export interface StudentInfo {
     fname: string;
     mname?:string;
@@ -63,4 +63,11 @@ declare module "AppTypes" {
     most_popular: boolean;
     features: string[];
   }
+  export interface ClassSubject{
+    student_class:string;
+    subject:ValueType[]
+  }
+  
 }
+
+

@@ -15,13 +15,13 @@ export default function StudentBooks() {
       if (session) {
         const studentClass = JSON.parse(session?.user?.className).value;
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/test/book/${studentClass}`
+          `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/books/${studentClass}`
         );
         const { data } = await res.json();
-        console.log('Yo books ho hai:', data.books);
-        console.log('Yo books ko images ho hai:', data.images);
-        setBooks(data.books);
-        setBookCovers(data.images);
+        // console.log('Yo books ho hai:', data.books);
+        // console.log('Yo books ko images ho hai:', data.images);
+        setBooks(data?.books);
+        setBookCovers(data?.images);
       }
     };
     fetchStudentBooks();
@@ -59,11 +59,12 @@ export default function StudentBooks() {
   //     fetchImageUrl();
   //   }, [item]);
   // };
+// console.log(bookCovers);
 
   return (
     <Container>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-4">
-        {bookCovers &&
+        {bookCovers ?(
           bookCovers.map((item, idx) => (
             <div
               key={idx}
@@ -96,7 +97,9 @@ export default function StudentBooks() {
                 </div>
               </div>
             </div>
-          ))}
+          ))):(
+            <h3 className='text-xl md:text-2xl font-semibold text-dark-footer '>Sorry! Books are not available</h3>
+          )}
       </div>
     </Container>
   );

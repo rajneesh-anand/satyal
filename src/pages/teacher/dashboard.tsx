@@ -13,9 +13,10 @@ export default function TeacherDashboard({ teacher }) {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [messages, setMessages] = useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
-
+  
   const socket = useRef<any>();
   socket.current = io("http://localhost:4000");
+
 
   useEffect(() => {
     const getUser = async () => {
@@ -43,6 +44,8 @@ export default function TeacherDashboard({ teacher }) {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
   }, [arrivalMessage]);
 
+
+
   if (teacher.kycStatus === "Kyc Pending") {
     return (
       <Container>
@@ -63,6 +66,8 @@ export default function TeacherDashboard({ teacher }) {
       <div>
         <h1>Teacher</h1>
         {arrivalMessage}
+        <div className="">
+        </div>
       </div>
     </TeacherDashboardLayout>
   );
