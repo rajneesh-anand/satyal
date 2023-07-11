@@ -21,8 +21,8 @@ function RegisterStudentForm() {
         email: "",
         password: "",
         class:  {
-          label: "CLASS I",
-          value: "CLASS I",
+          label: "CLASS Nursery",
+          value: "CLASS Nursery",
         },
         parentName: "",
         parentContact:"",
