@@ -1,9 +1,22 @@
+import {ClassSubject} from "AppTypes"
 export interface ValueType {
   label: string;
   value: string;
 }
 
 export const classOptions: ValueType[] = [
+  {
+    label: "CLASS Nursery",
+    value: "CLASS Nursery"
+  },
+  {
+    label: "CLASS LKG",
+    value: "CLASS LKG",
+  },
+  {
+    label: "CLASS UKG",
+    value: "CLASS UKG",
+  },
   {
     label: "CLASS I",
     value: "CLASS I",
@@ -45,9 +58,198 @@ export const subjectsOptions: ValueType[] = [
   { value: "Science", label: "Science" },
   { value: "Mathematics", label: "Mathematics" },
   { value: "English", label: "English" },
-  { value: "Physics", label: "Physics" },
+  { value: "Nepali", label: "Nepali" },
+  { value: "Social", label: "Social" },
+  { value: "Economics", label: "Economics" },
+  { value: "Accounting", label: "Accounting" },
+  { value: "GK", label: "GK" },
+  { value: "Moral", label: "Moral" },
 ];
-
+export const subject_inClass:ClassSubject[]=[
+  {
+    student_class:"CLASS Nursery",
+    subject:[
+      { value: "English Volume 1", label: "English Volume 1" },
+      { value: "English Volume 2", label: "English Volume 2" },
+      { value: "English Volume 3", label: "English Volume 3" },
+      { value: "Mathematics Volume 1", label: "Mathematics Volume 1" },
+      { value: "Mathematics Volume 2", label: "Mathematics Volume 2" },
+      { value: "Mathematics Volume 3", label: "Mathematics Volume 3" },
+      { value: "Nepali Volume 1", label: "Nepali Volume 1" },
+      { value: "Nepali Volume 2", label: "Nepali Volume 2" },
+      { value: "Nepali Volume 3", label: "Nepali Volume 3" }
+    ]
+  },
+  {
+    student_class:"CLASS LKG",
+    subject:[
+      { value: "English Volume 1", label: "English Volume 1" },
+      { value: "English Volume 2", label: "English Volume 2" },
+      { value: "English Volume 3", label: "English Volume 3" },
+      { value: "Mathematics Volume 1", label: "Mathematics Volume 1" },
+      { value: "Mathematics Volume 2", label: "Mathematics Volume 2" },
+      { value: "Mathematics Volume 3", label: "Mathematics Volume 3" },
+      { value: "Nepali Volume 1", label: "Nepali Volume 1" },
+      { value: "Nepali Volume 2", label: "Nepali Volume 2" },
+      { value: "Nepali Volume 3", label: "Nepali Volume 3" },
+      { value: "Science Volume 1", label: "Science Volume 1" },
+      { value: "Science Volume 2", label: "Science Volume 2" },
+      { value: "Science Volume 3", label: "Science Volume 3" }
+    ]
+  },
+  {
+    student_class:"CLASS UKG",
+    subject:[
+      { value: "English Volume 1", label: "English Volume 1" },
+      { value: "English Volume 2", label: "English Volume 2" },
+      { value: "English Volume 3", label: "English Volume 3" },
+      { value: "Mathematics Volume 1", label: "Mathematics Volume 1" },
+      { value: "Mathematics Volume 2", label: "Mathematics Volume 2" },
+      { value: "Mathematics Volume 3", label: "Mathematics Volume 3" },
+      { value: "Nepali Volume 1", label: "Nepali Volume 1" },
+      { value: "Nepali Volume 2", label: "Nepali Volume 2" },
+      { value: "Nepali Volume 3", label: "Nepali Volume 3" },
+      { value: "Science Volume 1", label: "Science Volume 1" },
+      { value: "Science Volume 2", label: "Science Volume 2" },
+      { value: "Science Volume 3", label: "Science Volume 3" }
+    ]
+  },
+  {
+    student_class:"CLASS I",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Elegance in English", label: "Elegance in English" },
+      { value: "Syntax Grammar", label: "Syntax Grammar" },
+      { value: "Nepali Sahitya", label: "Nepali Sahitya" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "Moral", label: "Moral" },
+      { value: "General Knowledge", label: "General Knowledge" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS II",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Elegance in English", label: "Elegance in English" },
+      { value: "Syntax Grammar", label: "Syntax Grammar" },
+      { value: "Nepali Sahitya", label: "Nepali Sahitya" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "Moral", label: "Moral" },
+      { value: "General Knowledge", label: "General Knowledge" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS III",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Elegance in English", label: "Elegance in English" },
+      { value: "Syntax Grammar", label: "Syntax Grammar" },
+      { value: "Nepali Sahitya", label: "Nepali Sahitya" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "Moral", label: "Moral" },
+      { value: "General Knowledge", label: "General Knowledge" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS IV",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Elegance in English", label: "Elegance in English" },
+      { value: "Syntax Grammar", label: "Syntax Grammar" },
+      { value: "Nepali Sahitya", label: "Nepali Sahitya" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "Moral", label: "Moral" },
+      { value: "General Knowledge", label: "General Knowledge" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS V",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Elegance in English", label: "Elegance in English" },
+      { value: "Syntax Grammar", label: "Syntax Grammar" },
+      { value: "Nepali Sahitya", label: "Nepali Sahitya" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "Moral", label: "Moral" },
+      { value: "General Knowledge", label: "General Knowledge" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS VI",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Elegance in English", label: "Elegance in English" },
+      { value: "Syntax Grammar", label: "Syntax Grammar" },
+      { value: "Nepali Sahitya", label: "Nepali Sahitya" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "General Knowledge", label: "General Knowledge" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS VII",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Elegance in English", label: "Elegance in English" },
+      { value: "Syntax Grammar", label: "Syntax Grammar" },
+      { value: "Nepali Sahitya", label: "Nepali Sahitya" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "General Knowledge", label: "General Knowledge" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS VIII",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Syntax Grammar", label: "Syntax Grammar" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "Multi-Resource Comprehension Passage Volume 1", label: "Multi-Resource Comprehension Passage Volume 1" },
+      { value: "Multi-Resource Comprehension Passage Volume 2", label: "Multi-Resource Comprehension Passage Volume 2" },
+      { value: "Multi-Resource Comprehension Passage Volume 3", label: "Multi-Resource Comprehension Passage Volume 3" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS IX",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Basic English Grammar", label: "Basic English Grammar" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "Multi-Resource Comprehension Passage Volume 1", label: "Multi-Resource Comprehension Passage Volume 1" },
+      { value: "Multi-Resource Comprehension Passage Volume 2", label: "Multi-Resource Comprehension Passage Volume 2" },
+      { value: "Multi-Resource Comprehension Passage Volume 3", label: "Multi-Resource Comprehension Passage Volume 3" },
+      
+    ]
+  },
+  {
+    student_class:"CLASS X",
+    subject:[
+      { value: "Elementary Mathematics", label: "Elementary Mathematics" },
+      { value: "Learning Science", label: "Learning Science" },
+      { value: "Basic English Grammar", label: "Basic English Grammar" },
+      { value: "Nepali Byakaran", label: "Nepali Byakaran" },
+      { value: "Multi-Resource Comprehension Passage Volume 1", label: "Multi-Resource Comprehension Passage Volume 1" },
+      { value: "Multi-Resource Comprehension Passage Volume 2", label: "Multi-Resource Comprehension Passage Volume 2" },
+      { value: "Multi-Resource Comprehension Passage Volume 3", label: "Multi-Resource Comprehension Passage Volume 3" },
+      
+    ]
+  }
+];
 export const statesOptions: ValueType[] = [
   { value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" },
   { value: "State 1 [ Koshi Province ]", label: "State 1 [ Koshi Province ]" },
@@ -77,3 +279,5 @@ export const documentOptions: ValueType[] = [
 
 export const ACCEPTED_FILE_TYPES =
   "image/*,application/pdf,application/zip,application/vnd.rar,application/epub+zip,.psd";
+  
+ 
