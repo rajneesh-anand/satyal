@@ -56,7 +56,7 @@ const Header: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   }, [sidebarExpanded]);
 
   return (
-    <header className="sticky top-0 bg-red-700 lg:bg-gray-100  border-gray-100 z-30">
+    <header className="sticky top-0 bg-red-700 lg:bg-gray-100  border-gray-100 z-30 border border-solid border-black">
       {/* <header className="sticky top-0 bg-red-700 lg:bg-white z-30"> */}
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-14 ">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "@components/layout-dashboard-teacher/sidebar";
 import Header from "@components/layout-dashboard-teacher/header";
+import StickyMenu from './menu';
 
 export default function TeacherDashboardLayout({
   children,
@@ -8,7 +9,7 @@ export default function TeacherDashboardLayout({
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden relative">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
@@ -17,6 +18,7 @@ export default function TeacherDashboardLayout({
           <div className="px-4 py-2 w-full max-w-9xl mx-auto">{children}</div>
         </main>
       </div>
+     <StickyMenu/>
     </div>
   );
 }
