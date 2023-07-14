@@ -68,6 +68,8 @@ export const subjectsOptions: ValueType[] = [
 export const subject_inClass:ClassSubject[]=[
   {
     student_class:"CLASS Nursery",
+    value: "grade-nursery",
+    label: "CLASS Nursery",
     subject:[
       { value: "English Volume 1", label: "English Volume 1" },
       { value: "English Volume 2", label: "English Volume 2" },
@@ -82,6 +84,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS LKG",
+    value: "grade-lkg",
+    label: "CLASS LKG",
     subject:[
       { value: "English Volume 1", label: "English Volume 1" },
       { value: "English Volume 2", label: "English Volume 2" },
@@ -99,6 +103,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS UKG",
+    value: "grade-ukg",
+    label: "CLASS UKG",
     subject:[
       { value: "English Volume 1", label: "English Volume 1" },
       { value: "English Volume 2", label: "English Volume 2" },
@@ -116,6 +122,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS I",
+    value: "grade-1",
+    label: "CLASS I",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -129,7 +137,9 @@ export const subject_inClass:ClassSubject[]=[
     ]
   },
   {
-    student_class:"CLASS II",
+    student_class:"grade-2",
+    value: "grade-2",
+    label: "CLASS II",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -144,6 +154,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS III",
+    value: "grade-3",
+    label: "CLASS III",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -158,6 +170,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS IV",
+    label: "CLASS IV",
+    value: "grade-4",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -172,6 +186,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS V",
+    label: "CLASS V",
+    value: "grade-5",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -186,6 +202,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS VI",
+    label: "CLASS VI",
+    value: "grade-6",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -199,6 +217,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS VII",
+    label: "CLASS VII",
+    value: "grade-7",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -212,6 +232,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS VIII",
+    label: "CLASS VIII",
+    value: "grade-8",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -225,6 +247,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS IX",
+    label: "CLASS XI",
+    value: "grade-9",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
@@ -238,6 +262,8 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS X",
+    label: "CLASS X",
+    value: "grade-10",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },

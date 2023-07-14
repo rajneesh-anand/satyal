@@ -70,7 +70,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
     },
     {
       title: "Question Maker",
-      href: "/",
+      href: "/teacher/question",
       icon: Questionmaker,
     },
     {

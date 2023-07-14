@@ -1,8 +1,14 @@
+<<<<<<< Updated upstream
 import React, { useState } from 'react';
 import Sidebar from '@components/layout-dashboard-student/sidebar';
 import Header from '@components/layout-dashboard-student/header';
 import StickyMenu from './menu';
 import DashboardHeader from './header/dashboardheader';
+=======
+import React, { useState } from "react";
+import Sidebar from "@components/layout-dashboard-student/sidebar";
+import Header from "@components/layout-dashboard-student/header";
+>>>>>>> Stashed changes
 
 export default function ProfileLayout({ children }: React.PropsWithChildren) {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
