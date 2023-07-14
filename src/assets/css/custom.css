@@ -47,6 +47,13 @@
 @media (min-width: 500px) {
   .drawer .drawer-content-wrapper {
     width: 500px;
+    
+  }
+}
+@media (max-width: 500px) {
+  .drawer .drawer-content-wrapper {
+    width: 300px;
+    
   }
 }
 

@@ -87,7 +87,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   ];
 
   return (
-    <div className="hidden lg:inline-block">
+    <div className=" hidden lg:inline-block">
       <div
         className={`fixed inset-0 bg-[#690f00] bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
           sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"

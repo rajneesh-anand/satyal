@@ -45,7 +45,8 @@ module.exports = {
         "neutral-alabaster": "#fafbff",
         "dark-footer": "#690f00",
         "main-background":"#fff",
-        brown: "#690f00",
+         "mid-footer": "#782619",
+         "light-footer": "#873e32",
       },
       textColor: {
         skin: {
@@ -185,6 +186,9 @@ module.exports = {
         vendorCardHover: '0px 1px 15px rgba(0, 0, 0, 0.06)',
         vendorSidebar: '0px 1px 2px rgba(0, 0, 0, 0.03), 0px 1px 3px rgba(0, 0, 0, 0.05)',
       },
+      borderWidth:{
+        "0.5":"0.5px"
+      }
 
     },
   },

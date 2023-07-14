@@ -1,6 +1,4 @@
 import React from 'react'
-import Link from '@components/ui/link';
-import Image from "@components/ui/image";
 import OnlineClass from "../../../assets/icons/Online Class.svg";
 import Assignments from "../../../assets/icons/Assignments.svg";
 import Books from "../../../assets/icons/E-Books.svg";
@@ -24,13 +22,13 @@ const menuItems=[
   {
     id:3,
     menuTitle:'Assignment',
-    menuLink:'/student/dashboard',
+    menuLink:'/student/assignment',
     menuIcon:Assignments
   },
   {
     id:4,
     menuTitle:'Videos',
-    menuLink:'/student/dashboard',
+    menuLink:'/student/videos',
     menuIcon:SmartClassVideos
   },
   {

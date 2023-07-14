@@ -22,13 +22,13 @@ const menuItems=[
   {
     id:3,
     menuTitle:'Assignment',
-    menuLink:'/teacher/dashboard',
+    menuLink:'/teacher/assignment',
     menuIcon:Assignments
   },
   {
     id:4,
     menuTitle:'Videos',
-    menuLink:'/teacher/dashboard',
+    menuLink:'/teacher/videos',
     menuIcon:SmartClassVideos
   },
   {

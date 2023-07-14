@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "@components/layout-dashboard-teacher/sidebar";
 import Header from "@components/layout-dashboard-teacher/header";
 import StickyMenu from './menu';
+import DashboardHeader from "./header/dashboardheader";
 
 export default function TeacherDashboardLayout({
   children,
@@ -13,7 +14,8 @@ export default function TeacherDashboardLayout({
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
+        <DashboardHeader/>
         <main>
           <div className="px-4 py-2 w-full max-w-9xl mx-auto">{children}</div>
         </main>
