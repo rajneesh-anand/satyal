@@ -58,31 +58,9 @@ const Header: React.FC = () => {
       )}
     >
       <div className="navbar w-screen lg:w-full transition-all duration-200 ease-in-out body-font bg-dark-footer z-20">
-        <Container className="top-bar flex items-center justify-between py-3 lg:py-1.5 border-b border-skin-base">
-          <Logowhite className="logo -mt-1.5 md:-mt-1 md:pl-0 md:ml-auto lg:mx-0" />
-          <div className=" hidden lg:block">
-            {/* <HeaderMenu
-              data={site_header.menu}
-              className="flex items-center justify-center transition-all duration-200 ease-in-out"
-            /> */}
-          </div>
-          <div className="flex flex-shrink-0 space-l-5 xl:space-l-7">
-            <div className="hidden lg:flex items-center flex-shrink-0 ">
-              {status === "loading" ? null : session ? (
-                <AuthMenu />
-              ) : (
-                <div className="inline-flex items-center">
-                  <Link
-                    href="/auth/signin"
-                    className="font-body inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                  >
-                    Sign In
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="items-center flex lg:hidden shrink-0 xl:mx-3.5 mx-2.5 text-white">
+        <Container className="top-bar flex items-center justify-between  py-3 lg:py-1.5 border-b ">
+         
+           <div className="items-center flex lg:hidden shrink-0 xl:mx-3.5 mx-2.5 text-white">
             <button
               aria-label="Menu"
               className="flex flex-col items-center justify-center flex-shrink-0 outline-none focus:outline-none"
@@ -91,6 +69,31 @@ const Header: React.FC = () => {
               <MenuIcon />
             </button>
           </div>
+          <Logowhite className="logo -mt-1.5 md:-mt-1 md:pl-0  lg:mx-0 " />
+          <div className=" hidden lg:block">
+            {/* <HeaderMenu
+              data={site_header.menu}
+              className="flex items-center justify-center transition-all duration-200 ease-in-out"
+            /> */}
+          </div>
+          <div className="flex flex-shrink-0 space-l-5 xl:space-l-7">
+            <div className=" lg:flex items-center flex-shrink-0 ">
+              {status === "loading" ? null : session ? (
+                <AuthMenu />
+              ) : (
+                <div className="inline-flex items-center">
+                  <Link
+                    href="/auth/signin"
+                    className="font-body inline-block px-3 sm:px-6 py-2 sm:py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                  >
+                    Sign In
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+         
+         
         </Container>
 
         {/* End of menu part */}
