@@ -15,7 +15,8 @@ export default function TeacherDashboardLayout({
 
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
         {/* <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
-        <DashboardHeader/>
+        
+        <DashboardHeader/>{/* new dashboard header for mobile and tablet */}
         <main>
           <div className="px-4 py-2 w-full max-w-9xl mx-auto">{children}</div>
         </main>
