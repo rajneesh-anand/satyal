@@ -37,7 +37,6 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
     document?.addEventListener('click', clickHandler);
     return () => document?.removeEventListener('click', clickHandler);
   });
- 
 
   useEffect(() => {
     let bodyElement: Element | null = document.querySelector('body');

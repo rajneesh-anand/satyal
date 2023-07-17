@@ -65,12 +65,12 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
     },
     {
       title: 'E-Books',
-      href: '/',
+      href: '/teacher/books',
       icon: Books,
     },
     {
       title: 'Question Maker',
-      href: '/',
+      href: '/teacher/question',
       icon: Questionmaker,
     },
     {

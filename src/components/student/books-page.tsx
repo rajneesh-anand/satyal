@@ -1,14 +1,13 @@
-
-import Container from '@components/ui/container';
-import { useSession } from 'next-auth/react';
-import React, { useState, useEffect } from 'react';
-import Link from '@components/ui/link';
+import Container from "@components/ui/container";
+import { useSession } from "next-auth/react";
+import React, { useState, useEffect } from "react";
+import Link from "@components/ui/link";
 
 export default function StudentBooks() {
   const { data: session, status } = useSession();
   const [books, setBooks] = useState<string[]>();
   const [bookCovers, setBookCovers] = useState<string[]>();
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     const fetchStudentBooks = async () => {
@@ -30,10 +29,12 @@ export default function StudentBooks() {
   const getImageDetails = (bookCovers) => {
     const bookNames = bookCovers.map((item) => {
       // Get the file name from the URL
-      const url = item.substring(item.lastIndexOf('/') + 1);
+      const url = item.substring(item.lastIndexOf("/") + 1);
 
       // Extract the desired part without the extension
-      const bookName = url.substring(0, url.lastIndexOf('.')).replace(/-/g, ' ');
+      const bookName = url
+        .substring(0, url.lastIndexOf("."))
+        .replace(/-/g, " ");
 
       return bookName;
     });
@@ -59,12 +60,12 @@ export default function StudentBooks() {
   //     fetchImageUrl();
   //   }, [item]);
   // };
-// console.log(bookCovers);
+  // console.log(bookCovers);
 
   return (
     <Container>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-4">
-        {bookCovers ?(
+        {bookCovers ? (
           bookCovers.map((item, idx) => (
             <div
               key={idx}
@@ -97,9 +98,12 @@ export default function StudentBooks() {
                 </div>
               </div>
             </div>
-          ))):(
-            <h3 className='text-xl md:text-2xl font-semibold text-dark-footer '>Sorry! Books are not available</h3>
-          )}
+          ))
+        ) : (
+          <h3 className="text-xl md:text-2xl font-semibold text-dark-footer ">
+            Sorry! Books are not available
+          </h3>
+        )}
       </div>
     </Container>
   );

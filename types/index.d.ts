@@ -65,6 +65,9 @@ declare module "AppTypes" {
   }
   export interface ClassSubject{
     student_class:string;
+    value:string;
+    label:string;
+
     subject:ValueType[]
   }
   
