@@ -8,7 +8,6 @@ function Questions() {
   const [className, setClassName] = useState();
 
   const [data, setData] = useState([]);
-  console.log(data);
 
   function handleClassChange(value) {
     setClassName(value.value);
@@ -36,6 +35,7 @@ function Questions() {
     selectedSubject && getQuestions();
   }, [selectedSubject]);
 
+  console.log(data);
   return (
     <div>
       <div className="flex gap-2">
@@ -51,11 +51,23 @@ function Questions() {
           onChange={handleSubjectChange}
         />
       </div>
-      <ul>
-        {data?.map((el) => (
-          <li>{el.Question}</li>
-        ))}
-      </ul>
+      <div className="flex">
+        <ul className="border border-2 mt-1 w-2/5">
+          {data?.map((el) => (
+            <li className=" border-y-2 m-2">
+              <input type="checkbox" className="mr-1 mb-1" />
+              <span>{el.Question}</span>
+
+              <img
+                src={el.Image_Minio_Link}
+                className="w-34 object-cover"
+                // alt="Book cover"
+              />
+            </li>
+          ))}
+        </ul>
+        <div className="w-2/3 border border-2 mt-1 ml-1">asdfghj</div>
+      </div>
     </div>
   );
 }
