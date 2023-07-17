@@ -21,9 +21,9 @@ function Questions() {
 
   async function getQuestions() {
     const res = await fetch(
-      // `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/questions/${className}/${selectedSubject}`
+      `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/questions/${className}/${selectedSubject}`
 
-      "http://localhost:8080/api/questions/grade-nursery/English Volume - 3"
+      // "http://localhost:8080/api/questions/grade-nursery/English Volume - 3"
     );
 
     fetch;

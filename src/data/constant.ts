@@ -71,15 +71,15 @@ export const subject_inClass:ClassSubject[]=[
     value: "grade-nursery",
     label: "CLASS Nursery",
     subject:[
-      { value: "English Volume 1", label: "English Volume 1" },
-      { value: "English Volume 2", label: "English Volume 2" },
-      { value: "English Volume 3", label: "English Volume 3" },
-      { value: "Mathematics Volume 1", label: "Mathematics Volume 1" },
-      { value: "Mathematics Volume 2", label: "Mathematics Volume 2" },
-      { value: "Mathematics Volume 3", label: "Mathematics Volume 3" },
-      { value: "Nepali Volume 1", label: "Nepali Volume 1" },
-      { value: "Nepali Volume 2", label: "Nepali Volume 2" },
-      { value: "Nepali Volume 3", label: "Nepali Volume 3" }
+      { value: "English Volume - 1", label: "English Volume 1" },
+      { value: "English Volume - 2", label: "English Volume 2" },
+      { value: "English Volume - 3", label: "English Volume 3" },
+      { value: "Mathematics Volume - 1", label: "Mathematics Volume 1" },
+      { value: "Mathematics Volume - 2", label: "Mathematics Volume 2" },
+      { value: "Mathematics Volume - 3", label: "Mathematics Volume 3" },
+      { value: "Nepali Volume - 1", label: "Nepali Volume 1" },
+      { value: "Nepali Volume - 2", label: "Nepali Volume 2" },
+      { value: "Nepali Volume - 3", label: "Nepali Volume 3" }
     ]
   },
   {
@@ -87,18 +87,18 @@ export const subject_inClass:ClassSubject[]=[
     value: "grade-lkg",
     label: "CLASS LKG",
     subject:[
-      { value: "English Volume 1", label: "English Volume 1" },
-      { value: "English Volume 2", label: "English Volume 2" },
-      { value: "English Volume 3", label: "English Volume 3" },
-      { value: "Mathematics Volume 1", label: "Mathematics Volume 1" },
-      { value: "Mathematics Volume 2", label: "Mathematics Volume 2" },
-      { value: "Mathematics Volume 3", label: "Mathematics Volume 3" },
-      { value: "Nepali Volume 1", label: "Nepali Volume 1" },
-      { value: "Nepali Volume 2", label: "Nepali Volume 2" },
-      { value: "Nepali Volume 3", label: "Nepali Volume 3" },
-      { value: "Science Volume 1", label: "Science Volume 1" },
-      { value: "Science Volume 2", label: "Science Volume 2" },
-      { value: "Science Volume 3", label: "Science Volume 3" }
+      { value: "English Volume - 1", label: "English Volume 1" },
+      { value: "English Volume - 2", label: "English Volume 2" },
+      { value: "English Volume - 3", label: "English Volume 3" },
+      { value: "Mathematics Volume - 1", label: "Mathematics Volume 1" },
+      { value: "Mathematics Volume - 2", label: "Mathematics Volume 2" },
+      { value: "Mathematics Volume - 3", label: "Mathematics Volume 3" },
+      { value: "Nepali Volume - 1", label: "Nepali Volume 1" },
+      { value: "Nepali Volume - 2", label: "Nepali Volume 2" },
+      { value: "Nepali Volume - 3", label: "Nepali Volume 3" },
+      { value: "Science Volume - 1", label: "Science Volume 1" },
+      { value: "Science Volume - 2", label: "Science Volume 2" },
+      { value: "Science Volume - 3", label: "Science Volume 3" }
     ]
   },
   {
@@ -106,18 +106,18 @@ export const subject_inClass:ClassSubject[]=[
     value: "grade-ukg",
     label: "CLASS UKG",
     subject:[
-      { value: "English Volume 1", label: "English Volume 1" },
-      { value: "English Volume 2", label: "English Volume 2" },
-      { value: "English Volume 3", label: "English Volume 3" },
-      { value: "Mathematics Volume 1", label: "Mathematics Volume 1" },
-      { value: "Mathematics Volume 2", label: "Mathematics Volume 2" },
-      { value: "Mathematics Volume 3", label: "Mathematics Volume 3" },
-      { value: "Nepali Volume 1", label: "Nepali Volume 1" },
-      { value: "Nepali Volume 2", label: "Nepali Volume 2" },
-      { value: "Nepali Volume 3", label: "Nepali Volume 3" },
-      { value: "Science Volume 1", label: "Science Volume 1" },
-      { value: "Science Volume 2", label: "Science Volume 2" },
-      { value: "Science Volume 3", label: "Science Volume 3" }
+      { value: "English Volume - 1", label: "English Volume 1" },
+      { value: "English Volume - 2", label: "English Volume 2" },
+      { value: "English Volume - 3", label: "English Volume 3" },
+      { value: "Mathematics Volume - 1", label: "Mathematics Volume 1" },
+      { value: "Mathematics Volume - 2", label: "Mathematics Volume 2" },
+      { value: "Mathematics Volume - 3", label: "Mathematics Volume 3" },
+      { value: "Nepali Volume - 1", label: "Nepali Volume 1" },
+      { value: "Nepali Volume - 2", label: "Nepali Volume 2" },
+      { value: "Nepali Volume - 3", label: "Nepali Volume 3" },
+      { value: "Science Volume - 1", label: "Science Volume 1" },
+      { value: "Science Volume - 2", label: "Science Volume 2" },
+      { value: "Science Volume - 3", label: "Science Volume 3" }
     ]
   },
   {
