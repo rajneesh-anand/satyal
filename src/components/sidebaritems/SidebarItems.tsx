@@ -5,11 +5,10 @@ import Link from "@components/ui/link";
 
 function SidebarItems({ Icon: Icon, path, title }) {
   const pathname = useRouter();
-
   return (
     <li
       className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-        pathname === path && "bg-gray-900"
+        pathname.asPath === path && "bg-gray-900"
       }`}
     >
       <Link
