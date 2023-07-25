@@ -64,7 +64,7 @@ export default function StudentBooks() {
 
   return (
     <Container>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-4 ">
         {bookCovers ? (
           bookCovers.map((item, idx) => (
             <div
@@ -86,10 +86,24 @@ export default function StudentBooks() {
                   for {JSON.parse(session?.user?.className).value}
                 </p>
                 <div className="mt-4">
-                  <Link
+                  {/* <Link
                     href={`/student/book/${
                       JSON.parse(session?.user?.className).value
-                    }?books=${encodeURIComponent(books[idx])}`}
+                    }?books=${encodeURIComponent(books[idx])}&?bookName=${
+                      getImageDetails(bookCovers)[idx]
+                    }`}
+                  > */}
+
+                  <Link
+                    href={{
+                      pathname: `/student/book/${
+                        JSON.parse(session?.user?.className).value
+                      }`,
+                      query: {
+                        books: encodeURIComponent(books[idx]),
+                        bookName: getImageDetails(bookCovers)[idx],
+                      }, // the data
+                    }}
                   >
                     <button className="py-2 px-8 uppercase bg-brown opacity-100 hover:bg-brown-mid text-white text-md font-md rounded-md hover:text-white-dark">
                       Read
