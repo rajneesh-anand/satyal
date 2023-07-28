@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import cn from "classnames";
 interface Props {
   className?: string;
   children?: any;
@@ -9,11 +9,11 @@ interface Props {
 const Container: React.FC<Props> = ({
   children,
   className,
-  el = 'div',
+  el = "div",
   clean,
 }) => {
   const rootClassName = cn(className, {
-    'mx-auto max-w-[1920px] px-4 md:px-6 lg:px-8 2xl:px-10': !clean,
+    "mx-auto max-w-[1920px] px-4 md:px-6 lg:px-8 2xl:px-10": !clean,
   });
 
   let Component: React.ComponentType<React.HTMLAttributes<HTMLDivElement>> =
