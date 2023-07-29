@@ -106,6 +106,7 @@ export default function Book() {
               width={600}
               height={300}
               renderTextLayer={false}
+              
             />
           </Document>
           {/* </div> */}
