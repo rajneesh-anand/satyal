@@ -9,6 +9,7 @@ import { io } from 'socket.io-client';
 export default function StudentDashboard() {
   const socket = useRef<any>();
   const { data: session, status } = useSession();
+console.log(session);
 
 
   useEffect(() => {
@@ -17,6 +18,8 @@ export default function StudentDashboard() {
       socket.current.emit('connected', session?.user?.email);
     }
   }, [session]);
+  
+  
   return (
     <>
       <Seo

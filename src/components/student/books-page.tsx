@@ -12,7 +12,7 @@ export default function StudentBooks() {
   useEffect(() => {
     const fetchStudentBooks = async () => {
       if (session) {
-        const studentClass = JSON.parse(session?.user?.className).value;
+        const studentClass = JSON.parse(session?.user?.studentClass).value;
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/books/${studentClass}`
         );
@@ -83,7 +83,7 @@ export default function StudentBooks() {
                   {getImageDetails(bookCovers)[idx]}
                 </h4>
                 <p className="text-brown text-md font-lg">
-                  for {JSON.parse(session?.user?.className).value}
+                  for {JSON.parse(session?.user?.studentClass).value}
                 </p>
                 <div className="mt-4">
                   {/* <Link
@@ -97,7 +97,7 @@ export default function StudentBooks() {
                   <Link
                     href={{
                       pathname: `/student/book/${
-                        JSON.parse(session?.user?.className).value
+                        JSON.parse(session?.user?.studentClass).value
                       }`,
                       query: {
                         books: encodeURIComponent(books[idx]),

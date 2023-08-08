@@ -39,10 +39,10 @@ export const PersonalInfo = ({
             <Input
               label="First Name"
               placeholder="Your First Name"
-              showRequired={showRequired && !teacherInfo.fname}
-              value={teacherInfo.fname}
+              showRequired={showRequired && !teacherInfo.firstName}
+              value={teacherInfo.firstName}
               onChange={(e: FormEvent<HTMLInputElement>) =>
-                handlePersonalInfo(e, "fname")
+                handlePersonalInfo(e, "firstName")
               }
             />
           </div>
@@ -50,9 +50,9 @@ export const PersonalInfo = ({
             <Input
               label="Middle Name"
               placeholder="Your Middle Name"
-              value={teacherInfo.mname}
+              value={teacherInfo.middleName}
               onChange={(e: FormEvent<HTMLInputElement>) =>
-                handlePersonalInfo(e, "mname")
+                handlePersonalInfo(e, "middleName")
               }
             />
           </div>
@@ -62,10 +62,10 @@ export const PersonalInfo = ({
             <Input
               label="Last Name"
               placeholder="Your Last Name"
-              showRequired={showRequired && !teacherInfo.lname}
-              value={teacherInfo.lname}
+              showRequired={showRequired && !teacherInfo.lastName}
+              value={teacherInfo.lastName}
               onChange={(e: FormEvent<HTMLInputElement>) =>
-                handlePersonalInfo(e, "lname")
+                handlePersonalInfo(e, "lastName")
               }
             />
           </div>
@@ -73,10 +73,10 @@ export const PersonalInfo = ({
             <Input
               label="Contact Number"
               placeholder="Your Mobile Number "
-              showRequired={showRequired && !teacherInfo.mobile}
-              value={teacherInfo.mobile}
+              showRequired={showRequired && !teacherInfo.userContactNumber}
+              value={teacherInfo.userContactNumber}
               onChange={(e: FormEvent<HTMLInputElement>) =>
-                handlePersonalInfo(e, "mobile")
+                handlePersonalInfo(e, "userContactNumber")
               }
             />
           </div>

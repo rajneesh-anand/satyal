@@ -43,6 +43,8 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
             }
 
             // Login Success
+            // console.log(user);
+            
             return user;
           } catch (error: any) {
             throw new Error(error.message);
@@ -87,13 +89,14 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
       // encryption: true,
 
       encode: async ({ secret, token, maxAge }) => {
+       
         const jwtClaims = {
           id: token.id,
           name: token.name,
           email: token.email,
           image: token.image,
           userType: token.userType,
-          className: token.className,
+          studentClass: token.studentClass,
           iat: Date.now() / 1000,
           exp: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
         };
@@ -104,6 +107,8 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
       },
       decode: async ({ secret, token }) => {
         const decodedToken = jwt.verify(token, secret, { algorithms: 'HS256' });
+      
+        
         return decodedToken;
       },
 
@@ -138,7 +143,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
         session.user.name = token.name;
         session.accessToken = encodedToken;
         session.user.userType = token.userType;
-        session.user.className = token.className;
+        session.user.studentClass = token.studentClass;
         return Promise.resolve(session);
       },
       async jwt({ token, user, account, profile, isNewUser }) {
@@ -150,7 +155,7 @@ export default (req: NextApiRequest, res: NextApiResponse) =>
           token.image = user.image ? user.image.toString() : null;
           token.name = user.firstName ? user.firstName.toString() : '';
           token.userType = user.userType.toString();
-          token.className = user.className ? user.className.toString() : '';
+          token.studentClass = user.studentClass ? user.studentClass.toString() : '';
         }
         return Promise.resolve(token);
       },
