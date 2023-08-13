@@ -303,6 +303,18 @@ export const documentOptions: ValueType[] = [
   { value: "Teacher License Number", label: "Teacher License Number" },
 ];
 
+export const paperType: ValueType[] = [
+  {
+    label: "Exam Paper",
+    value: "Exam Paper",
+  },
+  {
+    label: "Worksheet",
+    value: "Worksheet",
+  }
+];
+
+
 export const ACCEPTED_FILE_TYPES =
   "image/*,application/pdf,application/zip,application/vnd.rar,application/epub+zip,.psd";
   
