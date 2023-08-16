@@ -2,6 +2,7 @@ import Select from "@components/ui/select/select";
 import { paperType, subject_inClass } from "@data/constant";
 import { useState, useEffect } from "react";
 import QuestionHeader from "./header";
+import { Button } from "@components/ui/button/button";
 
 function Questions(props) {
   const [schoolname, setSchoolName] = useState("Add School Name here");
@@ -48,7 +49,7 @@ function Questions(props) {
         !Boolean(props.data.length) ? (
           <div className=" flex justify-center mt-16"></div>
         ) : (
-          <div className="flex bg-white">
+          <div className="flex bg-white ">
             <div className="w-2/5">
               <div className="flex gap-2">
                 <Select
@@ -83,7 +84,7 @@ function Questions(props) {
               </ul>
               {/* </div> */}
             </div>
-            <div className="w-2/3 ">
+            <div className="w-2/3  ">
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -108,7 +109,7 @@ function Questions(props) {
                   className="border border-gray-300 rounded p-2"
                 />
               </div>
-              <div className="border border-2 mt-1 ml-1 overflow-y-auto max-h-[460px]">
+              <div className=" mt-1 ml-1 overflow-y-auto max-h-[460px]">
                 {props.selectedQuestions.length ? (
                   <div>
                     <QuestionHeader
@@ -144,6 +145,11 @@ function Questions(props) {
                     <h3>Select Questions to view them here.</h3>
                   </div>
                 )}
+              </div>
+              <div className="w-full h-[54px] px-4 flex justify-between items-center ">
+                  <button className="px-4 py-2 text-sm font-semibold bg-indigo-950 hover:bg-indigo-800 text-white rounded-md">Save</button>
+                  <button className="px-4 py-2 text-sm font-semibold bg-dark-footer hover:bg-mid-footer text-white rounded-md">Share Questions</button>
+                  <button className="px-4 py-2 text-sm font-semibold bg-gray-900 hover:bg-gray-700 text-white rounded-md">Download PDF</button>
               </div>
             </div>
           </div>
