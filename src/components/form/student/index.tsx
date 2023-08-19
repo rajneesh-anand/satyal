@@ -15,21 +15,21 @@ function RegisterStudentForm() {
   const [userServiceConfiguration, setUserServiceConfiguration] =
     useState<UserServiceConfiguration>({
       studentInfo: {
-        fname: "",
-        mname:"",
-        lname: "",
+        firstName: "",
+        middleName:"",
+        lastName: "",
         email: "",
         password: "",
-        class:  {
+        studentClass:  {
           label: "CLASS Nursery",
           value: "CLASS Nursery",
         },
         parentName: "",
-        parentContact:"",
+        parentContactNumber:"",
         address: "",
         city: "",
         state: { value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" },
-        mobile: "",
+        userContactNumber: "",
       },
       selectedPlan: null,
     });
@@ -50,16 +50,16 @@ function RegisterStudentForm() {
     if (step === 4) return;
     if (step === 1 || (onGoingStep && onGoingStep !== 1 && step === 1)) {
       if (
-        !userServiceConfiguration.studentInfo.fname ||
-        !userServiceConfiguration.studentInfo.lname ||
+        !userServiceConfiguration.studentInfo.firstName ||
+        !userServiceConfiguration.studentInfo.lastName ||
         !userServiceConfiguration.studentInfo.email ||
         !userServiceConfiguration.studentInfo.email.includes("@") ||
         !userServiceConfiguration.studentInfo.password ||
-        !userServiceConfiguration.studentInfo.mobile ||
+        !userServiceConfiguration.studentInfo.userContactNumber ||
         !userServiceConfiguration.studentInfo.parentName ||
         !userServiceConfiguration.studentInfo.city ||
         !userServiceConfiguration.studentInfo.address||
-        !userServiceConfiguration.studentInfo.parentContact
+        !userServiceConfiguration.studentInfo.parentContactNumber
         
       ) {
         setShowRequiredFields(true);
@@ -101,6 +101,8 @@ setTimeout(() => {
 }, 500);
 }, [status]);
 
+console.log(userServiceConfiguration?.studentInfo);
+
   return (
     <main className="h-full flex flex-col text-neutral-cool-gray w-full lg:mx-auto  lg:mt-4 lg:mb-12  grow lg:p-4 lg:rounded-lg lg:bg-white lg:h-[56.75rem] lg:shadow">
       <Sidebar currentStep={step} handleNextStep={nextStep} />
@@ -117,7 +119,7 @@ setTimeout(() => {
             <SelectPlan
               selectedPlan={userServiceConfiguration.selectedPlan}
               updateSelectedPlan={updateSelectedPlan}
-              studentClass={userServiceConfiguration.studentInfo.class}
+              studentClass={userServiceConfiguration.studentInfo.studentClass}
             />
           )}
           {step === 3 && (

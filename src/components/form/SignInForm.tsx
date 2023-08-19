@@ -50,6 +50,7 @@ function SignInForm({ csrfToken }) {
       email: data.email,
       password: data.password,
     });
+     
 
     if (result?.error) {
       setErrorMsg(result?.error);

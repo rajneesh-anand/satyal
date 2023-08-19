@@ -22,15 +22,15 @@ function RegisterTeacherForm() {
   const [userServiceConfiguration, setUserServiceConfiguration] =
     useState<UserServiceConfiguration>({
       teacherInfo: {
-        fname: "",
-        mname:"",
-        lname: "",
+        firstName: "",
+        middleName:"",
+        lastName: "",
         email: "",
         password: "",
         address: "",
         city: "",
         state: { value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" },
-        mobile: "",
+        userContactNumber: "",
         schoolName:"",
         schoolContact:"",
         schoolAddress:"",
@@ -73,12 +73,12 @@ console.log(userServiceConfiguration.teacherKYCInfo);
     if (step === 3) return;
     if (step === 1 || (onGoingStep && onGoingStep !== 1 && step === 1)) {
       if (
-        !userServiceConfiguration.teacherInfo.fname ||
-        !userServiceConfiguration.teacherInfo.lname ||
+        !userServiceConfiguration.teacherInfo.firstName ||
+        !userServiceConfiguration.teacherInfo.lastName ||
         !userServiceConfiguration.teacherInfo.email ||
         !userServiceConfiguration.teacherInfo.email.includes("@") ||
         !userServiceConfiguration.teacherInfo.password ||
-        !userServiceConfiguration.teacherInfo.mobile ||
+        !userServiceConfiguration.teacherInfo.userContactNumber ||
         !userServiceConfiguration.teacherInfo.city ||
         !userServiceConfiguration.teacherInfo.address||
         !userServiceConfiguration.teacherInfo.schoolName||
@@ -181,9 +181,9 @@ console.log(userServiceConfiguration.teacherKYCInfo);
     );
     formData.append("accountName", userServiceConfiguration.teacherKYCInfo.accountHolder_name);
     formData.append("branch", userServiceConfiguration.teacherKYCInfo.bank_branch);
-    formData.append("fname", userServiceConfiguration.teacherInfo.fname);
-    formData.append("mname", userServiceConfiguration.teacherInfo.mname);
-    formData.append("lname", userServiceConfiguration.teacherInfo.lname);
+    formData.append("firstName", userServiceConfiguration.teacherInfo.firstName);
+    formData.append("middleName", userServiceConfiguration.teacherInfo.middleName);
+    formData.append("lastName", userServiceConfiguration.teacherInfo.lastName);
     formData.append("email", userServiceConfiguration.teacherInfo.email);
     formData.append("password", userServiceConfiguration.teacherInfo.password);
     formData.append("address", userServiceConfiguration.teacherInfo.address);
@@ -200,7 +200,7 @@ console.log(userServiceConfiguration.teacherKYCInfo);
       "province",
       JSON.stringify(userServiceConfiguration.teacherInfo.state)
     );
-    formData.append("mobile", userServiceConfiguration.teacherInfo.mobile);
+    formData.append("userContactNumber", userServiceConfiguration.teacherInfo.userContactNumber);
     formData.append("userType", "Teacher");
    
     

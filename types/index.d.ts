@@ -11,30 +11,30 @@ declare module "AppTypes" {
   }
   
   export interface StudentInfo {
-    fname: string;
-    mname?:string;
-    lname: string;
+    firstName: string;
+    middleName?:string;
+    lastName: string;
     parentName: string;
-    parentContact:string;
+    parentContactNumber:string;
     email: string;
     password: string;
-    class?: string | ValueType;
+    studentClass?: string | ValueType;
     address: string;
     city: string;
     state?: string | ValueType;
-    mobile: string;
+    userContactNumber: string;
   }
 
   export interface TeacherInfo {
-    fname: string;
-    mname?:string;
-    lname: string;
+    firstName: string;
+    middleName?:string;
+    lastName: string;
     email: string;
     password: string;
     address: string;
     city: string;
     state?: string | ValueType;
-    mobile: string;
+    userContactNumber: string;
     schoolName:string;
     schoolContact:string;
     schoolAddress:string;

@@ -50,7 +50,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   const sidebarItems = [
     {
       title: 'Online Class',
-      href: '/',
+      href: '/teacher/dashboard',
       icon: OnlineClass,
     },
     {
@@ -60,7 +60,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
     },
     {
       title: 'Smart Class Videos ',
-      href: '/',
+      href: '/teacher/videos',
       icon: SmartClassVideos,
     },
     {
@@ -75,7 +75,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
     },
     {
       title: 'Assignments',
-      href: '/',
+      href: '/teacher/assignment',
       icon: Assignments,
     },
     {
@@ -104,7 +104,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
         <div className="flex sidebar-expanded:justify-between justify-center items-center pb-4 ">
           <button
             ref={trigger}
-            className="lg:hidden text-gray-500 hover:text-gray-400"
+            className="lg:hidden text-gray-500 hover:text-gray-400 "
             onClick={() => setSidebarOpen(!sidebarOpen)}
             aria-controls="sidebar"
             aria-expanded={sidebarOpen}

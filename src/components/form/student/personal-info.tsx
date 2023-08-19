@@ -32,15 +32,15 @@ export const PersonalInfo = ({
       <h2>Personal Info</h2>
       <p>Please provide your personal information.</p>
 
-          <div className="flex flex-col md:flex-row mt-4 md:my-2 md:mt-6">
+     <div className="flex flex-col md:flex-row mt-4 md:my-2 md:mt-6">
         <div className="w-full lg:w-[340px] mb-3 ">
           <Input
             label="First Name"
             placeholder="Your First Name"
-            showRequired={showRequired && !studentInfo.fname}
-            value={studentInfo.fname}
+            showRequired={showRequired && !studentInfo.firstName}
+            value={studentInfo.firstName}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "fname")
+              handlePersonalInfo(e, "firstName")
             }
           />
         </div>
@@ -48,9 +48,9 @@ export const PersonalInfo = ({
           <Input
             label="Middle Name"
             placeholder="Your Middle Name"
-            value={studentInfo.mname}
+            value={studentInfo.middleName}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "mname")
+              handlePersonalInfo(e, "middleName")
             }
           />
         </div>
@@ -60,10 +60,10 @@ export const PersonalInfo = ({
           <Input
             label="Last Name"
             placeholder="Your Last Name"
-            showRequired={showRequired && !studentInfo.lname}
-            value={studentInfo.lname}
+            showRequired={showRequired && !studentInfo.lastName}
+            value={studentInfo.lastName}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "lname")
+              handlePersonalInfo(e, "lastName")
             }
           />
         </div>
@@ -71,10 +71,10 @@ export const PersonalInfo = ({
           <Input
             label="Contact Number"
             placeholder="Your Mobile Number "
-            showRequired={showRequired && !studentInfo.mobile}
-            value={studentInfo.mobile}
+            showRequired={showRequired && !studentInfo.userContactNumber}
+            value={studentInfo.userContactNumber}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "mobile")
+              handlePersonalInfo(e, "userContactNumber")
             }
           />
         </div>
@@ -121,11 +121,11 @@ export const PersonalInfo = ({
             </span>
             <Select
               id="class"
-              defaultValue={studentInfo.class}
+              defaultValue={studentInfo.studentClass}
               
               options={classOptions}
               isSearchable={false}
-              onChange={(value: ValueType) => (studentInfo.class = value)}
+              onChange={(value: ValueType) => (studentInfo.studentClass = value)}
             />
           </div>
         </div>
@@ -190,10 +190,10 @@ export const PersonalInfo = ({
           <Input
             label="Parent's/Guardian's Number"
             placeholder="Your Parent's Contact Number"
-            showRequired={showRequired && !studentInfo.parentContact}
-            value={studentInfo.parentContact}
+            showRequired={showRequired && !studentInfo.parentContactNumber}
+            value={studentInfo.parentContactNumber}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "parentContact")
+              handlePersonalInfo(e, "parentContactNumber")
             }
           />
         </div>

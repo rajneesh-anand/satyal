@@ -50,17 +50,17 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   const sidebarItems = [
     {
       title: 'Online Class',
-      href: '/',
+      href: '/student/dashboard',
       icon: OnlineClass,
     },
     {
       title: 'Online Test',
-      href: '/',
+      href: '/student/test',
       icon: OnlineTest,
     },
     {
       title: 'Smart Class Videos ',
-      href: '/',
+      href: '/student/videos',
       icon: SmartClassVideos,
     },
     {
@@ -70,12 +70,12 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
     },
     {
       title: 'Practice Question',
-      href: '/',
+      href: '/student/question',
       icon: PracticeQuestion,
     },
     {
       title: 'Assignments',
-      href: '/',
+      href: '/student/assignment',
       icon: Assignments,
     },
     {

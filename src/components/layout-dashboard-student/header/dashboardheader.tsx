@@ -3,7 +3,6 @@ import Link from '@components/ui/link'
 import { useRouter } from 'next/router';
 import React from 'react'
 import Logowhite from '@components/ui/whitelogo';
-import UserMenu from '@components/layout-dashboard-teacher/header/menu';
 import Image from 'next/image';
 import logo from '../../../../public/images/whitelogo.svg'
 import MobileUserMenu from '../../common/mobileusermenu';
@@ -12,6 +11,7 @@ import { Drawer } from '@components/common/drawer';
 import { getDirection } from '@utils/get-direction';
 import dynamic from 'next/dynamic';
 import Mobilesidebar from '../sidebar/mobilesidebar';
+import UserProfileDesktop from '../../common/dashboardheader/userProfile';
 
 const MobileMenu = dynamic(
   () => import('@components/layout-dashboard-teacher/header/mobile-menu')
@@ -48,7 +48,8 @@ export default function DashboardHeader() {
             </div>
             <div className=''>
                 <div className='hidden lg:inline-block'>
-                <UserMenu />
+                  {/* new version of user profile section with user profile link */}
+                <UserProfileDesktop/>
                 </div>
                 <div className='inline-block lg:hidden'>
                   <MobileUserMenu/>  
