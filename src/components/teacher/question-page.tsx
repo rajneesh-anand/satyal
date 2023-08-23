@@ -1,6 +1,7 @@
 import Select from "@components/ui/select/select";
+import Pdf from "react-to-pdf";
 import { paperType, subject_inClass } from "@data/constant";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import QuestionHeader from "./header";
 import { Button } from "@components/ui/button/button";
 
@@ -8,7 +9,7 @@ function Questions(props) {
   const [schoolname, setSchoolName] = useState("Add School Name here");
   const [location, setLocation] = useState("Add Location");
   const [paperName, setpaperName] = useState();
-
+  const ref = useRef(null);
   return (
     <div>
       <div>
@@ -32,6 +33,7 @@ function Questions(props) {
                 onChange={(e: any) => setpaperName(e.value)}
               />
             </div>
+            Please Select all the feilds
             <div className="flex justify-center mt-10 ">
               <button
                 className="bg-blue-500 hover:bg-#690f00-600 text-white font-bold py-2 px-4 rounded"
@@ -111,7 +113,7 @@ function Questions(props) {
               </div>
               <div className=" mt-1 ml-1 overflow-y-auto max-h-[460px]">
                 {props.selectedQuestions.length ? (
-                  <div>
+                  <div ref={ref} className="content-center ">
                     <QuestionHeader
                       schoolname={schoolname}
                       location={location}
@@ -147,9 +149,23 @@ function Questions(props) {
                 )}
               </div>
               <div className="w-full h-[54px] px-4 flex justify-between items-center ">
-                  <button className="px-4 py-2 text-sm font-semibold bg-indigo-950 hover:bg-indigo-800 text-white rounded-md">Save</button>
-                  <button className="px-4 py-2 text-sm font-semibold bg-dark-footer hover:bg-mid-footer text-white rounded-md">Share Questions</button>
-                  <button className="px-4 py-2 text-sm font-semibold bg-gray-900 hover:bg-gray-700 text-white rounded-md">Download PDF</button>
+                <button className="px-4 py-2 text-sm font-semibold bg-indigo-950 hover:bg-indigo-800 text-white rounded-md">
+                  Save
+                </button>
+
+                <button className="px-4 py-2 text-sm font-semibold bg-dark-footer hover:bg-mid-footer text-white rounded-md">
+                  Share Questions
+                </button>
+                <Pdf targetRef={ref} filename="document.pdf">
+                  {({ toPdf }) => (
+                    <button
+                      onClick={toPdf}
+                      className="px-4 py-2 text-sm font-semibold bg-gray-900 hover:bg-gray-700 text-white rounded-md"
+                    >
+                      Download PDF
+                    </button>
+                  )}
+                </Pdf>
               </div>
             </div>
           </div>
