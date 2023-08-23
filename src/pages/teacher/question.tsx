@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import StudentDashboardLayout from "@components/layout-dashboard-student";
 import Questions from "@components/teacher/question-page";
 import TeacherDashboardLayout from "@components/layout-dashboard-teacher";
+import { paperType } from "@data/constant";
 
 function Question() {
   const [subjects, setSubjects] = useState([]);
@@ -39,7 +40,13 @@ function Question() {
   }
 
   function handleSubmit() {
-    selectedSubject && getQuestions();
+    if (selectedSubject && className && paperType) {
+      getQuestions();
+    } else {
+      console.log(
+        "Please select a subject, class, and question before submitting."
+      );
+    }
   }
 
   async function getQuestions() {
