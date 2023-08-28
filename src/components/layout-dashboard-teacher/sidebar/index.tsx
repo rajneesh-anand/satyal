@@ -48,6 +48,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   }, [sidebarExpanded]);
 
   const sidebarItems = [
+   
     {
       title: "Online Class",
       href: "/teacher/dashboard",
@@ -152,9 +153,9 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
               >
                 •••
               </span>
-              <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">
+              {/* <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                 SELECT MENU
-              </span>
+              </span> */}
             </h3>
             <ul>
               {sidebarItems.map((item, index) => (
