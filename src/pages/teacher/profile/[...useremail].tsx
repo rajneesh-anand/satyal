@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { GetServerSideProps, GetStaticProps } from 'next';
 import { getSession, useSession } from 'next-auth/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import StudentDashboardLayout from '@components/layout-dashboard-student';
+import TeacherDashboardLayout from "@components/layout-dashboard-teacher";
 import Seo from '@components/seo/seo';
-import UserPersonalInfo from '../../components/common/profile';
+import UserPersonalInfo from '../../../components/common/profile';
 import DashboardLoading from '@components/ui/loader/dashboardLoading';
-import StudentBuyPlanDedails from '../../components/student/plandetails';
-import TeacherKycDetails from '../../components/teacher/kycdetails'
+import StudentBuyPlanDedails from '../../../components/student/plandetails';
+import TeacherKycDetails from '../../../components/teacher/kycdetails'
 export default function useremail() {
   let[logInUser,setLogInUser]=useState();
   let{data:session}=useSession();
@@ -32,7 +32,7 @@ export default function useremail() {
         path="/"
       />
 
-      <StudentDashboardLayout>
+      <TeacherDashboardLayout>
         <section className='w-full px-4 py-4 sm:py-[20px] sm:px-0 '>
           {
             logInUser?(
@@ -46,7 +46,7 @@ export default function useremail() {
           ):(<DashboardLoading/>)
           }
         </section>
-      </StudentDashboardLayout>
+      </TeacherDashboardLayout>
     </>
   )
 }
