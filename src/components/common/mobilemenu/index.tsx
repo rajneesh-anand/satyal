@@ -8,7 +8,7 @@ const MobileStickyMenu=({menuItems}:iStudentMobileMenuList)=> {
   const { t } = useTranslation();
     return (
       <>
-      <div className='lg:hidden absolute left-0 right-0 bottom-0 w-full h-[54px] sm:h-[80px] bg-dark-footer px-6 sm:px-9 z-50'>
+      <div className='lg:hidden absolute left-0 right-0 bottom-0 w-full h-[54px] sm:h-[80px] bg-dark-footer px-6 sm:px-9 z-40'>
         <div className='flex justify-between h-full items-center  '>
           {
             menuItems&&menuItems.map((menu)=>{
