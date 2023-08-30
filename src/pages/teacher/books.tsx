@@ -1,15 +1,65 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TeacherDashboardLayout from '@components/layout-dashboard-teacher';
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { getSession, useSession } from "next-auth/react";
+import BookClassModal from '../../components/teacher/bookclassmodal';
+import {ValueType} from "AppTypes";
+import DashboardLoading from '@components/ui/loader/dashboardLoading';
+import Bookthumbnail from '@components/common/book/bookthumbnail';
+import Container from "@components/ui/container";
 
 export default function Books({teacher}){
+  let [bookOfClass,setBookOfClass]=useState<ValueType>();
+  let [displayModal,setDisplayModdal]=useState(false);
+  const [bookCovers, setBookCovers] = useState<string[]>();
+  const [loader,setLoader]=useState<Boolean>();
+  let fetchBookApi=async()=>{
+    setDisplayModdal(true);
+    setLoader(true);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/books/${bookOfClass?.value}`
+    );
+    let convertData=await response.json();
+    setBookCovers(convertData?.data?.images)
+    setLoader(false);
+     
+  }
+  if(loader){
+    return(
+      <DashboardLoading/>
+    )
+  }
   return (
     <>
+     {
+        (!displayModal)?(
+          <BookClassModal setBookOfClass={setBookOfClass} fetchBookApi={fetchBookApi}/>
+        ):null
+      }
+    
       <TeacherDashboardLayout>
-      <h1>Teacher Books page</h1>
-    </TeacherDashboardLayout> 
+          {(bookCovers)?(
+            <>
+            <Container>
+              <div className="h-full ">
+                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 py-4 ">
+                  {
+                    bookCovers&&bookCovers.map((cover,index)=>{
+                      return(
+                        <Bookthumbnail cover={cover} key={index}/>
+                      )
+                    })
+                  }
+                 </div>
+              </div>  
+            </Container> 
+            </>
+          ):(
+            
+           <h2>books are not aviable</h2>
+          )}
+      </TeacherDashboardLayout> 
     </>
   )
 }
