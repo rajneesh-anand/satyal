@@ -42,7 +42,7 @@ export default function Books({teacher}){
           {(bookCovers)?(
             <>
             <Container>
-              <div className="h-full ">
+              <div className="h-full pb-[60px] sm:pb-0">
                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 py-4 ">
                   {
                     bookCovers&&bookCovers.map((cover,index)=>{
