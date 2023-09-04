@@ -40,12 +40,10 @@ function Question() {
   }
 
   function handleSubmit() {
-    if (selectedSubject && className && paperType) {
+    if (selectedSubject && className) {
       getQuestions();
     } else {
-      console.log(
-        "Please select a subject, class, and question before submitting."
-      );
+      alert("Please select a subject, class, and question before submitting.");
     }
   }
 
@@ -60,6 +58,8 @@ function Question() {
       setData(questions);
       setIsLoading(false);
       setIsTrue(true);
+      // setClassName(null);
+      // setSelectedSubject(null);
     }
   }
 

@@ -47,6 +47,7 @@ module.exports = {
         "main-background":"#fff",
          "mid-footer": "#782619",
          "light-footer": "#873e32",
+        "secondary-background":"#F2F3F4"
       },
       textColor: {
         skin: {
