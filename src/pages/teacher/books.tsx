@@ -8,14 +8,19 @@ import {ValueType} from "AppTypes";
 import DashboardLoading from '@components/ui/loader/dashboardLoading';
 import Bookthumbnail from '@components/common/book/bookthumbnail';
 import Container from "@components/ui/container";
+import Modal from '@components/common/modal/modal';
+import { useRouter } from 'next/router';
 
 export default function Books({teacher}){
-  let [bookOfClass,setBookOfClass]=useState<ValueType>();
-  let [displayModal,setDisplayModdal]=useState(false);
-  const [bookCovers, setBookCovers] = useState<string[]>();
+  const router=useRouter();
+  let [bookOfClass,setBookOfClass]=useState<ValueType>(); //store class state
+  let [displayModal,setDisplayModdal]=useState(true);
+  const [bookCovers, setBookCovers] = useState<string[]>(); //store books cover url
   const [loader,setLoader]=useState<Boolean>();
+
+  // async funtion to fetch book cover image
   let fetchBookApi=async()=>{
-    setDisplayModdal(true);
+    setDisplayModdal(false);
     setLoader(true);
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/books/${bookOfClass?.value}`
@@ -25,6 +30,17 @@ export default function Books({teacher}){
     setLoader(false);
      
   }
+
+  // handel modal to close state
+  let closemodal=()=>{
+    if(bookOfClass){
+      setDisplayModdal(false);
+    }else{
+     router.push('/teacher/dashboard');
+     setDisplayModdal(false);
+    }
+
+  }
   if(loader){
     return(
       <DashboardLoading/>
@@ -32,11 +48,6 @@ export default function Books({teacher}){
   }
   return (
     <>
-     {
-        (!displayModal)?(
-          <BookClassModal setBookOfClass={setBookOfClass} fetchBookApi={fetchBookApi}/>
-        ):null
-      }
     
       <TeacherDashboardLayout>
           {(bookCovers)?(
@@ -60,6 +71,11 @@ export default function Books({teacher}){
            <h2>books are not aviable</h2>
           )}
       </TeacherDashboardLayout> 
+      <Modal open={displayModal} onClose={closemodal}>
+        <main>
+          <BookClassModal setBookOfClass={setBookOfClass} fetchBookApi={fetchBookApi} />
+        </main>
+      </Modal>
     </>
   )
 }

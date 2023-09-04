@@ -6,8 +6,8 @@ export default function bookclassmodal({setBookOfClass,fetchBookApi}:Ibookclassm
 
   return (
     <>
-      <section className='w-full h-full flex justify-center items-center fixed z-50 bg-black opacity-75'
-    >
+      {/* <section className='w-full h-full flex justify-center items-center fixed z-50 bg-black opacity-75'
+    > */}
         <div className='w-11/12 h-[350px] sm:h-[450px] sm:w-[600px] bg-secondary-background opacity-100 rounded-lg'>
             <div className='w-full h-full pt-[25px] sm:pt-[25px] flex flex-col items-center px-[20px]'>
                 <h2 className='mx-auto text-xl  sm:text-2xl font-bold text-dark-footer'>Please select Class</h2>
@@ -21,7 +21,7 @@ export default function bookclassmodal({setBookOfClass,fetchBookApi}:Ibookclassm
                   onClick={fetchBookApi}>Submit</button>
             </div>
         </div>
-      </section>
+      {/* </section> */}
     </>
   )
 }
