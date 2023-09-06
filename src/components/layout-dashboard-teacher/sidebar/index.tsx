@@ -48,15 +48,14 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   }, [sidebarExpanded]);
 
   const sidebarItems = [
-   
     {
       title: "Online Class",
-      href: "/teacher/dashboard",
+      href: "/teacher/onlineclass",
       icon: OnlineClass,
     },
     {
       title: "Online Test",
-      href: "/",
+      href: "/teacher/onlinetest",
       icon: OnlineTest,
     },
     {

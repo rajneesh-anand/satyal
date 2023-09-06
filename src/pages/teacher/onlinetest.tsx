@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import TeacherDashboardLayout from "@components/layout-dashboard-teacher";
 
-function Onlinetest() {}
-
-export default Onlinetest;
+export default function onlinetest() {
+  return (
+    <TeacherDashboardLayout>
+      <div>onlinetest</div>
+    </TeacherDashboardLayout>
+  );
+}
