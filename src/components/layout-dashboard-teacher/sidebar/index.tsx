@@ -50,12 +50,12 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   const sidebarItems = [
     {
       title: 'Online Class',
-      href: '/teacher/dashboard',
+      href: '/teacher/onlineclass',
       icon: OnlineClass,
     },
     {
       title: 'Online Test',
-      href: '/',
+      href: '/teacher/onlinetest',
       icon: OnlineTest,
     },
     {
@@ -152,9 +152,9 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
               >
                 •••
               </span>
-              <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">
+              {/* <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                 SELECT MENU
-              </span>
+              </span> */}
             </h3>
             <ul>
               {sidebarItems.map((item, index) => (

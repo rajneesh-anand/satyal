@@ -5,10 +5,12 @@ import { getCsrfToken, getSession } from 'next-auth/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import SignInForm from '@components/form/SignInForm';
 
+
 export default function LoginPage({ csrfToken }) {
   return (
     <Container>
       <SignInForm csrfToken={csrfToken} />
+      
     </Container>
   );
 }

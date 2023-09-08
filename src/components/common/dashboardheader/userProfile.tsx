@@ -7,7 +7,7 @@ import Link from '@components/ui/link';
 export default function UserProfile() {
     const { data: session, status } = useSession();
     let logInUser=session?.user?.email?.split('@')[0];
-    
+    let userType=session?.user?.userType;
     
     
   return (
@@ -46,7 +46,7 @@ export default function UserProfile() {
          
           <ul className=''>
             <li >
-                <Link href={`/profile/${logInUser}`} className='py-2 flex justify-center text-sm font-medium text-dark-footer hover:bg-dark-footer hover:text-white '>View Profile</Link>
+                <Link href={(userType==='Student')?(`/student/profile/${logInUser}`):(`/teacher/profile/${logInUser}`)} className='py-2 flex justify-center text-sm font-medium text-dark-footer hover:bg-dark-footer hover:text-white '>View Profile</Link>
             
             </li>
             <li>

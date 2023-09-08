@@ -9,7 +9,7 @@ export default function StudentBooks() {
   const [books, setBooks] = useState<string[]>();
   const [bookCovers, setBookCovers] = useState<string[]>();
   const [imageUrl, setImageUrl] = useState("");
-  const [loading,setLoading]=useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStudentBooks = async () => {
@@ -23,11 +23,10 @@ export default function StudentBooks() {
         // console.log('Yo books ko images ho hai:', data.images);
         setBooks(data?.books);
         setBookCovers(data?.images);
-        setLoading(false)
+        setLoading(false);
       }
     };
     fetchStudentBooks();
-    
   }, [session]);
 
   const getImageDetails = (bookCovers) => {
@@ -65,13 +64,12 @@ export default function StudentBooks() {
   //   }, [item]);
   // };
   // console.log(bookCovers);
-if(loading){
-  return(<DashboardLoading/>)
-}
+  if (loading) {
+    return <DashboardLoading />;
+  }
   return (
     <Container>
       <div className="h-full ">
-        
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 py-4 ">
           {bookCovers ? (
             bookCovers.map((item, idx) => (
@@ -79,11 +77,7 @@ if(loading){
                 key={idx}
                 className="group h-[200px] md:h-[300px] relative rounded-lg overflow-hidden shadow-xl hover:cursor-pointer "
               >
-                <img
-                  src={item}
-                  className="w-full h-full "
-                  alt="Book cover"
-                />
+                <img src={item} className="w-full h-full " alt="Book cover" />
                 <div className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-60"></div>
                 <div className="absolute inset-0 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   {/* <h4 className="text-brown text-2xl font-lg text-center whitespace-normal">
@@ -127,7 +121,6 @@ if(loading){
           )}
         </div>
       </div>
-      
     </Container>
   );
 }

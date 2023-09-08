@@ -21,11 +21,11 @@ const Modal: FC<ModalProps> = ({
     <Transition appear show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden"
+        className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden "
         onClose={onClose}
       >
         <div
-          className={cn('min-h-screen lg:px-4 text-center', {
+          className={cn('min-h-screen lg:px-4 text-center ', {
             'flex justify-center items-end': variant === 'bottom',
           })}
         >
@@ -62,7 +62,7 @@ const Modal: FC<ModalProps> = ({
               leaveFrom="top-0"
               leaveTo="top-[100vh]"
             >
-              <div className="w-full md:w-[500px] xl:w-auto inline-block p-0 text-start align-middle transition-all shadow-xl relative z-50 h-[75vh] overflow-hidden">
+              <div className="w-full md:w-[500px] xl:w-auto inline-block p-0 text-start align-middle transition-all shadow-xl relative z-50 h-[75vh] overflow-hidden ">
                 <div className="relative h-full">
                   <button
                     onClick={onClose}
@@ -83,7 +83,7 @@ const Modal: FC<ModalProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-110"
             >
-              <div className="w-full md:w-auto inline-block p-4 md:p-6 xl:p-8 overflow-hidden text-start align-middle transition-all transform shadow-xl relative z-50">
+              <div className=" inline-block p-0 md:p-0 xl:p-0 overflow-hidden text-start align-middle transition-all transform shadow-xl relative z-50 ">
                 <div className="relative rounded-md">
                   <button
                     onClick={onClose}

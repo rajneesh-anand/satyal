@@ -16,7 +16,9 @@ export default function ProfileLayout({ children }: React.PropsWithChildren) {
         <DashboardHeader />
         {/* new header of student dashboard for mobile and tablet*/}
         <main>
-          <div className= " px-0 md:px-4  py-2 w-full max-w-9xl mx-auto ">{children}</div>
+          <div className=" px-0 md:px-4  py-2 w-full max-w-9xl mx-auto ">
+            {children}
+          </div>
         </main>
       </div>
       <StickyMenu />
