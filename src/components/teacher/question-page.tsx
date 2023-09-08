@@ -1,15 +1,13 @@
-import Select from "@components/ui/select/select";
-import Pdf from "react-to-pdf";
-import { paperType, subject_inClass } from "@data/constant";
-import { useState, useEffect, useRef } from "react";
-import QuestionHeader from "./header";
-import { Button } from "@components/ui/button/button";
+import Select from '@components/ui/select/select';
+import Pdf from 'react-to-pdf';
+import { paperType, subject_inClass } from '@data/constant';
+import { useState, useEffect, useRef } from 'react';
+import QuestionHeader from './header';
+import { Button } from '@components/ui/button/button';
 
 function Questions(props) {
-  const [schoolname, setSchoolName] = useState(
-    "Satyal Online Learning Platrform"
-  );
-  const [location, setLocation] = useState("Add Location");
+  const [schoolname, setSchoolName] = useState('Satyal Online Learning Platrform');
+  const [location, setLocation] = useState('Add Location');
   const [logo, setLogo] = useState<any>();
   const [paperName, setpaperName] = useState();
   const [showpaper, setShowPaper] = useState(false);
@@ -65,7 +63,7 @@ function Questions(props) {
             <div className="flex justify-center mt-10 ">
               <button
                 className="bg-blue-500 hover:bg-#690f00-600 text-white font-bold py-2 px-4 rounded"
-                style={{ backgroundColor: "#690f00" }}
+                style={{ backgroundColor: '#690f00' }}
                 onClick={props.handleSubmit}
               >
                 Submit
@@ -130,7 +128,7 @@ function Questions(props) {
                                     />
                                   </div>
                                   <div>
-                                    {paperName === "Exam Paper" && (
+                                    {paperName === 'Exam Paper' && (
                                       <input className="w-14" type="text" />
                                     )}
                                   </div>
@@ -176,7 +174,7 @@ function Questions(props) {
               {/* <div className="border border-2 mt-1 overflow-y-auto max-h-80"> */}
               <ul
                 className={`border border-2 mt-1 sm:block  overflow-y-auto max-h-[460px] ${
-                  showpaper ? "hidden" : "block"
+                  showpaper ? 'hidden' : 'block'
                 }`}
               >
                 {props.data.map((el) => (
@@ -246,7 +244,7 @@ function Questions(props) {
                                 />
                               </div>
                               <div>
-                                {paperName === "Exam Paper" && (
+                                {paperName === 'Exam Paper' && (
                                   <input className="w-14" type="text" />
                                 )}
                               </div>
