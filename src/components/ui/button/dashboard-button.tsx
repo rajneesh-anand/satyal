@@ -16,20 +16,20 @@ interface ButtonProps {
   }: ButtonProps) => {
     const typeClasses =
       type === "primary"
-        ? "bg-dark-footer text-white  hover:bg-white hover:text-dark-footer border-2 border-solid border-dark-footer  "
+        ? "bg-dark-footer text-white  hover:bg-white hover:text-dark-footer border-2 border-solid border-dark-footer "
         : type === "secondary"
-        ? "bg-white text-dark-footer border-2 border-dark-footer border-solid hover:text-white hover:bg-dark-footer"
+        ? "bg-white text-dark-footer border-2 border-dark-footer border-solid hover:text-white hover:bg-dark-footer "
         : " ";
     const sizeClasses =
       size === "large"
-        ? "text-md font-bold "
+        ? "text-md font-bold  py-1 sm:py-2"
         : size === "medium"
-        ? "text-sm sm:text-md  font-semibold"
+        ? "text-sm sm:text-md  font-semibold py-1"
         : "";
     return (
       <button
         onClick={onClick}
-        className={cn(`rounded-lg transition-all duration-300  ease-in-out hover:transition-all py-1 sm:py-2 px-3 sm:px-4`, typeClasses, sizeClasses, className)}
+        className={cn(`rounded-lg transition-all duration-300  ease-in-out hover:transition-all  px-3 sm:px-4`, typeClasses, sizeClasses, className)}
       >
         {children}
       </button>
