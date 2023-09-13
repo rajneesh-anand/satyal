@@ -11,6 +11,7 @@ import Modal from "@components/common/modal/modal";
 import AddNote from "@components/teacher/note/addnode";
 import Studentlist from "@components/teacher/onlineclass/studentlist";
 import Workshite from "@components/teacher/onlineclass/workshite";
+import Addmeetinglink from "@components/teacher/onlineclass/addmeetinglink";
 
 export default function ClassID() {
   let [noteModalState,setNoteModalState]=useState(false);
@@ -22,24 +23,12 @@ export default function ClassID() {
  // handeler funtion to save note by teacher
  let handelSubmitNote=()=>{}
 
-//  teacher add note modal handeler
-let handelAddToNote=()=>{
-  setNoteModalComponent('NOTE_COMPONENT');
+//  chaning modal component
+let handelModalcomponent=(component:string)=>{
+  setNoteModalComponent(component);
   handelNoteModalState();
-  
 }
-// view student list in modal
-let handelSeeStudentList=()=>{
-  setNoteModalComponent('STUDENT_LIST_COMPONENT');
-  handelNoteModalState();
-  
-}
-// view workshit componet 
-let handelWorkShitModalComponent=()=>{
-  setNoteModalComponent('WORKSHIRT_COMPONENT');
-  handelNoteModalState();
-  
-}
+
 // modal state handeler for modal open and close
  function handelNoteModalState(){
   setNoteModalState((state)=>!state)
@@ -50,8 +39,9 @@ let handelWorkShitModalComponent=()=>{
         <section className="sm:pb-[0px] pb-[70px]">
          <div className="sm:px-[30px] lg:px-[50px] my-2 py-2 flex justify-between items-center ">
             <div className=" w-[80px] sm:w-[200px] h-[80px] sm:h-[100px] border border-solid border-black"></div>
-            <div className="w-5/6 sm:w-3/6 lg:w-2/6 flex justify-between ">
-              <Button onClick={handelWorkShitModalComponent} type={ButtonType.Secondary} size={ButtonSize.Large}>WORKSHEET</Button>
+            <div className="w-5/6 sm:w-3/6 lg:w-3/6 flex justify-between">
+              <Button onClick={()=>handelModalcomponent('WORKSHIRT_COMPONENT')} type={ButtonType.Secondary} size={ButtonSize.Large} className="hidden sm:block">WORKSHEET</Button>
+              <Button onClick={()=>handelModalcomponent('ADDCLASS_LINK')} type={ButtonType.Other}  size={ButtonSize.Large} className=" ml-2 sm:ml-0 sm:mx-6 border-2 border-solid border-dark-footer bg-secondary-background text-dark-footer hover:bg-dark-footer hover:text-white">ADD LINK</Button>
              <Button onClick={handelwork} type={ButtonType.Primary} size={ButtonSize.Large}>JOIN CLASS</Button>
             </div>
          </div>
@@ -61,13 +51,13 @@ let handelWorkShitModalComponent=()=>{
                 <span className="text-xl sm:text-2xl font-bold text-dark-footer">30</span>
                  <h3 className="text-xl sm:text-2xl font-semibold text-dark-footer">Join Students</h3>
               </div>
-               <Button onClick={handelSeeStudentList} type={ButtonType.Secondary} size={ButtonSize.Medium}>VIEW STUDENTS</Button>
+               <Button onClick={()=>handelModalcomponent('STUDENT_LIST_COMPONENT')} type={ButtonType.Secondary} size={ButtonSize.Medium}>VIEW STUDENTS</Button>
             </div>
             <div className="w-full h-[350px] sm:h-full flex flex-col items-center sm:w-4/6 ">
               <h2 className="text-xl font-bold text-dark-footer ">NOTES</h2>
               <div className="w-full flex flex-col mt-2 bg-white py-2 px-2 lg:px-4 rounded-xl h-full overflow-hidden">
                 <div >
-                  <Button onClick={handelAddToNote} type={ButtonType.Secondary} size={ButtonSize.Medium}>ADD NOTE</Button>
+                  <Button onClick={()=>handelModalcomponent('NOTE_COMPONENT')} type={ButtonType.Secondary} size={ButtonSize.Medium}>ADD NOTE</Button>
 
                 </div>
                 <div className="w-full h-full px-4 py-2 overflow-y-auto ">
@@ -90,6 +80,8 @@ let handelWorkShitModalComponent=()=>{
              <Studentlist/>
           ):(noteModalComponent==='WORKSHIRT_COMPONENT')?(
             <Workshite/>
+          ):(noteModalComponent==='ADDCLASS_LINK')?(
+            <Addmeetinglink/>
           ):(null)
         }
 

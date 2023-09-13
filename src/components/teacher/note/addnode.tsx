@@ -4,7 +4,7 @@ import Heading from '@components/ui/heading'
 import {ButtonSize,ButtonType} from '../../../../enums/buttons'
 import Textarea from '@components/ui/textarea'
 import {IteacherNoteProps} from '../../../../types/props'
-
+import {HeadingType} from '../../../../enums/tittle'
 export default function AddNote({teacherNote,setTeacherNote,handelSubmitNote}:IteacherNoteProps) {
 let handelCleanNote=()=>{
   setTeacherNote('');
@@ -14,7 +14,7 @@ let handelCleanNote=()=>{
     <>
       <section className='py-3 px-4 flex flex-col w-[350px] sm:w-[500px] h-[300px] sm:h-[400px] bg-secondary-background opacity-100 rounded-lg'>
        <div className='w-full h-[40px] flex justify-center items-center'>
-        <Heading variant='mediumHeading'>Add Note</Heading>
+        <Heading variant={HeadingType.MediumHeading}>Add Note</Heading>
        </div>
        <div className='h-full w-full my-3  overflow-hidden'>
         <Textarea 
