@@ -7,6 +7,7 @@ import TeacherDashboardLayout from "@components/layout-dashboard-teacher";
 import TeacherKYCForm from "@components/form/TeacherKYCForm";
 import KYCReviewForm from "@components/form/KYCReviewForm";
 import { io } from "socket.io-client";
+import Link from "@components/ui/link";
 
 export default function TeacherDashboard({ teacher }) {
   const { data: session, status } = useSession();
@@ -65,6 +66,7 @@ export default function TeacherDashboard({ teacher }) {
     <TeacherDashboardLayout>
       <div>
         <h1>Teacher</h1>
+       
         {arrivalMessage}
         <div className="">
         </div>

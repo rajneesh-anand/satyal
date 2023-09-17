@@ -56,7 +56,7 @@ const Heading: React.FC<Props> = ({
   return (
     <Component
       className={cn(
-        'text-skin-base',
+        'text-dark-footer',
         {
           'text-15px sm:text-base font-semibold': variant === 'base',
           'text-base xl:text-lg xl:leading-7 font-semibold font-manrope':
@@ -64,7 +64,7 @@ const Heading: React.FC<Props> = ({
           'font-semibold text-skin-base text-xl': variant === 'titleMedium',
           'text-base lg:text-lg xl:text-[20px] font-semibold xl:leading-8':
             variant === 'titleLarge',
-          'text-base lg:text-[17px] lg:leading-7 font-medium':
+          'text-lg sm:text-xl  lg:leading-7  font-bold':
             variant === 'mediumHeading',
           'text-lg lg:text-xl xl:text-[22px] xl:leading-8 font-bold font-manrope':
             variant === 'heading',

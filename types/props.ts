@@ -13,3 +13,8 @@ export interface Ibookclassmodal{
     fetchBookApi :() => Promise<void>;
 }
 
+export interface IteacherNoteProps{
+    teacherNote:string;
+    setTeacherNote:React.Dispatch<React.SetStateAction<String>>;
+    handelSubmitNote:() => void
+}
