@@ -25,6 +25,6 @@
     },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "types/*.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "types/*.ts", "**/*.ts", "**/*.tsx", "src/pages/student/onlineclass/[...classid].tsx"],
   "exclude": ["node_modules"]
 }
