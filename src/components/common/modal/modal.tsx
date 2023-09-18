@@ -84,7 +84,7 @@ const Modal: FC<ModalProps> = ({
               leaveTo="opacity-0 scale-110"
             >
               <div className=" inline-block p-0 md:p-0 xl:p-0 overflow-hidden text-start align-middle transition-all transform shadow-xl relative z-50 ">
-                <div className="relative rounded-md">
+                <div className="relative rounded-lg bg-secondary-background opacity-100 ">
                   <button
                     onClick={onClose}
                     aria-label="Close panel"
