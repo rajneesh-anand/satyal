@@ -4,8 +4,9 @@ import Select from "@components/ui/select/select";
 import { subject_inClass } from "@data/constant";
 import Modal from "@components/common/modal/modal";
 import OnlineClassModal from "../../components/teacher/onlineclassmodal";
-import {ButtonSize,ButtonType} from '../../../enums/buttons'
+import { ButtonSize, ButtonType } from "../../../enums/buttons";
 import { Button } from "@components/ui/button/dashboard-button";
+import Onlinecard from "@components/cards/onlinecard";
 // import { Card } from "react-bootstrap";
 
 export default function onlineclass() {
@@ -46,24 +47,34 @@ export default function onlineclass() {
               placeholder="SELECT CLASS"
               onChange={handleClassChange}
             />
-          </div>  
-          <div className="  mx-4 sm:mx-[30px]">
-            <Button size={ButtonSize.Large} type={ButtonType.Primary} onClick={handleClick}>CREATE CLASS</Button>
-        
           </div>
-          
+          <div className="  mx-4 sm:mx-[30px]">
+            <Button
+              size={ButtonSize.Large}
+              type={ButtonType.Primary}
+              onClick={handleClick}
+            >
+              CREATE CLASS
+            </Button>
+          </div>
         </div>
       </div>
-   
+
       <Modal onClose={handleModalClose} open={openModal}>
-          <OnlineClassModal
-            subjects={subjects}
-            handleClassChange={handleClassChange}
-            handleSubjectChange={handleSubjectChange}
-            setSection={setSection}
-            handleInputChange={handleInputChange}
-          />
-        </Modal>
+        <OnlineClassModal
+          subjects={subjects}
+          handleClassChange={handleClassChange}
+          handleSubjectChange={handleSubjectChange}
+          setSection={setSection}
+          handleInputChange={handleInputChange}
+          section={section}
+          className={className}
+          selectedSubject={selectedSubject}
+        />
+      </Modal>
+      <div>
+        <Onlinecard />
+      </div>
     </TeacherDashboardLayout>
   );
 }

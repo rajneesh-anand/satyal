@@ -8,16 +8,13 @@ import { Button } from "@components/ui/button/dashboard-button";
 import {ButtonSize,ButtonType} from '../../../enums/buttons'
 
 function onlineclassmodal(props) {
-  const [sectionName, setSectionName] = useState("");
+  // const [sectionName, setSectionName] = useState("");
 
   const handleSave = () => {
-    const setSelectedSubject = props.setSelectedSubject;
-    const setClassName = props.setClassName;
-
     const dataToSend = {
-      setClassName,
-      setSelectedSubject,
-      sectionName,
+      classname: props.className,
+      subject: props.selectedSubject,
+      section: props.section,
     };
 
     fetch("/your-api-endpoint", {
