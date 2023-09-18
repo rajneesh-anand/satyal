@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import Select from "@components/ui/select/select";
 import { subject_inClass } from "@data/constant";
+import Heading from "@components/ui/heading";
+import {HeadingType} from '../../../enums/tittle'
+import Input from "@components/ui/input";
+import { Button } from "@components/ui/button/dashboard-button";
+import {ButtonSize,ButtonType} from '../../../enums/buttons'
 
 function onlineclassmodal(props) {
   const [sectionName, setSectionName] = useState("");
@@ -36,16 +41,21 @@ function onlineclassmodal(props) {
       });
   };
   return (
-    <div className="w-[200px] h-[200px] sm:h-[400px] sm:w-[400px] bg-secondary-background opacity-100 rounded-lg">
-      <div className="w-full h-full pt-[25px] sm:pt-[25px] flex flex-col items-center px-[20px]">
-        <div className="mt-2">
+    <div className=" py-3 px-3 w-[350px]  sm:w-[500px]  opacity-100 rounded-lg">
+      <div className="w-full text-center  flex justify-center py-1 sm:py-3 ">
+        <Heading variant={HeadingType.MediumHeading}>YOU CAN CREATE ONLINE CLASS HERE</Heading>
+      </div>
+      <div className="w-full h-full  items-center px-[20px]">
+        <div className="w-full  my-2 sm:my-3">
+          <p className="text-md font-semibold text-dark-footer">Select Class For Online-Class</p>
           <Select
             options={subject_inClass}
-            placeholder="Class"
+            placeholder="Please Select Class"
             onChange={props.handleClassChange}
           />
         </div>
-        <div className="mt-2">
+        <div className="my-2 sm:my-3 w-full">
+        <p className="text-md font-semibold text-dark-footer">Select Subject For Online-Class</p>
           <Select
             options={props.subjects}
             placeholder="Subject"
@@ -53,23 +63,22 @@ function onlineclassmodal(props) {
             onChange={props.handleSubjectChange}
           />
         </div>
-        <div>
-          Enter Section Name:
-          <div>
+        <div className="w-full">
+        <p className="text-md font-semibold text-dark-footer">Enter Section Name:</p> 
+          <div className="w-full h-[45px] sm:h-[54px]">
             <input
               type="text"
               placeholder="Add section"
-              className="border border-gray-300 rounded p-2"
+              className="border border-gray-300 rounded p-2 w-full h-[52px]"
               onChange={props.handleInputChange}
             />
+            {/* <Input name="sectionName" placeholder="Add Section" variant="solid" /> */}
           </div>
         </div>
-        <button
-          className="mt-[40px] sm:mt-[50px] py-2 px-4 bg-dark-footer rounded-md text-white text-md font-bold hover:bg-mid-footer"
-          onClick={handleSave}
-        >
-          Save
-        </button>
+        <div className="w-full my-5 sm:my-6 flex justify-end">
+          <Button type={ButtonType.Primary} size={ButtonSize.Medium} onClick={handleSave}>SAVE</Button>
+        </div>
+      
       </div>
     </div>
   );
