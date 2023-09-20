@@ -15,13 +15,15 @@ export default function Addmeetinglink() {
   return (
     <>
       <section className='flex flex-col justify-between px-3 py-6 w-[350px] sm:w-[450px] h-[300px] rounded-lg bg-secondary-background'>
-        <div className=' flex justify-center'>
+        <div className=' flex justify-center border-b border-solid border-mid-footer'>
             <Heading variant={HeadingType.MediumHeading}>Add Class Link</Heading>
         </div>
         <div className=' px-0 sm:px-2 w-full h-[45px] '>
-          <Input name='meetingLink' placeholder='Please add the meeting link'
+          <Input name='meetingLink' placeholder='meeting link'
           variant='solid' value={classLink}
-          onChange={handelClassLink}/>
+          onChange={handelClassLink}
+         
+          label='Please add Google meet Link'/>
         </div>
         <div className='w-full flex justify-end'>
         <Button  type={ButtonType.Primary} size={ButtonSize.Medium}>SAVE</Button>
