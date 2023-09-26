@@ -7,52 +7,94 @@ import Input from "@components/ui/input";
 import { Button } from "@components/ui/button/dashboard-button";
 import { ButtonSize, ButtonType } from "../../../enums/buttons";
 import { useSession } from "next-auth/react";
+import Loader from "@components/ui/loader";
 
-function OnlineClassModal(props) {
-  const { data: session } = useSession();
-  const [isSaveEnabled, setIsSaveEnabled] = useState(false);
-  console.log(session);
 
-  useEffect(() => {
-    // Check if all required fields are filled out
-    if (props.className && props.selectedSubject && props.section) {
-      setIsSaveEnabled(true);
-    } else {
-      setIsSaveEnabled(false);
+function OnlineClassModal({handelModalState,setResponseClass}) {
+  const {data:session}=useSession();
+  const [section, setSection] = useState('');
+  const [className, setClassName] = useState();
+  const [selectedSubject, setSelectedSubject] = useState();
+  const [subjects, setSubjects] = useState([]); 
+  const [saveLoader,setSaveLoader]=useState(false);
+  const [error,setError]=useState('');
+
+  //  function for changing class value in modal
+  function handleClassChange(value) {
+    setClassName(value.value);
+    setSubjects(value.subject);
+  }
+    // handeler function  for select subject in modal
+    function handleSubjectChange(value) {
+      setSelectedSubject(value.value);
     }
-  }, [props.className, props.selectedSubject, props.section]);
+    // handeler funtion for section input
+    const handleInputChange = (e) => {
+      setSection(e.target.value);
+    };
+ 
 
-  const handleSave = () => {
+  // useEffect(() => {
+  //   // Check if all required fields are filled out
+  //   if (props.className && props.selectedSubject && props.section) {
+  //     setIsSaveEnabled(true);
+  //   } else {
+  //     setIsSaveEnabled(false);
+  //   }
+  // }, [props.className, props.selectedSubject, props.section]);
+
+  const handleSave = async() => {
     // Check if all three fields are filled out
-    if (props.className && props.selectedSubject && props.section) {
+    if (className && selectedSubject && section) {
       const dataToSend = {
-        onlineClassName: props.className,
-        onlineClassGrade: props.selectedSubject,
-        onlineClassSection: props.section,
+        onlineClassName: className,
+        onlineClassGrade: selectedSubject,
+        onlineClassSection: section,
         teacherEmail: session.user.email,
         teacherName: session.user.name,
-      };
+      }
+      try{
+        setSaveLoader(true);
+        let response=await  fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassTeacher/create`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        })
+        setResponseClass(response);
+        setSaveLoader(false)
+        if(response?.status===201){
+        handelModalState();
+         
+        }
+      }catch(err){
+        console.log(err); 
+      }
+     
 
-      fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClass/create`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataToSend),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("API response:", data);
-        })
-        .catch((error) => {
-          console.error("API error:", error);
-        });
-    }
+      // fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassTeacher/create`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(dataToSend),
+      // })
+      //   .then((response) => {
+      //     if (!response.ok) {
+      //       throw new Error("Network response was not ok");
+      //     }
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     console.log("API response:", data);
+      //   })
+      //   .catch((error) => {
+      //     console.error("API error:", error);
+      //   });
+    }else{
+      setError('Please fill all the input box')
+    }    
   };
 
   return (
@@ -68,9 +110,10 @@ function OnlineClassModal(props) {
             Select Class For Online-Class
           </p>
           <Select
+            id="class"
             options={subject_inClass}
             placeholder="Please Select Class"
-            onChange={props.handleClassChange}
+            onChange={handleClassChange}
           />
         </div>
         <div className="my-2 sm:my-3 w-full">
@@ -78,10 +121,10 @@ function OnlineClassModal(props) {
             Select Subject For Online-Class
           </p>
           <Select
-            options={props.subjects}
+            options={subjects}
             placeholder="Subject"
-            isDisabled={!Boolean(props.subjects?.length)}
-            onChange={props.handleSubjectChange}
+            isDisabled={!Boolean(subjects?.length)}
+            onChange={handleSubjectChange}
           />
         </div>
         <div className="w-full">
@@ -93,18 +136,27 @@ function OnlineClassModal(props) {
               type="text"
               placeholder="Add section"
               className="border border-gray-300 rounded p-2 w-full h-[52px]"
-              onChange={props.handleInputChange}
+              onChange={handleInputChange}
+              value={section}
             />
           </div>
         </div>
-        <div className="w-full my-5 sm:my-6 flex justify-end">
+        <div className="w-full my-5 sm:my-6 flex justify-between">
+          <div className="w-4/6">
+          {(error)?(<p className="text-red-950 text-md ">{error}</p>):(null)}
+          </div>
+        
           <Button
             type={ButtonType.Primary}
             size={ButtonSize.Medium}
             onClick={handleSave}
             // disabled={!isSaveEnabled}
-          >
-            SAVE
+          >{
+            (saveLoader)?(
+             <span>Saving...</span>
+            ):(<span>SAVE</span>)
+          }
+            
           </Button>
         </div>
       </div>

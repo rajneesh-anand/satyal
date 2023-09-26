@@ -74,7 +74,7 @@ export const PersonalInfo = ({
             showRequired={showRequired && !studentInfo.userContactNumber}
             value={studentInfo.userContactNumber}
             onChange={(e: FormEvent<HTMLInputElement>) =>
-              handlePersonalInfo(e, "userContactNumber")
+             handlePersonalInfo(e, "userContactNumber")
             }
           />
         </div>
