@@ -50,7 +50,7 @@ const Sidebar: React.FC<Props> = ({ sidebarOpen, setSidebarOpen }: Props) => {
   const sidebarItems = [
     {
       title: "Online Class",
-      href: "/student/dashboard",
+      href: "/student/onlineclass",
       icon: OnlineClass,
     },
     {

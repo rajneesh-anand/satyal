@@ -29,12 +29,12 @@ export default function onlineclass() {
   }
 
   function handleClick() {
-    setOpenModal(true);
+    setOpenModal((state) => !state);
   }
 
-  function handleModalClose() {
-    setOpenModal(false);
-  }
+  // function handleModalClose() {
+  //   setOpenModal(false);
+  // }
 
   return (
     <TeacherDashboardLayout>
@@ -60,7 +60,7 @@ export default function onlineclass() {
         </div>
       </div>
 
-      <Modal onClose={handleModalClose} open={openModal}>
+      <Modal onClose={handleClick} open={openModal}>
         <OnlineClassModal
           subjects={subjects}
           handleClassChange={handleClassChange}
