@@ -247,7 +247,7 @@ export const subject_inClass:ClassSubject[]=[
   },
   {
     student_class:"CLASS IX",
-    label: "CLASS XI",
+    label: "CLASS IX",
     value: "grade-9",
     subject:[
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
