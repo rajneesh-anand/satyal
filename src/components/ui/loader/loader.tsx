@@ -25,6 +25,7 @@ const Loader = (props: Props) => {
           <div className={styles.loading} />
 
           {showText && (
+            
             <h3 className="text-lg font-semibold text-body italic">{text}</h3>
           )}
         </div>

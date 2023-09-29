@@ -10,15 +10,19 @@ import Onlinecard from "@components/cards/onlinecard";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { getSession, useSession } from "next-auth/react";
-// import { Card } from "react-bootstrap";
+import Loader from "@components/ui/loader/loader";
+import Heading from "@components/ui/heading";
+import {HeadingType} from '../../../enums/tittle'
+
 
 export default function onlineclass() {
   let {data:session}=useSession()
   const [openModal, setOpenModal] = useState(false);
-  const [classFilter,setClassFilter]=useState<ValueType>() //store class to filter createClass
+  const [classFilter,setClassFilter]=useState('') //store class to filter createClass
   const [apiClassList,setApiClassList]=useState([]);
   const [filteredClassList,setFilteredClassList]=useState([]);//after feltering onlineclass by teacher
  const [responseClass,setResponseClass]=useState();
+ const [loader,setLoader]=useState(true);
   // all the below state are shifted into online class model
   // const [section, setSection] = useState('');
   // const [className, setClassName] = useState();
@@ -29,8 +33,8 @@ export default function onlineclass() {
  let handelModalState=()=>{
   setOpenModal((state)=>!state);
 }
-let handelClassFilter=(e:ValueType)=>{
-  setClassFilter(e)
+let handelClassFilter=(e)=>{ 
+  setClassFilter(e?.value)
 }
 // all handeler funtion are shifted into onlineclass modal
 //   const handleInputChange = (e) => {
@@ -48,20 +52,34 @@ let handelClassFilter=(e:ValueType)=>{
 //     setSelectedSubject(value.value);
 //   }
  
-  // fetch created class by teacher
- 
+  // api fetch created class by teacher
   useEffect(()=>{ 
    let fetchClass=async()=>{
     try{
+      setLoader(true);
       let response=await fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassTeacher/createdClasses/${session?.user?.email}`);
       let data=await response.json();
-      setApiClassList([...data])
+      setApiClassList([...data]);
+
     }catch(err){
       console.log(err);   
     }  
    }
    fetchClass();
   },[session?.user?.email,responseClass])
+
+// filtering online class according to class grade
+useEffect(()=>{
+  if(!classFilter){
+    setFilteredClassList([...apiClassList]);
+    setLoader(false);
+  }else{
+    setLoader(true);
+    let afterFilter=apiClassList?.filter((onlineClass)=>onlineClass?.onlineClassName===classFilter);
+    setFilteredClassList([...afterFilter]);
+    setLoader(false)
+  }
+},[classFilter,apiClassList])
 
 
   return (
@@ -71,7 +89,7 @@ let handelClassFilter=(e:ValueType)=>{
           <div className="">
             <Select
               className=" rounded px-2 py-1 text-sm w-44"
-              options={classOptions}
+              options={subject_inClass}
               placeholder="SELECT CLASS"
               onChange={handelClassFilter}
             />
@@ -87,13 +105,24 @@ let handelClassFilter=(e:ValueType)=>{
           </div>
         </div>
         <div className="w-full py-[20px] flex flex-wrap">
-          {
-           apiClassList&&apiClassList.map((onlineclass)=>{
-            return(
-                <Onlinecard key={onlineclass.id} onlineclass={onlineclass}/>
-            )
-           }) 
+          {(loader)?(
+          <div className="w-full flex justify-center ">
+            <Loader className="text-dark-footer"/>
+            </div>)
+          : (filteredClassList.length>0)?(
+            filteredClassList&&filteredClassList.map((onlineclass)=>{
+              return(
+                  <Onlinecard key={onlineclass.id} onlineclass={onlineclass}/>
+              )
+             }) 
+          )
+          :(
+          <div className="w-full flex sm:block justify-center sm:justify-start ">
+             <Heading variant={HeadingType.MediumHeading}>Sorry There is no Class</Heading>
+          </div>)
+        
           }
+         
            
          </div>
       </div>
