@@ -75,11 +75,12 @@ useEffect(()=>{
     setLoader(false);
   }else{
     setLoader(true);
-    let afterFilter=apiClassList?.filter((onlineClass)=>onlineClass?.onlineClassName===classFilter);
+    let afterFilter=apiClassList?.filter((onlineClass)=>onlineClass?.onlineClassGrade===classFilter);
     setFilteredClassList([...afterFilter]);
     setLoader(false)
   }
 },[classFilter,apiClassList])
+
 
 
   return (
