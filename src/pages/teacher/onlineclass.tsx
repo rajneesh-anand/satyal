@@ -52,7 +52,7 @@ let handelClassFilter=(e)=>{
 //     setSelectedSubject(value.value);
 //   }
  
-  // api fetch created class by teacher
+// api fetch created class by teacher
   useEffect(()=>{ 
    let fetchClass=async()=>{
     try{
@@ -106,24 +106,21 @@ useEffect(()=>{
         </div>
         <div className="w-full py-[20px] flex flex-wrap">
           {(loader)?(
-          <div className="w-full flex justify-center ">
-            <Loader className="text-dark-footer"/>
-            </div>)
-          : (filteredClassList.length>0)?(
+             <div className="w-full flex justify-center ">
+               <Loader className="text-dark-footer"/>
+             </div>
+            ):(filteredClassList.length>0)?(
             filteredClassList&&filteredClassList.map((onlineclass)=>{
               return(
                   <Onlinecard key={onlineclass.id} onlineclass={onlineclass}/>
               )
              }) 
-          )
-          :(
-          <div className="w-full flex sm:block justify-center sm:justify-start ">
-             <Heading variant={HeadingType.MediumHeading}>Sorry There is no Class</Heading>
-          </div>)
-        
-          }
-         
-           
+            ):(
+             <div className="w-full flex sm:block justify-center sm:justify-start ">
+               <Heading variant={HeadingType.MediumHeading}>Sorry There is no Class</Heading>
+             </div>
+            )
+          } 
          </div>
       </div>
 
