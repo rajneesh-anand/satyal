@@ -9,30 +9,28 @@ import { ButtonSize, ButtonType } from "../../../enums/buttons";
 import { useSession } from "next-auth/react";
 import Loader from "@components/ui/loader";
 
-
-function OnlineClassModal({handelModalState,setResponseClass}) {
-  const {data:session}=useSession();
-  const [section, setSection] = useState('');
+function OnlineClassModal({ handelModalState, setResponseClass }) {
+  const { data: session } = useSession();
+  const [section, setSection] = useState("");
   const [className, setClassName] = useState();
   const [selectedSubject, setSelectedSubject] = useState();
-  const [subjects, setSubjects] = useState([]); 
-  const [saveLoader,setSaveLoader]=useState(false);
-  const [error,setError]=useState('');
+  const [subjects, setSubjects] = useState([]);
+  const [saveLoader, setSaveLoader] = useState(false);
+  const [error, setError] = useState("");
 
   //  function for changing class value in modal
   function handleClassChange(value) {
     setClassName(value.value);
     setSubjects(value.subject);
   }
-    // handeler function  for select subject in modal
-    function handleSubjectChange(value) {
-      setSelectedSubject(value.value);
-    }
-    // handeler funtion for section input
-    const handleInputChange = (e) => {
-      setSection(e.target.value);
-    };
- 
+  // handeler function  for select subject in modal
+  const handleSubjectChange = (e) => {
+    setSelectedSubject(e.target.value);
+  };
+  // handeler funtion for section input
+  const handleInputChange = (e) => {
+    setSection(e.target.value);
+  };
 
   // useEffect(() => {
   //   // Check if all required fields are filled out
@@ -43,35 +41,36 @@ function OnlineClassModal({handelModalState,setResponseClass}) {
   //   }
   // }, [props.className, props.selectedSubject, props.section]);
 
-  const handleSave = async() => {
+  const handleSave = async () => {
     // Check if all three fields are filled out
     if (className && selectedSubject && section) {
       const dataToSend = {
-        onlineClassName: className,
-        onlineClassGrade: selectedSubject,
+        onlineClassName: selectedSubject,
+        onlineClassGrade: className,
         onlineClassSection: section,
         teacherEmail: session.user.email,
         teacherName: session.user.name,
-      }
-      try{
+      };
+      try {
         setSaveLoader(true);
-        let response=await  fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassTeacher/create`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(dataToSend),
-        })
+        let response = await fetch(
+          `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassTeacher/create`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dataToSend),
+          }
+        );
         setResponseClass(response);
-        setSaveLoader(false)
-        if(response?.status===201){
-        handelModalState();
-         
+        setSaveLoader(false);
+        if (response?.status === 201) {
+          handelModalState();
         }
-      }catch(err){
-        console.log(err); 
+      } catch (err) {
+        console.log(err);
       }
-     
 
       // fetch(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassTeacher/create`, {
       //   method: "POST",
@@ -92,9 +91,9 @@ function OnlineClassModal({handelModalState,setResponseClass}) {
       //   .catch((error) => {
       //     console.error("API error:", error);
       //   });
-    }else{
-      setError('Please fill all the input box')
-    }    
+    } else {
+      setError("Please fill all the input box");
+    }
   };
 
   return (
@@ -116,7 +115,7 @@ function OnlineClassModal({handelModalState,setResponseClass}) {
             onChange={handleClassChange}
           />
         </div>
-        <div className="my-2 sm:my-3 w-full">
+        {/* <div className="my-2 sm:my-3 w-full">
           <p className="text-md font-semibold text-dark-footer">
             Select Subject For Online-Class
           </p>
@@ -126,6 +125,20 @@ function OnlineClassModal({handelModalState,setResponseClass}) {
             isDisabled={!Boolean(subjects?.length)}
             onChange={handleSubjectChange}
           />
+        </div> */}
+        <div className="w-full">
+          <p className="text-md font-semibold text-dark-footer">
+            Enter Subject Name:
+          </p>
+          <div className="w-full h-[45px] sm:h-[54px]">
+            <input
+              type="text"
+              placeholder="Add Subject Name"
+              className="border border-gray-300 rounded p-2 w-full h-[52px]"
+              onChange={handleSubjectChange}
+              value={selectedSubject}
+            />
+          </div>
         </div>
         <div className="w-full">
           <p className="text-md font-semibold text-dark-footer">
@@ -143,20 +156,16 @@ function OnlineClassModal({handelModalState,setResponseClass}) {
         </div>
         <div className="w-full my-5 sm:my-6 flex justify-between">
           <div className="w-4/6">
-          {(error)?(<p className="text-red-950 text-md ">{error}</p>):(null)}
+            {error ? <p className="text-red-950 text-md ">{error}</p> : null}
           </div>
-        
+
           <Button
             type={ButtonType.Primary}
             size={ButtonSize.Medium}
             onClick={handleSave}
             // disabled={!isSaveEnabled}
-          >{
-            (saveLoader)?(
-             <span>Saving...</span>
-            ):(<span>SAVE</span>)
-          }
-            
+          >
+            {saveLoader ? <span>Saving...</span> : <span>SAVE</span>}
           </Button>
         </div>
       </div>
