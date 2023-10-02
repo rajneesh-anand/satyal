@@ -14,3 +14,19 @@ export interface IUserPersonalInfo{
     state?: string | ValueType;
     userContactNumber: string;
 }
+
+//type for online class individual details
+export interface IOnlineClass{
+    id:number;
+    enrollCode:string;
+    createdAt:string;
+    meetingLink:string;
+    onlineClassGrade:string;
+    onlineClassName:string;
+    onlineClassSection:string;
+    teacherEmail:string;
+    teacherName:string;
+    notes?:[];
+    studentDetails?:[];
+    worksheets?:[]
+}
