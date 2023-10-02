@@ -38,6 +38,7 @@ export default function onlineclass() {
   let handelModalState = () => {
     setOpenModal((state) => !state);
   };
+  
   let handelClassFilter = (e) => {
     setLoader(true);
     let result = classList.filter((el) => el.onlineClassGrade === e?.value);
