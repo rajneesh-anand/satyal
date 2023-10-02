@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import cn from 'classnames';
 import Container from "@components/ui/container";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps, GetStaticProps } from "next";
@@ -16,18 +17,22 @@ import Viewnote from "@components/teacher/note/viewnote";
 import Loader from "@components/ui/loader/loader";
 import Heading from "@components/ui/heading";
 import { useRouter } from "next/router";
+import {IOnlineClass} from '../../../../types/server/props'
+import Link from "next/link";
+
+
 
 export default function ClassID() {
   let router=useRouter();
   let onlineClassQuery=router.query.classid;
   let onlineClassCode=onlineClassQuery[0]?.split('$')[1]; //getting classid from url
-  let[modalState,setModalState]=useState(false);
-  let[modalComponent,setModalComponent]=useState<string>();
+  let [modalState,setModalState]=useState(false);
+  let [modalComponent,setModalComponent]=useState<string>();
   let [teacherNote,setTeacherNote]=useState<string>();
   let [loader,setLoader]=useState(false);
   let [error,setError]=useState<string>();
-  let[classDetails,setClassDetails]=useState();
-
+  let[classDetails,setClassDetails]=useState<IOnlineClass>();
+  let [refresh,setRefresh]=useState('');
   let handelwork = () => {};
 
   // fetch onliceclass details
@@ -51,7 +56,7 @@ export default function ClassID() {
       setError(err)
       console.log(err); 
     }
-  },[onlineClassQuery])
+  },[onlineClassQuery,refresh])
 
   // modal state handeler function
   let handelNoteModalState=()=>{
@@ -66,6 +71,8 @@ export default function ClassID() {
 
   // handel to sebmit teacher note
   let handelSubmitNote=()=>{} 
+  console.log(classDetails);
+  
   return (
     <>
       <TeacherDashboardLayout>
@@ -92,9 +99,16 @@ export default function ClassID() {
               onClick={()=>handelModalComponent('ADD_LINK')}
               className=" bg-secondary-background text-dark-footer border-2 border-solid border-dark-footer hover:bg-dark-footer hover:text-white"
               >ADD LINK</Button>
-              <a href="/" target="blank" className="rounded-lg transition-all duration-300  ease-in-out hover:transition-all  px-3 sm:px-4 text-md font-bold  py-1 sm:py-2 bg-dark-footer text-white  hover:bg-white hover:text-dark-footer border-2 border-solid border-dark-footer">
-              JOIN CLASS
-              </a>
+              
+              <Link href={classDetails?.meetingLink} passHref >
+                 <a  target="blank"
+                    className={cn(
+                      'rounded-lg transition-all duration-300  ease-in-out hover:transition-all  px-3 sm:px-4 text-md font-bold  py-1 sm:py-2 bg-dark-footer text-white  hover:bg-white hover:text-dark-footer border-2 border-solid border-dark-footer',
+                      (classDetails?.meetingLink)?(''):('pointer-events-none opacity-50')                      
+                    )}>
+                    JOIN CLASS
+                </a>
+              </Link>
              
             </div>
           </div>
@@ -152,7 +166,7 @@ export default function ClassID() {
             </>
           ):(null)
         }
-        
+  
       </TeacherDashboardLayout>
       <Modal open={modalState} onClose={handelNoteModalState}>
         {(modalComponent==='WORKSHIRT_COMPONENT')?
@@ -162,7 +176,7 @@ export default function ClassID() {
         :(modalComponent==='ADD_NOTE')?
         (<AddNote teacherNote={teacherNote} setTeacherNote={setTeacherNote} handelSubmitNote={handelSubmitNote}/>)
         :(modalComponent==='ADD_LINK')?
-        (<Addmeetinglink/>)
+        (<Addmeetinglink onlineClassCode={classDetails?.id} handelNoteModalState={handelNoteModalState} setRefresh={setRefresh}/>)
         :(modalComponent==='VIEW_NOTE')?
         (<Viewnote/>)
         :(null)}
