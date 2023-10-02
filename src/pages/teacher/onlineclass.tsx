@@ -99,9 +99,21 @@ export default function onlineclass() {
             </div>
           ) : apiClassList.length > 0 ? (
             apiClassList &&
-            apiClassList.map((onlineclass) => {
+            apiClassList.map((onlineclass: any) => {
               return (
-                <Link href={"/teacher/dashboard"}>
+                <Link
+                  href={{
+                    pathname:
+                      "/teacher/onlineClass/" +
+                      onlineclass.onlineClassName +
+                      "$" +
+                      onlineclass.id,
+                    // query: {
+                    //   class: onlineclass.onlineClassGrade,
+                    //   id: onlineclass.id,
+                    // },
+                  }}
+                >
                   <a>
                     <Onlinecard
                       key={onlineclass.id}
