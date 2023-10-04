@@ -56,8 +56,7 @@ export default function Addmeetinglink({onlineClassCode,handelNoteModalState,set
         setShowRequired(true)
       }
     }
-   console.log(session);
-    
+      
     
   return (
     <>
