@@ -30,3 +30,11 @@ export interface IOnlineClass{
     studentDetails?:[];
     worksheets?:[]
 }
+
+// type for online class note
+export interface IonlineClassNote{
+    id:number;
+    onlineClassId:number;
+    content:string;
+    createdAt:string;
+}
