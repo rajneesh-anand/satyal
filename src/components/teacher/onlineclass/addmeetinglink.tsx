@@ -6,7 +6,7 @@ import {ButtonSize,ButtonType} from '../../../../enums/buttons'
 import { Input } from '@components/form/teacher/input'
 import { Button } from "@components/ui/button/dashboard-button";
 import Alert from '@components/ui/alert'
-
+import { useSession } from 'next-auth/react'
 
 interface Iprops{
   onlineClassCode:number;
@@ -18,7 +18,7 @@ export default function Addmeetinglink({onlineClassCode,handelNoteModalState,set
     let[classLink,setClassLink]=useState<string>('');
     let[showRequired,setShowRequired]=useState(false);
     let[error,setError]=useState<string>();
-   
+    let {data:session}=useSession()
     
 
     let handelClassLink=(e:FormEvent<HTMLInputElement>)=>{
@@ -36,7 +36,8 @@ export default function Addmeetinglink({onlineClassCode,handelNoteModalState,set
           },
           body:JSON.stringify({
             onlineClassId:onlineClassCode,
-            meetingLink:classLink
+            meetingLink:classLink,
+            teacherEmail:session?.user?.email
           })
          })
          if(response?.status===200){
@@ -55,7 +56,7 @@ export default function Addmeetinglink({onlineClassCode,handelNoteModalState,set
         setShowRequired(true)
       }
     }
-    
+      
     
   return (
     <>

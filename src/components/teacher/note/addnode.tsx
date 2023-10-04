@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from 'react'
+import cn from 'classnames'
 import { Button } from '@components/ui/button/dashboard-button'
 import Heading from '@components/ui/heading'
 import {ButtonSize,ButtonType} from '../../../../enums/buttons'
@@ -30,7 +31,8 @@ let handelCleanNote=()=>{
        </div>
        <div className=' flex justify-end w-full h-[40px] '>
         <Button type={ButtonType.Secondary} size={ButtonSize.Medium} onClick={handelCleanNote} className='mx-6 sm:mx-8'>Cancle</Button>
-        <Button type={ButtonType.Primary} size={ButtonSize.Medium} onClick={handelSubmitNote}>Save</Button>
+        <Button type={ButtonType.Primary} size={ButtonSize.Medium} onClick={handelSubmitNote}
+        className={cn((teacherNote?.length>0)?(''):('pointer-events-none opacity-50'))}>Save</Button>
        </div>
       </section>
     </>
