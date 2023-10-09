@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { clippingParents } from "@popperjs/core";
 
 function OnlineClassModal({ handelModalState, setResponseClass }) {
-  const [enrollCode, setEnrollCode] = useState("");
+  const [enrollCode, setEnrollCode] = useState();
   const { data: session } = useSession();
   const [saveLoader, setSaveLoader] = useState(false);
   const [error, setError] = useState("");

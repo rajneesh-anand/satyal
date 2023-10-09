@@ -1,25 +1,23 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { GetServerSideProps, GetStaticProps } from 'next';
-import { getSession, useSession } from 'next-auth/react';
-import Seo from '@components/seo/seo';
-import StudentDashboardLayout from '@components/layout-dashboard-student';
-import { io } from 'socket.io-client';
+import React, { useEffect, useState, useRef } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetServerSideProps, GetStaticProps } from "next";
+import { getSession, useSession } from "next-auth/react";
+import Seo from "@components/seo/seo";
+import StudentDashboardLayout from "@components/layout-dashboard-student";
+import { io } from "socket.io-client";
 
 export default function StudentDashboard() {
   const socket = useRef<any>();
   const { data: session, status } = useSession();
-console.log(session);
-
+  console.log(session);
 
   useEffect(() => {
     if (session) {
-      socket.current = io('http://localhost:4000');
-      socket.current.emit('connected', session?.user?.email);
+      socket.current = io("http://localhost:4000");
+      socket.current.emit("connected", session?.user?.email);
     }
   }, [session]);
-  
-  
+
   return (
     <>
       <Seo
@@ -40,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!session) {
     return {
       redirect: {
-        destination: '/auth/signin',
+        destination: "/auth/signin",
         permanent: false,
       },
     };
@@ -49,10 +47,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       ...(await serverSideTranslations(context.locale!, [
-        'common',
-        'forms',
-        'menu',
-        'footer',
+        "common",
+        "forms",
+        "menu",
+        "footer",
       ])),
     },
   };
