@@ -1,6 +1,6 @@
 import React from "react";
 
-function Onlinecard({ onlineclass }) {
+function OnlineCard({ onlineclass }) {
   console.log(onlineclass);
 
   return (
@@ -15,7 +15,7 @@ function Onlinecard({ onlineclass }) {
       <div className=" bg-mid-footer w-[250px] h-[250px] sm:h-[170px] sm:w-[280px] mt-8 absolute top-[15px] right-[3px] square rounded-full border border-black text-white p-[5px] pl-[15px] ">
         <div className="text-md font-bold flex flex-col space-y-4 items-center mt-4 mb-2 ">
           <h1>{onlineclass.onlineClassName}</h1>
-          <h1>{onlineclass.onlineClassGrade}</h1>
+          <h1>{onlineclass.teacherName}</h1>
           <h1>Class Code: {onlineclass.enrollCode}</h1>
         </div>
       </div>
@@ -23,4 +23,4 @@ function Onlinecard({ onlineclass }) {
   );
 }
 
-export default Onlinecard;
+export default OnlineCard;

@@ -4,8 +4,8 @@ import { ButtonSize, ButtonType } from "../../../enums/buttons";
 import { useSession } from "next-auth/react";
 import { clippingParents } from "@popperjs/core";
 
-function OnlineClassModal({ handelModalState }) {
-  const [enrollCode, setEnrollCode] = useState("");
+function OnlineClassModal({ handelModalState, setResponseClass }) {
+  const [enrollCode, setEnrollCode] = useState();
   const { data: session } = useSession();
   const [saveLoader, setSaveLoader] = useState(false);
   const [error, setError] = useState("");
@@ -32,7 +32,8 @@ function OnlineClassModal({ handelModalState }) {
             body: JSON.stringify(dataToSend),
           }
         );
-        console.log(response);
+
+        setResponseClass(response);
 
         setSaveLoader(false);
         if (response?.status === 201) {
