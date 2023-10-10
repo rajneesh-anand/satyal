@@ -22,7 +22,6 @@ export default function onlineclass() {
   const [classList, setClassList] = useState([]);
   const [apiClassList, setApiClassList] = useState([]);
 
-  // const [filteredClassList, setFilteredClassList] = useState([]); //after feltering onlineclass by teacher
   const [responseClass, setResponseClass] = useState();
   const [loader, setLoader] = useState(false);
   // all the below state are shifted into online class model
@@ -38,7 +37,7 @@ export default function onlineclass() {
   let handelModalState = () => {
     setOpenModal((state) => !state);
   };
-  
+
   let handelClassFilter = (e) => {
     setLoader(true);
     let result = classList.filter((el) => el.onlineClassGrade === e?.value);
