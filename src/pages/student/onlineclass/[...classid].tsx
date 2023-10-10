@@ -60,7 +60,7 @@ export default function OnlineClassId() {
 
                     </div> */}
                     <div className="w-full h-full px-4 py-2 overflow-y-auto ">
-                      <Notice/>  
+                      {/* <Notice/>   */}
                     </div>
                   </div>
                   <div className='py-2 w-full flex justify-end'>
