@@ -6,12 +6,12 @@ import IconButton from '@components/ui/button/icon-button';
 
 interface Ichinldren{
   note:IonlineClassNote;
- 
+  handelDeleteNotice?:(id: number, onlineClassCode: number) => void
 }
-export default function Notice({note}:Ichinldren) {
+export default function Notice({note,handelDeleteNotice}:Ichinldren) {
   let{id,content,createdAt, onlineClassId}=note;
   let dateTime=createdAt.split('T');
- 
+  // console.log(dateTime[1]);
   
   return (
     <>
@@ -21,7 +21,11 @@ export default function Notice({note}:Ichinldren) {
             <span className='text-lg font-bold text-dark-footer block'>{dateTime[0]} </span>
             <span className='text-lg font-bold text-dark-footer block'>{dateTime[1]}</span>
             </div>
-          
+            <div className='pl-[20px] flex sm:hidden items-center'>
+                  <IconButton type='primary' size='large' onClick={()=>handelDeleteNotice(id,onlineClassId)}>
+                    <AiOutlineDelete/>
+                  </IconButton>
+                </div>
         </div> 
         <p className='text-md font-normal text-dark-footer'>{content}</p>
       </section>

@@ -82,22 +82,16 @@ export default function OnlineClassId() {
                       <Button onClick={()=>handelModalComponent('NOTE_COMPONENT')} type={ButtonType.Secondary} size={ButtonSize.Medium}>ADD NOTE</Button>
 
                     </div> */}
-                <div className="w-full h-full px-4 py-2 overflow-y-auto ">
-                  {/* <Notice/>   */}
+                    <div className="w-full h-full px-4 py-2 overflow-y-auto ">
+                      {/* <Notice/>   */}
+                    </div>
+                  </div>
+                  <div className='py-2 w-full flex justify-end'>
+                    <Button type={ButtonType.Secondary} size={ButtonSize.Medium} onClick={()=>handelModalComponent('VIEW_NOTICE')}>VIEW NOTICE</Button>
+                  </div>
                 </div>
               </div>
-              <div className="py-2 w-full flex justify-end">
-                <Button
-                  type={ButtonType.Secondary}
-                  size={ButtonSize.Medium}
-                  onClick={() => handelModalComponent("VIEW_NOTICE")}
-                >
-                  VIEW NOTICE
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+           </section>
       </StudentDashboardLayout>
       <Modal open={modalState} onClose={handelNoteModalState}>
         {modalComponent === "WORKSHIRT_COMPONENT" ? (

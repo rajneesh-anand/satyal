@@ -143,8 +143,8 @@ export default function ClassID() {
              
             </div>
                 </div>
-                <div className="w-full h-[500px] sm:h-[450px]  lg:w-5/6 px-3 sm:px-6 py-3 sm:py-6 mx-auto flex flex-col sm:flex-row my-4 sm:my-6 rounded-xl bg-secondary-background ">
-                   <div className="h-[120px] mb-[30px] sm:mb-0 sm:h-full flex flex-col items-center justify-center w-full sm:w-2/6 ">
+                <div className="w-full pb-[20px] h-[450px] sm:h-[450px]  lg:w-5/6 px-3 sm:px-6 py-3 sm:py-6 mx-auto flex flex-col sm:flex-row my-4 sm:my-6 rounded-xl bg-secondary-background ">
+                   <div className="h-[80px] mb-[30px] sm:mb-0 sm:h-full flex flex-col items-center justify-center w-full sm:w-2/6 ">
                     <div className=" py-2 sm:my-6 text-center">
                 <span className="text-xl sm:text-2xl font-bold text-dark-footer">
                   30
@@ -161,10 +161,10 @@ export default function ClassID() {
                 VIEW STUDENTS
                      </Button>
                    </div>
-                   <div className="w-full h-[350px] sm:h-full flex flex-col items-center sm:w-4/6 ">
+                   <div className="w-full h-[310px] sm:h-full flex flex-col items-center sm:w-4/6 ">
                       <h2 className="text-xl font-bold text-dark-footer ">NOTES</h2>
                       <div className="w-full flex flex-col mt-2 bg-white py-3 px-2 lg:px-4 rounded-xl h-full overflow-hidden">
-                        <div className="flex justify-between sm:blck sm:justify-start ">
+                        <div className="flex justify-between sm:blck sm:justify-start py-2 sm:py-1">
                            <Button
                     onClick={()=>handelModalComponent('ADD_NOTE')}
                     type={ButtonType.Secondary}
@@ -181,7 +181,7 @@ export default function ClassID() {
                     VIEW NOTE
                           </Button>
                         </div>
-                        <div className="w-full h-full px-4 py-2 overflow-y-auto ">
+                        <div className="w-full h-full px-2 sm:px-4 py-2 overflow-y-auto sm:overflow-y-hidden">
                           {
                             classDetails?.notes&&classDetails?.notes?.slice(0,3)?.map((note:IonlineClassNote)=>{
                               return(
@@ -215,7 +215,7 @@ export default function ClassID() {
         :(modalComponent==='ADD_LINK')?
         (<Addmeetinglink onlineClassCode={classDetails?.id} handelNoteModalState={handelNoteModalState} setRefresh={setRefresh}/>)
         :(modalComponent==='VIEW_NOTE')?
-        (<Viewnote notes={classDetails?.notes}/>)
+        (<Viewnote notes={classDetails?.notes} setRefresh={setRefresh}/>)
         :(null)}
         
       </Modal>
