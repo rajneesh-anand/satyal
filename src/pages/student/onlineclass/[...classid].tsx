@@ -1,4 +1,5 @@
 import React, { useState, FormEvent, useEffect } from "react";
+import cn from "classnames";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetServerSideProps, GetStaticProps } from "next";
 import { getSession, useSession } from "next-auth/react";
@@ -13,17 +14,18 @@ import Workshirt from "@components/student/onlineclass/Workshirt";
 import Studentlist from "@components/student/onlineclass/Studentlist";
 import ViewNotice from "@components/student/onlineclass/ViewNotice";
 import { useRouter } from "next/router";
-import {IOnlineClass,IonlineClassNote} from '../../../../types/server/props'
+import { IOnlineClass, IonlineClassNote } from "../../../../types/server/props";
 import axios from "axios";
-
+import Heading from "@components/ui/heading";
+import Link from "next/link";
 
 export default function OnlineClassId() {
-  let router=useRouter();
-  let onlineClassQuery=router.query.classid;
-  let onlineClassCode=onlineClassQuery[0]?.split('$')[1];//getting classid from url  
+  let router = useRouter();
+  let onlineClassQuery = router.query.classid;
+  let onlineClassCode = onlineClassQuery[0]?.split("$")[1]; //getting classid from url
   let [modalState, setModalState] = useState(false);
   let [modalComponent, setModalComponent] = useState<string>("");
-  let [classDetails,setClassDetails] = useState<IOnlineClass>();
+  let [classDetails, setClassDetails] = useState<IOnlineClass>();
 
   let handelbutton = () => {}; //this is only to pass props in button
 
@@ -37,21 +39,23 @@ export default function OnlineClassId() {
     handelNoteModalState();
   };
   // fetching all information about this class
-  useEffect(()=>{
-    let fetchInfo=async()=>{
-      try{
-        let classDetailsResponse=await axios.get(`${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassStudent/details/${onlineClassCode}`);
-        if(classDetailsResponse.status===200){
-          setClassDetails(classDetailsResponse?.data)
+  useEffect(() => {
+    let fetchInfo = async () => {
+      try {
+        let classDetailsResponse = await axios.get(
+          `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassStudent/details/${onlineClassCode}`
+        );
+        if (classDetailsResponse.status === 200) {
+          setClassDetails(classDetailsResponse?.data);
         }
-      }catch(err){
-        console.log(err); 
+      } catch (err) {
+        console.log(err);
       }
-    }
+    };
     fetchInfo();
-  },[onlineClassQuery])
+  }, [onlineClassQuery]);
   // console.log(classDetails);
-  
+
   return (
     <>
       <Seo
@@ -73,20 +77,26 @@ export default function OnlineClassId() {
               >
                 WORKSHEET
               </Button>
-              <a
-                href="/"
-                className="bg-dark-footer text-white  hover:bg-white hover:text-dark-footer border-2 border-solid border-dark-footer text-md font-bold  py-1 sm:py-2 rounded-lg transition-all duration-300  ease-in-out hover:transition-all  px-3 sm:px-4"
-                target="blank"
-              >
-                JOIN CLASS
-              </a>
+              <Link href={classDetails?.meetingLink ?? ""} passHref>
+                <a
+                  target="blank"
+                  className={cn(
+                    "rounded-lg transition-all duration-300  ease-in-out hover:transition-all  px-3 sm:px-4 text-md font-bold  py-1 sm:py-2 bg-dark-footer text-white  hover:bg-white hover:text-dark-footer border-2 border-solid border-dark-footer",
+                    classDetails?.meetingLink
+                      ? ""
+                      : "pointer-events-none opacity-50"
+                  )}
+                >
+                  JOIN CLASS
+                </a>
+              </Link>
             </div>
           </div>
           <div className="w-full h-[500px] sm:h-[450px]  lg:w-5/6 px-3 sm:px-6 py-3 sm:py-6 mx-auto flex flex-col sm:flex-row my-4 sm:my-6 rounded-xl bg-secondary-background ">
             <div className="h-[120px] mb-[30px] sm:mb-0 sm:h-full flex flex-col items-center justify-center w-full sm:w-2/6 ">
               <div className=" py-2 sm:my-6 text-center">
                 <span className="text-xl sm:text-2xl font-bold text-dark-footer">
-                  30
+                  {classDetails?.studentDetails?.length}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-semibold text-dark-footer">
                   Join Students
@@ -103,30 +113,42 @@ export default function OnlineClassId() {
             <div className="w-full h-[350px] sm:h-full flex flex-col items-center sm:w-4/6 ">
               <h2 className="text-xl font-bold text-dark-footer ">NOTICE</h2>
               <div className="w-full flex flex-col mt-2 bg-white py-2 px-2 lg:px-4 rounded-xl h-full overflow-hidden">
-                    <div className="w-full h-full px-4 py-2 overflow-y-auto ">
-                        {
-                           classDetails?.notes&&classDetails?.notes?.slice(0,3)?.map((note:IonlineClassNote)=>{
-                           return(
-                                <Notice note={note} key={note?.id}/>
-                              )
-                            })
-                          }  
+                <div className="w-full h-full px-4 py-2 overflow-y-auto ">
+                  {classDetails?.notes.length > 0 ? (
+                    classDetails?.notes
+                      ?.slice(0, 3)
+                      ?.map((note: IonlineClassNote) => {
+                        return <Notice note={note} key={note?.id} />;
+                      })
+                  ) : (
+                    <div className="flex justify-center py-2 sm:py-4">
+                      <Heading variant={HeadingType.MediumHeading}>
+                        No Notice
+                      </Heading>
                     </div>
-                  </div>
-                  <div className='py-2 w-full flex justify-end'>
-                    <Button type={ButtonType.Secondary} size={ButtonSize.Medium} onClick={()=>handelModalComponent('VIEW_NOTICE')}>VIEW NOTICE</Button>
-                  </div>
+                  )}
                 </div>
               </div>
-           </section>
+              <div className="py-2 w-full flex justify-end">
+                <Button
+                  type={ButtonType.Secondary}
+                  size={ButtonSize.Medium}
+                  onClick={() => handelModalComponent("VIEW_NOTICE")}
+                >
+                  VIEW NOTICE
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </StudentDashboardLayout>
       <Modal open={modalState} onClose={handelNoteModalState}>
         {modalComponent === "WORKSHIRT_COMPONENT" ? (
           <Workshirt />
         ) : modalComponent === "VIEW_NOTICE" ? (
-          <ViewNotice notes={classDetails?.notes}/>
+          <ViewNotice notes={classDetails?.notes} />
         ) : modalComponent === "STUDENT_LIST_COMPONENT" ? (
-          <Studentlist />
+          <Studentlist students={classDetails?.studentDetails} />
         ) : null}
       </Modal>
     </>
