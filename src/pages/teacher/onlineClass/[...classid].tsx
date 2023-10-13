@@ -219,7 +219,10 @@ export default function ClassID() {
         {modalComponent === "WORKSHIRT_COMPONENT" ? (
           <Workshite />
         ) : modalComponent === "STUDENT_LIST" ? (
-          <Studentlist students={classDetails?.studentDetails} />
+          <Studentlist
+            students={classDetails?.studentDetails}
+            setRefresh={setRefresh}
+          />
         ) : modalComponent === "ADD_NOTE" ? (
           <AddNote
             teacherNote={teacherNote}

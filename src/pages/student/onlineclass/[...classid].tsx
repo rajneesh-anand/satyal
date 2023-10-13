@@ -54,6 +54,7 @@ export default function OnlineClassId() {
     };
     fetchInfo();
   }, [onlineClassQuery]);
+  // console.log(classDetails);
 
   return (
     <>
@@ -95,7 +96,7 @@ export default function OnlineClassId() {
             <div className="h-[120px] mb-[30px] sm:mb-0 sm:h-full flex flex-col items-center justify-center w-full sm:w-2/6 ">
               <div className=" py-2 sm:my-6 text-center">
                 <span className="text-xl sm:text-2xl font-bold text-dark-footer">
-                  30
+                  {classDetails?.studentDetails?.length}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-semibold text-dark-footer">
                   Join Students
@@ -147,7 +148,7 @@ export default function OnlineClassId() {
         ) : modalComponent === "VIEW_NOTICE" ? (
           <ViewNotice notes={classDetails?.notes} />
         ) : modalComponent === "STUDENT_LIST_COMPONENT" ? (
-          <Studentlist />
+          <Studentlist students={classDetails?.studentDetails} />
         ) : null}
       </Modal>
     </>

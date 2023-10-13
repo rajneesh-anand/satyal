@@ -126,7 +126,7 @@ export default function viewnote({ notes, setRefresh }: IProps) {
           </div>
           <div className="">
             <Heading variant={HeadingType.Base}>
-              Notice are permanently deleted from this system
+              Are you sure you want to remove the notice from this class?
             </Heading>
           </div>
           <div className="py-2 px-6 flex justify-between">

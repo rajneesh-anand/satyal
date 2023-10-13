@@ -7,11 +7,15 @@ import Student from "@components/common/onlineClass/Student";
 import { Button } from "@components/ui/button/dashboard-button";
 import { IonlineClassStudent } from "../../../../types/server/props";
 import Modal from "@components/common/modal/modal";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 interface Iprops {
   students: IonlineClassStudent[];
+  setRefresh: React.Dispatch<any>;
 }
-export default function Studentlist({ students }: Iprops) {
+export default function Studentlist({ students, setRefresh }: Iprops) {
+  let { data: session } = useSession();
   let [modalState, setModalState] = useState(false);
   let [removeStudent, setRemoveStudent] = useState({
     studentEmail: null,
@@ -43,7 +47,19 @@ export default function Studentlist({ students }: Iprops) {
   // removing student from DB
   let handelRemoveStudentFromDB = async () => {
     try {
-      let removeStudentResponse = await fetch("");
+      let removeStudentResponse = await axios.patch(
+        `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/onlineClassTeacher/remove`,
+        {
+          onlineClassId: removeStudent?.onlineClassId,
+          studentEmail: removeStudent?.studentEmail,
+          teacherEmail: session?.user?.email,
+        },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      if (removeStudentResponse?.status === 200) {
+        handelModalState();
+        setRefresh(removeStudentResponse);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -88,20 +104,22 @@ export default function Studentlist({ students }: Iprops) {
             })
           ) : (
             <div className="w-full ">
-              <h1>No STUDENT</h1>
+              <Heading>No One Join This Class Yet</Heading>
             </div>
           )}
         </div>
       </section>
       <Modal onClose={handelModalState} open={modalState}>
-        <div className="w-[300px] h-[300px] py-4 px-4 flex flex-col justify-between">
+        <div className="w-[270px] h-[250px] py-4 px-4 flex flex-col justify-between">
           <div className="text-center">
             <Heading variant={HeadingType.MediumHeading}>
               Remove Student?
             </Heading>
           </div>
           <div className="">
-            <Heading>The Student Remove From This Class Only.</Heading>
+            <Heading className="font-normal">
+              Are you sure you want to remove the student from your class?
+            </Heading>
           </div>
           <div className="flex justify-between px-6 py-2">
             <Button
