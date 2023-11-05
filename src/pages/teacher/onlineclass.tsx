@@ -74,7 +74,7 @@ export default function onlineclass() {
     <TeacherDashboardLayout>
       <div className="pt-2 pb-[50px] sm:pb-[10px] ">
         <div className="flex items-center ">
-          <div className="">
+          <div className="z-[50]">
             <Select
               className=" rounded px-2 py-1 text-sm w-44"
               options={subject_inClass}
