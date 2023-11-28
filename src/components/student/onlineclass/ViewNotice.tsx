@@ -24,7 +24,9 @@ export default function ViewNotice({ notes }: Iprop) {
             })
           ) : (
             <div className="flex justify-center py-2 sm:py-4">
-              <Heading variant={HeadingType.MediumHeading}>Notice Not </Heading>
+              <Heading variant={HeadingType.Base}>
+                There aren’t any note from the teacher!
+              </Heading>
             </div>
           )}
         </div>
