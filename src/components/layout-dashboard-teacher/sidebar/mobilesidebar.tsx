@@ -19,7 +19,7 @@ const menuItems = [
   {
     id: 2,
     menuTitle: "Online Test",
-    menuLink: "/teacher/dashboard",
+    menuLink: "/teacher/onlinetest",
     menuIcon: OnlineTest,
   },
 ];

@@ -103,8 +103,11 @@ export default function Studentlist({ students, setRefresh }: Iprops) {
               );
             })
           ) : (
-            <div className="w-full ">
-              <Heading>No One Join This Class Yet</Heading>
+            <div className="w-full text-center py-4">
+              <Heading>
+                There are no students available in your class, kindly send them
+                the code to join it!
+              </Heading>
             </div>
           )}
         </div>

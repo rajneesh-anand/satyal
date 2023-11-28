@@ -1,4 +1,4 @@
-import {ClassSubject} from "AppTypes"
+import { ClassSubject } from "AppTypes";
 export interface ValueType {
   label: string;
   value: string;
@@ -7,7 +7,7 @@ export interface ValueType {
 export const classOptions: ValueType[] = [
   {
     label: "CLASS Nursery",
-    value: "CLASS Nursery"
+    value: "CLASS Nursery",
   },
   {
     label: "CLASS LKG",
@@ -51,7 +51,7 @@ export const classOptions: ValueType[] = [
     value: "CLASS VIII",
   },
   { value: "CLASS IX", label: "CLASS IX" },
-  { value: "CLASS X", label: "CLASS X" }
+  { value: "CLASS X", label: "CLASS X" },
 ];
 
 export const subjectsOptions: ValueType[] = [
@@ -65,12 +65,12 @@ export const subjectsOptions: ValueType[] = [
   { value: "GK", label: "GK" },
   { value: "Moral", label: "Moral" },
 ];
-export const subject_inClass:ClassSubject[]=[
+export const subject_inClass: ClassSubject[] = [
   {
-    student_class:"CLASS Nursery",
+    student_class: "CLASS Nursery",
     value: "grade-nursery",
     label: "CLASS Nursery",
-    subject:[
+    subject: [
       { value: "English Volume - 1", label: "English Volume 1" },
       { value: "English Volume - 2", label: "English Volume 2" },
       { value: "English Volume - 3", label: "English Volume 3" },
@@ -79,14 +79,14 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Mathematics Volume - 3", label: "Mathematics Volume 3" },
       { value: "Nepali Volume - 1", label: "Nepali Volume 1" },
       { value: "Nepali Volume - 2", label: "Nepali Volume 2" },
-      { value: "Nepali Volume - 3", label: "Nepali Volume 3" }
-    ]
+      { value: "Nepali Volume - 3", label: "Nepali Volume 3" },
+    ],
   },
   {
-    student_class:"CLASS LKG",
+    student_class: "CLASS LKG",
     value: "grade-lkg",
     label: "CLASS LKG",
-    subject:[
+    subject: [
       { value: "English Volume - 1", label: "English Volume 1" },
       { value: "English Volume - 2", label: "English Volume 2" },
       { value: "English Volume - 3", label: "English Volume 3" },
@@ -98,14 +98,14 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Volume - 3", label: "Nepali Volume 3" },
       { value: "Science Volume - 1", label: "Science Volume 1" },
       { value: "Science Volume - 2", label: "Science Volume 2" },
-      { value: "Science Volume - 3", label: "Science Volume 3" }
-    ]
+      { value: "Science Volume - 3", label: "Science Volume 3" },
+    ],
   },
   {
-    student_class:"CLASS UKG",
+    student_class: "CLASS UKG",
     value: "grade-ukg",
     label: "CLASS UKG",
-    subject:[
+    subject: [
       { value: "English Volume - 1", label: "English Volume 1" },
       { value: "English Volume - 2", label: "English Volume 2" },
       { value: "English Volume - 3", label: "English Volume 3" },
@@ -117,14 +117,14 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Volume - 3", label: "Nepali Volume 3" },
       { value: "Science Volume - 1", label: "Science Volume 1" },
       { value: "Science Volume - 2", label: "Science Volume 2" },
-      { value: "Science Volume - 3", label: "Science Volume 3" }
-    ]
+      { value: "Science Volume - 3", label: "Science Volume 3" },
+    ],
   },
   {
-    student_class:"CLASS I",
+    student_class: "CLASS I",
     value: "grade-1",
     label: "CLASS I",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Elegance in English", label: "Elegance in English" },
@@ -133,14 +133,13 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
       { value: "Moral", label: "Moral" },
       { value: "General Knowledge", label: "General Knowledge" },
-      
-    ]
+    ],
   },
   {
-    student_class:"grade-2",
+    student_class: "grade-2",
     value: "grade-2",
     label: "CLASS II",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Elegance in English", label: "Elegance in English" },
@@ -149,14 +148,13 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
       { value: "Moral", label: "Moral" },
       { value: "General Knowledge", label: "General Knowledge" },
-      
-    ]
+    ],
   },
   {
-    student_class:"CLASS III",
+    student_class: "CLASS III",
     value: "grade-3",
     label: "CLASS III",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Elegance in English", label: "Elegance in English" },
@@ -165,14 +163,13 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
       { value: "Moral", label: "Moral" },
       { value: "General Knowledge", label: "General Knowledge" },
-      
-    ]
+    ],
   },
   {
-    student_class:"CLASS IV",
+    student_class: "CLASS IV",
     label: "CLASS IV",
     value: "grade-4",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Elegance in English", label: "Elegance in English" },
@@ -181,14 +178,13 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
       { value: "Moral", label: "Moral" },
       { value: "General Knowledge", label: "General Knowledge" },
-      
-    ]
+    ],
   },
   {
-    student_class:"CLASS V",
+    student_class: "CLASS V",
     label: "CLASS V",
     value: "grade-5",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Elegance in English", label: "Elegance in English" },
@@ -197,14 +193,13 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
       { value: "Moral", label: "Moral" },
       { value: "General Knowledge", label: "General Knowledge" },
-      
-    ]
+    ],
   },
   {
-    student_class:"CLASS VI",
+    student_class: "CLASS VI",
     label: "CLASS VI",
     value: "grade-6",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Elegance in English", label: "Elegance in English" },
@@ -212,14 +207,13 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Sahitya", label: "Nepali Sahitya" },
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
       { value: "General Knowledge", label: "General Knowledge" },
-      
-    ]
+    ],
   },
   {
-    student_class:"CLASS VII",
+    student_class: "CLASS VII",
     label: "CLASS VII",
     value: "grade-7",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Elegance in English", label: "Elegance in English" },
@@ -227,65 +221,105 @@ export const subject_inClass:ClassSubject[]=[
       { value: "Nepali Sahitya", label: "Nepali Sahitya" },
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
       { value: "General Knowledge", label: "General Knowledge" },
-      
-    ]
+    ],
   },
   {
-    student_class:"CLASS VIII",
+    student_class: "CLASS VIII",
     label: "CLASS VIII",
     value: "grade-8",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Syntax Grammar", label: "Syntax Grammar" },
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
-      { value: "Multi-Resource Comprehension Passage Volume 1", label: "Multi-Resource Comprehension Passage Volume 1" },
-      { value: "Multi-Resource Comprehension Passage Volume 2", label: "Multi-Resource Comprehension Passage Volume 2" },
-      { value: "Multi-Resource Comprehension Passage Volume 3", label: "Multi-Resource Comprehension Passage Volume 3" },
-      
-    ]
+      {
+        value: "Multi-Resource Comprehension Passage Volume 1",
+        label: "Multi-Resource Comprehension Passage Volume 1",
+      },
+      {
+        value: "Multi-Resource Comprehension Passage Volume 2",
+        label: "Multi-Resource Comprehension Passage Volume 2",
+      },
+      {
+        value: "Multi-Resource Comprehension Passage Volume 3",
+        label: "Multi-Resource Comprehension Passage Volume 3",
+      },
+    ],
   },
   {
-    student_class:"CLASS IX",
+    student_class: "CLASS IX",
     label: "CLASS IX",
     value: "grade-9",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Basic English Grammar", label: "Basic English Grammar" },
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
-      { value: "Multi-Resource Comprehension Passage Volume 1", label: "Multi-Resource Comprehension Passage Volume 1" },
-      { value: "Multi-Resource Comprehension Passage Volume 2", label: "Multi-Resource Comprehension Passage Volume 2" },
-      { value: "Multi-Resource Comprehension Passage Volume 3", label: "Multi-Resource Comprehension Passage Volume 3" },
-      
-    ]
+      {
+        value: "Multi-Resource Comprehension Passage Volume 1",
+        label: "Multi-Resource Comprehension Passage Volume 1",
+      },
+      {
+        value: "Multi-Resource Comprehension Passage Volume 2",
+        label: "Multi-Resource Comprehension Passage Volume 2",
+      },
+      {
+        value: "Multi-Resource Comprehension Passage Volume 3",
+        label: "Multi-Resource Comprehension Passage Volume 3",
+      },
+    ],
   },
   {
-    student_class:"CLASS X",
+    student_class: "CLASS X",
     label: "CLASS X",
     value: "grade-10",
-    subject:[
+    subject: [
       { value: "Elementary Mathematics", label: "Elementary Mathematics" },
       { value: "Learning Science", label: "Learning Science" },
       { value: "Basic English Grammar", label: "Basic English Grammar" },
       { value: "Nepali Byakaran", label: "Nepali Byakaran" },
-      { value: "Multi-Resource Comprehension Passage Volume 1", label: "Multi-Resource Comprehension Passage Volume 1" },
-      { value: "Multi-Resource Comprehension Passage Volume 2", label: "Multi-Resource Comprehension Passage Volume 2" },
-      { value: "Multi-Resource Comprehension Passage Volume 3", label: "Multi-Resource Comprehension Passage Volume 3" },
-      
-    ]
-  }
+      {
+        value: "Multi-Resource Comprehension Passage Volume 1",
+        label: "Multi-Resource Comprehension Passage Volume 1",
+      },
+      {
+        value: "Multi-Resource Comprehension Passage Volume 2",
+        label: "Multi-Resource Comprehension Passage Volume 2",
+      },
+      {
+        value: "Multi-Resource Comprehension Passage Volume 3",
+        label: "Multi-Resource Comprehension Passage Volume 3",
+      },
+    ],
+  },
 ];
 export const statesOptions: ValueType[] = [
-  { value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" },
+  {
+    value: "State 3 [ Bagmati Province ]",
+    label: "State 3 [ Bagmati Province ]",
+  },
   { value: "State 1 [ Koshi Province ]", label: "State 1 [ Koshi Province ]" },
-  { value: "State 2 [ Madesh Province ]", label: "State 2 [ Madesh Province ]" },
-  { value: "State 4 [ Gandaki  Province ]", label: "State 4 [ Gandaki  Province ]" },
-  { value: "State 5 [ Lumbini  Province ]", label: "State 5 [ Lumbini  Province ]" },
-  { value: "State 6 [ Karnali  Province ]", label: "State 6 [ Karnali  Province ]" },
-  { value: "State 7 [ Sudur Pashchim Province ]", label: "State 7 [ Sudur Pashchim Province ]" },
+  {
+    value: "State 2 [ Madesh Province ]",
+    label: "State 2 [ Madesh Province ]",
+  },
+  {
+    value: "State 4 [ Gandaki  Province ]",
+    label: "State 4 [ Gandaki  Province ]",
+  },
+  {
+    value: "State 5 [ Lumbini  Province ]",
+    label: "State 5 [ Lumbini  Province ]",
+  },
+  {
+    value: "State 6 [ Karnali  Province ]",
+    label: "State 6 [ Karnali  Province ]",
+  },
+  {
+    value: "State 7 [ Sudur Pashchim Province ]",
+    label: "State 7 [ Sudur Pashchim Province ]",
+  },
 ];
-
 
 export const documentOptions: ValueType[] = [
   {
@@ -311,11 +345,99 @@ export const paperType: ValueType[] = [
   {
     label: "Worksheet",
     value: "Worksheet",
-  }
+  },
 ];
 
+export const onlineClass: ValueType[] = [
+  {
+    label: "CLASS Nursery",
+    value: "grade-nursery",
+  },
+  {
+    label: "CLASS LKG",
+    value: "grade-lkg",
+  },
+  {
+    label: "CLASS UKG",
+    value: "grade-ukg",
+  },
+  {
+    label: "CLASS I",
+    value: "grade-1",
+  },
+  {
+    label: "CLASS II",
+    value: "grade-2",
+  },
+  {
+    label: "CLASS III",
+    value: "grade-3",
+  },
+  {
+    label: "CLASS IV",
+    value: "grade-4",
+  },
+  {
+    label: "CLASS V",
+    value: "grade-5",
+  },
+
+  {
+    label: "CLASS VI",
+    value: "grade-6",
+  },
+  {
+    label: "CLASS VII",
+    value: "grade-7",
+  },
+  {
+    label: "CLASS VIII",
+    value: "grade-8",
+  },
+  { value: "grade-9", label: "CLASS IX" },
+  { value: "grade-10", label: "CLASS X" },
+];
 
 export const ACCEPTED_FILE_TYPES =
   "image/*,application/pdf,application/zip,application/vnd.rar,application/epub+zip,.psd";
-  
- 
+
+export const hour = [
+  {
+    label: "1 Hour",
+    value: "1 hr",
+  },
+  {
+    label: "2 Hour",
+    value: "2 hr",
+  },
+  {
+    label: "3 Hour",
+    value: "3 hr",
+  },
+];
+export const minutes = [
+  {
+    label: "0 Minutes",
+    value: "0 Min",
+  },
+  {
+    label: "10 Minutes",
+    value: "10 Min",
+  },
+  {
+    label: "20 Minutes",
+    value: "20 Min",
+  },
+  {
+    label: "30 Minutes",
+    value: "30 Min",
+  },
+  {
+    label: "40 Minutes",
+    value: "40 Min",
+  },
+  {
+    label: "50 Minutes",
+    value: "50 Min",
+  },
+];
