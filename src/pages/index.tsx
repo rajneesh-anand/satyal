@@ -284,7 +284,49 @@ export default function Home() {
             </div>
 
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px] justify-center">
-              <div className="group relative lg:px-10 lg:py-2 transition-all duration-500 ease-in-out rounded-xl bg-white border  overflow-hidden text-center"></div>
+              <div className="group relative lg:px-10 lg:py-2 transition-all duration-500 ease-in-out rounded-xl bg-white border  overflow-hidden text-center">
+                <div className="relative overflow-hidden text-transparent lg:py-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-hexagon h-32 w-32 fill-indigo-600/5 mx-auto"
+                  >
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  </svg>
+                  <div className="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-red-800 rounded-xl transition-all duration-500 ease-in-out text-4xl flex align-middle justify-center items-center">
+                    {/* <i className="icofont-users-alt-5"></i> */}
+                    <img
+                      src="/images/Hybrid Class.svg"
+                      className=" rounded-lg"
+                      alt="photo-2"
+                      height={50}
+                      width={50}
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-2">
+                  <a
+                    href="#"
+                    className="font-body text-xl font-medium transition-all duration-500 ease-in-out text-dark-footer hover:text-red-800"
+                  >
+                    “ Best Hybrid Class & Test -Absent or missing any classes?
+                    Well, try our hybrid class and test system! ”
+                  </a>
+                  {/* <p className="text-slate-400 transition-all duration-500 ease-in-out mt-3">
+                    If the distribution of letters and 'words' is random, the
+                    reader will not be distracted from making.
+                  </p> */}
+                </div>
+              </div>
+
               <div className="group relative lg:px-10 lg:py-2 transition-all duration-500 ease-in-out rounded-xl bg-white border  overflow-hidden text-center">
                 <div className="relative overflow-hidden text-transparent lg:py-4">
                   <svg
@@ -319,7 +361,48 @@ export default function Home() {
                   </p> */}
                 </div>
               </div>
-              <div className="group relative lg:px-10 lg:py-2 transition-all duration-500 ease-in-out rounded-xl bg-white border  overflow-hidden text-center"></div>
+              <div className="group relative lg:px-10 lg:py-2 transition-all duration-500 ease-in-out rounded-xl bg-white border  overflow-hidden text-center">
+                <div className="relative overflow-hidden text-transparent lg:py-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="feather feather-hexagon h-32 w-32 fill-indigo-600/5 mx-auto"
+                  >
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  </svg>
+                  <div className="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-red-800 rounded-xl transition-all duration-500 ease-in-out text-4xl flex align-middle justify-center items-center">
+                    {/* <i className="icofont-users-alt-5"></i> */}
+                    <img
+                      src="/images/Set Questions.svg"
+                      className=" rounded-lg"
+                      alt="photo-2"
+                      height={50}
+                      width={50}
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-2">
+                  <a
+                    href="#"
+                    className="font-body text-xl font-medium transition-all duration-500 ease-in-out text-dark-footer hover:text-red-800"
+                  >
+                    “ 1000+ Set Questions Are exams nearby? Prepare for your
+                    exam with our 1000+ prepaid set question! ”
+                  </a>
+                  {/* <p className="text-slate-400 transition-all duration-500 ease-in-out mt-3">
+                    If the distribution of letters and 'words' is random, the
+                    reader will not be distracted from making.
+                  </p> */}
+                </div>
+              </div>
             </div>
           </div>
 
