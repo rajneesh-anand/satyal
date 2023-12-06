@@ -16,7 +16,6 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
   const options = siteSettings.paymentOptions;
   const [status, setStatus] = useState("");
 
-
   useEffect(() => {
     if (status !== "") {
       toast.error(`${status}`, {
@@ -86,9 +85,8 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
               height={100}
               quality={100}
               style={{
-                width:"100%",
-                height:"100%",
-                
+                width: "100%",
+                height: "100%",
               }}
             />
           </button>
@@ -100,5 +98,5 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
 
 export default Payment;
 
-// 
+//
 // objectFit="fill"

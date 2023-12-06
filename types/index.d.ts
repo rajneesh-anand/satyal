@@ -9,13 +9,13 @@ declare module "AppTypes" {
     label: string;
     value: string;
   }
-  
+
   export interface StudentInfo {
     firstName: string;
-    middleName?:string;
+    middleName?: string;
     lastName: string;
     parentName: string;
-    parentContactNumber:string;
+    parentContactNumber: string;
     email: string;
     password: string;
     studentClass?: string | ValueType;
@@ -27,7 +27,7 @@ declare module "AppTypes" {
 
   export interface TeacherInfo {
     firstName: string;
-    middleName?:string;
+    middleName?: string;
     lastName: string;
     email: string;
     password: string;
@@ -35,11 +35,11 @@ declare module "AppTypes" {
     city: string;
     state?: string | ValueType;
     userContactNumber: string;
-    schoolName:string;
-    schoolContact:string;
-    schoolAddress:string;
-    schoolCity:string;
-    schoolState:string | ValueType;  
+    schoolName: string;
+    schoolContact: string;
+    schoolAddress: string;
+    schoolCity: string;
+    schoolState: string | ValueType;
   }
 
   export interface TeacherKYCInfo {
@@ -60,17 +60,15 @@ declare module "AppTypes" {
     plan_description: string;
     plan_fee: number;
     plan_discounted_fee: number;
+    with_out_vat: string;
     most_popular: boolean;
     features: string[];
   }
-  export interface ClassSubject{
-    student_class:string;
-    value:string;
-    label:string;
+  export interface ClassSubject {
+    student_class: string;
+    value: string;
+    label: string;
 
-    subject:ValueType[]
+    subject: ValueType[];
   }
-  
 }
-
-
