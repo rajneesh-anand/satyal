@@ -456,21 +456,22 @@ export default function Home() {
                   </h4>
 
                   <p className="text-slate-400 max-w-xl">
-                    Start working with Tailwind CSS that can provide everything
-                    you need to generate awareness, drive traffic, connect.
-                    Dummy text is text that is used in the publishing industry
-                    or by web designers to occupy the space which will later be
-                    filled with 'real' content.
+                    Our interactive smart class videos are from class Nursery to
+                    10 and are compatible with smart boards, tablets, and other
+                    digital devices that are designed to adapt to various
+                    classroom setups, ensuring a hassle-free as well as non-stop
+                    learning and teaching for students and teachers
+                    simultaneously.
                   </p>
 
-                  <div className="mt-6">
+                  {/* <div className="mt-6">
                     <a
                       href=""
                       className="btn btn-link font-semibold text-dark-footer after:bg-dark-footer duration-500 ease-in-out border-dark-footer hover:text-white hover:bg-dark-footer"
                     >
                       Learn more <i className="zmdi zmdi-arrow-right"></i>
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
