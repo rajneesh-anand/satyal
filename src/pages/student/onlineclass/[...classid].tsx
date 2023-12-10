@@ -122,8 +122,8 @@ export default function OnlineClassId() {
                       })
                   ) : (
                     <div className="flex justify-center py-2 sm:py-4">
-                      <Heading variant={HeadingType.MediumHeading}>
-                        No Notice
+                      <Heading variant={HeadingType.Base}>
+                        There aren’t any note from the teacher!
                       </Heading>
                     </div>
                   )}

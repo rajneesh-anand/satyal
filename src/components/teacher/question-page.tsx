@@ -173,7 +173,7 @@ function Questions(props) {
 
               {/* <div className="border border-2 mt-1 overflow-y-auto max-h-80"> */}
               <ul
-                className={`border border-2 mt-1 sm:block  overflow-y-auto max-h-[460px] ${
+                className={` border-2 mt-1 sm:block  overflow-y-auto max-h-[460px] ${
                   showpaper ? 'hidden' : 'block'
                 }`}
               >

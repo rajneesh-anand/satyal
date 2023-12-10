@@ -194,9 +194,9 @@ export default function ClassID() {
                           })
                       ) : (
                         <>
-                          <div className="w-full h-full flex justify-center py-2 sm:py-4">
-                            <Heading variant={HeadingType.MediumHeading}>
-                              You Can Add Notices For Students
+                          <div className="w-full h-full flex  py-2 sm:py-4">
+                            <Heading variant={HeadingType.Base}>
+                              Kindly add your notes for students to view it!
                             </Heading>
                           </div>
                         </>
