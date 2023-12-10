@@ -72,7 +72,7 @@ const PaymentPopup: React.FC = () => {
           Pick Your Payment Option
         </h4>
       </div>
-      <div className="flex justify-center items-center">
+      {/* <div className="flex justify-center items-center">
         {options?.map((item, index) => (
           <button
             key={index}
@@ -89,7 +89,7 @@ const PaymentPopup: React.FC = () => {
             />
           </button>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

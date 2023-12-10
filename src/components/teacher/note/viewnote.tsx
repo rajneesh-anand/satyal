@@ -108,7 +108,7 @@ export default function viewnote({ notes, setRefresh }: IProps) {
           ) : (
             <div className="w-full h-full flex justify-center py-2 sm:py-4">
               <Heading variant={HeadingType.MediumHeading}>
-                You Can Add Notices For Students
+                Kindly add your notes for students to view it!
               </Heading>
             </div>
           )}

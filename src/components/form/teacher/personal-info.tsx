@@ -4,7 +4,7 @@ import { TeacherInfo } from "AppTypes";
 import Select from "@components/ui/form/select/select";
 import { statesOptions, classOptions, ValueType } from "@data/constant";
 import Link from "@components/ui/link";
-import NextLink from 'next/link'
+import NextLink from "next/link";
 
 interface PersonalInfoProps {
   teacherInfo: TeacherInfo;
@@ -58,7 +58,7 @@ export const PersonalInfo = ({
           </div>
         </div>
         <div className="flex flex-col md:flex-row">
-           <div className="w-full lg:w-[340px]  mb-3">
+          <div className="w-full lg:w-[340px]  mb-3">
             <Input
               label="Last Name"
               placeholder="Your Last Name"
@@ -111,7 +111,6 @@ export const PersonalInfo = ({
           </div>
         </div>
         <div className="flex flex-col md:flex-row">
-         
           <div className="w-full  md:w-full mb-3 ">
             <Input
               label="Address"
@@ -226,7 +225,9 @@ export const PersonalInfo = ({
                 defaultValue={selectedState}
                 options={statesOptions}
                 isSearchable={false}
-                onChange={(value: ValueType) => (teacherInfo.schoolState = value)}
+                onChange={(value: ValueType) =>
+                  (teacherInfo.schoolState = value)
+                }
               />
             </div>
           </div>
@@ -235,15 +236,22 @@ export const PersonalInfo = ({
           <span className="text-black font-semibold">
             By registering to Satyal online learning, You agree with our{" "}
           </span>
-          <NextLink href="/terms" >
-            <a target="_blank"  rel="noopener noreferrer" className="text-red-700 font-semibold ">Terms and Services{" "}</a>
-            
+          <NextLink href="/terms">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-700 font-semibold "
+            >
+              Terms and Services{" "}
+            </a>
           </NextLink>
           <span className="text-black font-semibold"> &amp; </span>
 
           <NextLink href="/privacy">
-            <a target="_blank" className="text-red-700 font-semibold "> Privacy Policy</a>
-           
+            <a target="_blank" className="text-red-700 font-semibold ">
+              {" "}
+              Privacy Policy
+            </a>
           </NextLink>
         </div>
       </section>
