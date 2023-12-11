@@ -1,10 +1,10 @@
-import { siteSettings } from "@settings/site-settings";
-import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import Image from "@components/ui/image";
-import Router from "next/router";
-import useWindowSize from "@utils/use-window-size";
-import { Plan, StudentInfo, UserServiceConfiguration } from "AppTypes";
+import { siteSettings } from '@settings/site-settings';
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import Image from '@components/ui/image';
+import Router from 'next/router';
+import useWindowSize from '@utils/use-window-size';
+import { Plan, StudentInfo, UserServiceConfiguration } from 'AppTypes';
 
 type Props = {
   plan: Plan;
@@ -14,13 +14,13 @@ type Props = {
 const Payment: React.FC<Props> = ({ plan, studentData }) => {
   const { width } = useWindowSize();
   const options = siteSettings.paymentOptions;
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
-    if (status !== "") {
+    if (status !== '') {
       toast.error(`${status}`, {
-        progressClassName: "fancy-progress-bar",
-        position: width! > 768 ? "bottom-right" : "top-right",
+        progressClassName: 'fancy-progress-bar',
+        position: width! > 768 ? 'bottom-right' : 'top-right',
         autoClose: 1500,
         hideProgressBar: false,
         closeOnClick: true,
@@ -40,13 +40,13 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
         `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/khalti`,
         {
           headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
           },
-          method: "POST",
+          method: 'POST',
           body: JSON.stringify({
             userData: studentData,
-            userType: "Student",
+            userType: 'Student',
             payment: plan,
           }),
         }
@@ -78,9 +78,9 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
         className="flex-1 relative"
         style={{
           backgroundImage: 'url("/public/images/WebImg.svg")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          borderRadius: "20px",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          borderRadius: '20px',
         }}
       >
         <div className="text-center pb-8">
@@ -102,8 +102,8 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
                 height={100}
                 quality={100}
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  width: '100%',
+                  height: '100%',
                 }}
               />
             </button>
