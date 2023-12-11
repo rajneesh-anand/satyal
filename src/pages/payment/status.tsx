@@ -46,9 +46,19 @@ PaymentStatus.Layout = Layout;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res, query } = context;
   console.log(query);
-  await axios.post(
-    `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/status`,
-    { paymentId: 'dfhgh', amount: '1200' },
+  const {
+    user_id,
+    pidx,
+    transaction_id,
+    amount,
+    mobile,
+    purchase_order_id,
+    purchase_order_name,
+  } = query;
+
+  const data = await axios.post(
+    `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/status/${user_id}/${transaction_id}/${amount}/${mobile}/${purchase_order_id}/${purchase_order_name}`,
+    // { paymentId: 'dfhgh', amount: '1200' },
     {
       headers: {
         Accepts: 'application/json',
@@ -56,6 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   );
+  console.log('Data from frontend', data);
   return {
     props: {
       ...(await serverSideTranslations(context.locale!, [
