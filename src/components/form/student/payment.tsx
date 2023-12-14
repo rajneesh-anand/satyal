@@ -16,6 +16,8 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
   const options = siteSettings.paymentOptions;
   const [status, setStatus] = useState("");
 
+  console.log(studentData);
+  console.log(plan);
   useEffect(() => {
     if (status !== "") {
       toast.error(`${status}`, {
@@ -66,28 +68,64 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
 
   return (
     <div className="w-full md:w-[1108px] mx-auto p-5 px-0 sm:p-8 rounded-sm flex">
-      <div className="flex-1 pr-8">
-        {/* Card content goes here */}
-        <div className="bg-white p-4 rounded-md shadow-md">
-          {/* Add content for your card here */}
-          <h4 className="text-lg font-semibold mb-4">Details:</h4>
-          <p>Your card content goes here.</p>
-        </div>
-      </div>
       <div
         className="flex-1 relative"
         style={{
-          backgroundImage: 'url("/public/images/WebImg.svg")',
+          backgroundImage: 'url("/images/WebImg.svg")',
           backgroundSize: "cover",
           backgroundPosition: "center",
-          borderRadius: "20px",
+          borderRadius: "10px",
         }}
       >
-        <div className="text-center pb-8">
-          <h4 className="uppercase font-semibold font-body text-dark-footer">
-            Select Payment Options
-          </h4>
+        <div className="flex-1 pr-8">
+          {/* Card content goes here */}
+          <div className="bg-white p-4 rounded-md shadow-md">
+            {/* Display Student Details */}
+            <div>
+              <h4 className="text-lg font-semibold mb-2">Student Details:</h4>
+              <p>
+                <strong>Name:</strong> {studentData.firstName}
+                {studentData.middleName} {studentData.lastName}
+              </p>
+              <p>
+                <strong>Email:</strong> {studentData.email}
+              </p>
+              <p>
+                <strong>Class:</strong> {studentData.studentClass.label}
+              </p>
+              <p>
+                <strong>City:</strong> {studentData.city}
+              </p>
+              <p>
+                <strong>ParentName:</strong> {studentData.parentName}
+              </p>
+              <p>
+                <strong>ParentContact:</strong>{" "}
+                {studentData.parentContactNumber}
+              </p>
+            </div>
+
+            {/* Display Payment Details */}
+            <div className="mt-4">
+              <h4 className="text-lg font-semibold mb-2">Payment Details:</h4>
+              <p>
+                <strong>Plan Name:</strong> {plan.plan_name}
+              </p>
+              <p>
+                <strong>Amount:</strong> RS{plan.plan_discounted_fee}
+              </p>
+              {/* Add more payment details as needed */}
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div className="text-left pb-4">
+        {" "}
+        {/* Updated styling */}
+        <h4 className="uppercase font-semibold font-body text-dark-footer">
+          Select Payment Options
+        </h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {options?.map((item, index) => (
             <button
