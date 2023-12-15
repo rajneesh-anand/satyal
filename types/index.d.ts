@@ -56,6 +56,7 @@ declare module "AppTypes" {
   }
 
   export interface Plan {
+    id: number;
     plan_name: string;
     plan_description: string;
     plan_fee: number;

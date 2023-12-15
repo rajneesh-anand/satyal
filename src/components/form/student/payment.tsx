@@ -5,6 +5,7 @@ import Image from "@components/ui/image";
 import Router from "next/router";
 import useWindowSize from "@utils/use-window-size";
 import { Plan, StudentInfo, UserServiceConfiguration } from "AppTypes";
+import axios from "axios";
 
 type Props = {
   plan: Plan;
@@ -16,56 +17,85 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
   const options = siteSettings.paymentOptions;
   const [status, setStatus] = useState("");
 
-  console.log(studentData);
-  console.log(plan);
-  useEffect(() => {
-    if (status !== "") {
-      toast.error(`${status}`, {
-        progressClassName: "fancy-progress-bar",
-        position: width! > 768 ? "bottom-right" : "top-right",
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    }
-  }, [status]);
+  // console.log(studentData);
+  // console.log(plan);
+  // useEffect(() => {
+  //   if (status !== "") {
+  //     toast.error(`${status}`, {
+  //       progressClassName: "fancy-progress-bar",
+  //       position: width! > 768 ? "bottom-right" : "top-right",
+  //       autoClose: 1500,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //     });
+  //   }
+  // }, [status]);
 
   const paymentHandler = async (
     event: React.MouseEvent<HTMLButtonElement>,
     paymentName: string
   ) => {
     event.preventDefault();
+    const planDetails = {
+      id: plan?.id,
+      plan_name: plan?.plan_name,
+      plan_fee: plan?.plan_fee,
+      with_out_vat: plan?.with_out_vat,
+      plan_discounted_fee: plan?.plan_discounted_fee,
+    };
+
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/khalti`,
+      const userRegisterResponse = await axios.post(
+        `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/v1/user/register`,
+        {
+          userData: studentData,
+          paymentMethod: paymentName,
+          selectedPlan: planDetails,
+          userType: "Student",
+        },
         {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          method: "POST",
-          body: JSON.stringify({
-            userData: studentData,
-            userType: "Student",
-            payment: plan,
-          }),
         }
       );
-      const result = await res.json();
-      console.log(result);
-      if (res.status >= 400 && res.status < 600) {
-        throw new Error(result.message);
+      // const res = await fetch(
+      //   `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/khalti`,
+      //   {
+      //     headers: {
+      //       Accept: "application/json",
+      //       "Content-Type": "application/json",
+      //     },
+      //     method: "POST",
+      //     body: JSON.stringify({
+      //       userData: studentData,
+      //       userType: "Student",
+      //       payment: plan,
+      //     }),
+      //   }
+      // );
+      // const result = await res.json();
+      // console.log(result);
+      if (
+        userRegisterResponse.status >= 400 &&
+        userRegisterResponse.status < 600
+      ) {
+        // throw new Error(userRegisterResponse?.error);
+        console.log("error in user register");
       } else {
-        Router.push(result.payment_url);
+        Router.push(userRegisterResponse?.data?.payment_url);
       }
     } catch (error: any) {
       setStatus(error.message);
       console.log(error.message);
     }
   };
-
+  // if(typeof studentData?.studentClass!=="string"){
+  //   const studentlevel=studentData?.studentClass?.label
+  // }
   return (
     <div className="w-full md:w-[1108px] mx-auto p-5 px-0 sm:p-8 rounded-sm flex">
       <div
@@ -91,7 +121,10 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
                 <strong>Email:</strong> {studentData.email}
               </p>
               <p>
-                <strong>Class:</strong> {studentData.studentClass.label}
+                <strong>Class:</strong>{" "}
+                {typeof studentData?.studentClass !== "string"
+                  ? studentData?.studentClass?.label
+                  : ""}
               </p>
               <p>
                 <strong>City:</strong> {studentData.city}
@@ -109,10 +142,10 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
             <div className="mt-4">
               <h4 className="text-lg font-semibold mb-2">Payment Details:</h4>
               <p>
-                <strong>Plan Name:</strong> {plan.plan_name}
+                <strong>Plan Name:</strong> {plan?.plan_name}
               </p>
               <p>
-                <strong>Amount:</strong> RS{plan.plan_discounted_fee}
+                <strong>Amount:</strong> RS{plan?.plan_discounted_fee}
               </p>
               {/* Add more payment details as needed */}
             </div>
@@ -121,7 +154,7 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
       </div>
 
       <div className="text-left pb-4">
-        {" "}
+        {/* {" "} */}
         {/* Updated styling */}
         <h4 className="uppercase font-semibold font-body text-dark-footer">
           Select Payment Options

@@ -7,6 +7,7 @@ import { Sidebar } from "@components/form/student/sidebar";
 import Payment from "@components/form/student/payment";
 import { toast } from "react-toastify";
 import useWindowSize from "@utils/use-window-size";
+
 function RegisterStudentForm() {
   const [step, setStep] = useState(1);
   const [showRequired, setShowRequiredFields] = useState(false);
@@ -101,7 +102,7 @@ function RegisterStudentForm() {
     }, 500);
   }, [status]);
 
-  console.log(userServiceConfiguration?.studentInfo);
+  // console.log(userServiceConfiguration?.studentInfo);
 
   return (
     <main className="h-full flex flex-col text-neutral-cool-gray w-full lg:mx-auto  lg:mt-4 lg:mb-12  grow lg:p-4 lg:rounded-lg lg:bg-white lg:h-[56.75rem] lg:shadow">

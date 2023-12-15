@@ -44,6 +44,7 @@ export const SelectPlan = ({
       let filter_pricings = result.filter((item: pricing_plans) =>
         item?.plan_Classes.includes(studentClass?.value)
       );
+
       setPricingData(filter_pricings);
     };
     fetchPricingData();
