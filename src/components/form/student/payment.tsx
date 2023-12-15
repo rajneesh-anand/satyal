@@ -16,7 +16,7 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
   const options = siteSettings.paymentOptions;
   const [status, setStatus] = useState('');
 
-  console.log(studentData);
+  console.log('Student Data', studentData);
   console.log(plan);
   useEffect(() => {
     if (status !== '') {
@@ -40,6 +40,7 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/khalti`,
+        // `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/v1/user/register`,
         {
           headers: {
             Accept: 'application/json',
@@ -54,7 +55,7 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
         }
       );
       const result = await res.json();
-      console.log(result);
+      console.log('Result from frontend: ', result);
       if (res.status >= 400 && res.status < 600) {
         throw new Error(result.message);
       } else {

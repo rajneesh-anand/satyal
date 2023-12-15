@@ -48,7 +48,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log(query);
   const {
     user_id,
-    pidx,
     transaction_id,
     amount,
     mobile,
@@ -57,8 +56,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } = query;
 
   const data = await axios.post(
-    `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/status/${user_id}/${transaction_id}/${amount}/${mobile}/${purchase_order_id}/${purchase_order_name}`,
-    // { paymentId: 'dfhgh', amount: '1200' },
+    `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/status`,
+    {
+      user_id,
+      transaction_id,
+      amount,
+      mobile,
+      purchase_order_id,
+      purchase_order_name,
+    },
     {
       headers: {
         Accepts: 'application/json',
