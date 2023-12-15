@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Plan, StudentInfo, UserServiceConfiguration } from "AppTypes";
 import { Button } from "@components/ui/button/button";
 import { PersonalInfo } from "@components/form/student/personal-info";
@@ -7,6 +7,7 @@ import { Sidebar } from "@components/form/student/sidebar";
 import Payment from "@components/form/student/payment";
 import { toast } from "react-toastify";
 import useWindowSize from "@utils/use-window-size";
+
 function RegisterStudentForm() {
   const [step, setStep] = useState(1);
   const [showRequired, setShowRequiredFields] = useState(false);
@@ -16,19 +17,22 @@ function RegisterStudentForm() {
     useState<UserServiceConfiguration>({
       studentInfo: {
         firstName: "",
-        middleName:"",
+        middleName: "",
         lastName: "",
         email: "",
         password: "",
-        studentClass:  {
+        studentClass: {
           label: "CLASS Nursery",
           value: "CLASS Nursery",
         },
         parentName: "",
-        parentContactNumber:"",
+        parentContactNumber: "",
         address: "",
         city: "",
-        state: { value: "State 3 [ Bagmati Province ]", label: "State 3 [ Bagmati Province ]" },
+        state: {
+          value: "State 3 [ Bagmati Province ]",
+          label: "State 3 [ Bagmati Province ]",
+        },
         userContactNumber: "",
       },
       selectedPlan: null,
@@ -45,7 +49,6 @@ function RegisterStudentForm() {
     });
   };
 
-
   const nextStep = (onGoingStep?: number) => {
     if (step === 4) return;
     if (step === 1 || (onGoingStep && onGoingStep !== 1 && step === 1)) {
@@ -58,17 +61,16 @@ function RegisterStudentForm() {
         !userServiceConfiguration.studentInfo.userContactNumber ||
         !userServiceConfiguration.studentInfo.parentName ||
         !userServiceConfiguration.studentInfo.city ||
-        !userServiceConfiguration.studentInfo.address||
+        !userServiceConfiguration.studentInfo.address ||
         !userServiceConfiguration.studentInfo.parentContactNumber
-        
       ) {
         setShowRequiredFields(true);
         return;
       }
     }
-    if(step===2|| (onGoingStep && onGoingStep !== 2 && step === 2)){
-      if(!userServiceConfiguration.selectedPlan){
-        setStatus('Please select a plan')
+    if (step === 2 || (onGoingStep && onGoingStep !== 2 && step === 2)) {
+      if (!userServiceConfiguration.selectedPlan) {
+        setStatus("Please select a plan");
         return;
       }
     }
@@ -83,25 +85,24 @@ function RegisterStudentForm() {
     setStep((step) => step - 1);
   };
 
-useEffect(() => {
-  
+  useEffect(() => {
     if (status !== "") {
-    toast.error(`${status}`, {
-      progressClassName: "fancy-progress-bar",
-      position: width! > 768 ? "bottom-right" : "top-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
-  }  
-setTimeout(() => {
-  setStatus("")
-}, 500);
-}, [status]);
+      toast.error(`${status}`, {
+        progressClassName: "fancy-progress-bar",
+        position: width! > 768 ? "bottom-right" : "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
+    setTimeout(() => {
+      setStatus("");
+    }, 500);
+  }, [status]);
 
-console.log(userServiceConfiguration?.studentInfo);
+  // console.log(userServiceConfiguration?.studentInfo);
 
   return (
     <main className="h-full flex flex-col text-neutral-cool-gray w-full lg:mx-auto  lg:mt-4 lg:mb-12  grow lg:p-4 lg:rounded-lg lg:bg-white lg:h-[56.75rem] lg:shadow">
