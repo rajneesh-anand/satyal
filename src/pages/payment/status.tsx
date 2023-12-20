@@ -59,7 +59,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } = query;
 
   const data = await axios.post(
-    `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/status`,
+    // `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/status`,
+    `${process.env.SERVER_ENDPOINT_V1}/payment/user/updatestatus`,
     {
       email,
       transaction_id,
