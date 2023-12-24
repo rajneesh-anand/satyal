@@ -1,11 +1,11 @@
-import { siteSettings } from "@settings/site-settings";
-import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import Image from "@components/ui/image";
-import Router from "next/router";
-import useWindowSize from "@utils/use-window-size";
-import { Plan, StudentInfo, UserServiceConfiguration } from "AppTypes";
-import axios from "axios";
+import { siteSettings } from '@settings/site-settings';
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import Image from '@components/ui/image';
+import Router from 'next/router';
+import useWindowSize from '@utils/use-window-size';
+import { Plan, StudentInfo, UserServiceConfiguration } from 'AppTypes';
+import axios from 'axios';
 
 type Props = {
   plan: Plan;
@@ -15,7 +15,7 @@ type Props = {
 const Payment: React.FC<Props> = ({ plan, studentData }) => {
   const { width } = useWindowSize();
   const options = siteSettings.paymentOptions;
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState('');
 
   // console.log(studentData);
   // console.log(plan);
@@ -47,18 +47,22 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
     };
 
     try {
+      console.log('New env var', process.env.SERVER_ENDPOINT_V1);
+      console.log('New env var', process.env.NEXT_PUBLIC_REST_API_ENDPOINT);
       const userRegisterResponse = await axios.post(
         `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/v1/user/register`,
+        // `${process.env.SERVER_ENDPOINT_V1}/user/register`,
+
         {
           userData: studentData,
           paymentMethod: paymentName,
           selectedPlan: planDetails,
-          userType: "Student",
+          userType: 'Student',
         },
         {
           headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
           },
         }
       );
@@ -79,12 +83,9 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
       // );
       // const result = await res.json();
       // console.log(result);
-      if (
-        userRegisterResponse.status >= 400 &&
-        userRegisterResponse.status < 600
-      ) {
+      if (userRegisterResponse.status >= 400 && userRegisterResponse.status < 600) {
         // throw new Error(userRegisterResponse?.error);
-        console.log("error in user register");
+        console.log('error in user register');
       } else {
         Router.push(userRegisterResponse?.data?.payment_url);
       }
@@ -102,9 +103,9 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
         className="flex-1 relative"
         style={{
           backgroundImage: 'url("/images/WebImg.svg")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          borderRadius: "10px",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          borderRadius: '10px',
         }}
       >
         <div className="flex-1 pr-8">
@@ -121,10 +122,10 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
                 <strong>Email:</strong> {studentData.email}
               </p>
               <p>
-                <strong>Class:</strong>{" "}
-                {typeof studentData?.studentClass !== "string"
+                <strong>Class:</strong>{' '}
+                {typeof studentData?.studentClass !== 'string'
                   ? studentData?.studentClass?.label
-                  : ""}
+                  : ''}
               </p>
               <p>
                 <strong>City:</strong> {studentData.city}
@@ -133,8 +134,7 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
                 <strong>ParentName:</strong> {studentData.parentName}
               </p>
               <p>
-                <strong>ParentContact:</strong>{" "}
-                {studentData.parentContactNumber}
+                <strong>ParentContact:</strong> {studentData.parentContactNumber}
               </p>
             </div>
 
@@ -173,8 +173,8 @@ const Payment: React.FC<Props> = ({ plan, studentData }) => {
                 height={100}
                 quality={100}
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  width: '100%',
+                  height: '100%',
                 }}
               />
             </button>
