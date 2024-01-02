@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res, query } = context;
   // console.log(query);
   const {
-    email,
+    pidx,
     transaction_id,
     amount,
     mobile,
@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     // `${process.env.NEXT_PUBLIC_REST_API_ENDPOINT}/payment/status`,
     `${process.env.SERVER_ENDPOINT_V1}/payment/user/updatestatus`,
     {
-      email,
+      pidx,
       transaction_id,
       amount,
       mobile,
